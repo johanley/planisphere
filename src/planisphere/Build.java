@@ -1,0 +1,125 @@
+package planisphere;
+
+import static planisphere.util.LogUtil.log;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import com.itextpdf.text.DocumentException;
+
+import planisphere.config.Config;
+import planisphere.config.ConfigFromFile;
+import static planisphere.config.Constants.*;
+import planisphere.draw.starchart.GenerateStarChart;
+import planisphere.draw.transparency.GenerateTransparency;
+
+/** 
+ Build the two files for the planisphere, as a standalone program from the command line.
+ 
+ One file is the star chart (back), and the other is a transparency (front).
+
+  --------------
+  
+ To-do:
+
+  Order the two-piece rivets, to be ready when I need them.
+ What kind of rivet? Removable. Match the thickness!
+ Some rivets allow for variable thickness.
+ https://www.mcmaster.com/two-piece-rivets/
+ 
+  
+  Servlet? 
+  https://kb.itextsupport.com/home/it7kb/faq/how-can-i-serve-a-pdf-to-a-browser-without-storing-a-file-on-the-server-side
+     no file, but byte arrays in memory, served to the client
+       zip together? or two separate operations, for the two files?
+     will need this project as a jar file; use it as a library. File-Export-java-jar
+  plain server, one form, two buttons for download 2 files separately, gets only, serve bytestream, error handling re-shows the form
+    year, lat, long, hours/mins, name, dec limit, format (big or small)
+    /planisphere/index.html - form; two post-targets, for two files 
+    /planisphere/build - servlet; might recycle to the form; build a config object, generate 1 file at a time
+
+  Animations: 
+    pole precession (with proper motion); proper motion in general; motion of lunar nodes
+    
+
+---------------------------------------------------------------------------------------------
+
+ 
+ Clean the drawing code, between transp and starchart.
+ Post to github when complete, along with documentation.
+ Courtesy jar for running the code from the command line.
+ 
+ Cloudy nights post: see https://www.cloudynights.com/topic/799573-the-planisphere/page-2, where a lady
+  is asking for a custom version.
+
+ This incorrectly implies the ecliptic pole is stationary: https://en.wikipedia.org/wiki/Orbital_pole#Ecliptic_pole
+
+ https://www.cloudynights.com/topic/690886-planisphere-hack/
+ Post to https://www.quasarastronomy.com.au/ ?
+ https://www.shadowspro.com/en/index.html
+ 
+ Send to SkyNews ?
+ Link from https://en.wikipedia.org/wiki/Planisphere
+ 
+ Demo: precession and proper motion ! +/- 15,000 years, to get in one full precessional cycle.
+     the sky 2,500 years ago would need proper motion? yes
+     12,000 years hence the pole is close to Vega
+     the YBS catalog has proper motion data! 
+     Athens 500BC. Sumeria 3200BC. 10,000BC. 10,000AD. Stonehenge. Australia 10,000BC.
+     The obliquity of the ecliptic has changed over time: Meeus, page 135, +/- 10,000 years, has a range of about 2 degrees.
+       How much longer was the summer-solstice day, in the year 8000BC, at some location?
+     Find and log the max proper motions.
+     https://sci.esa.int/web/gaia/-/59207-the-future-of-the-orion-constellation-with-logos
+     https://sci.esa.int/web/gaia/-/59206-the-future-of-the-orion-constellation
+     https://sci.esa.int/web/gaia/-/59004-two-million-stars-on-the-move  - linear extrapolation
+    
+
+ PROBS FOUND 
+   ephem.js: precession has extra line that shouldn't be there ?? 
+       var temp = Math.acos(Math.sqrt(A*A + B*B)); //0..pi YES 
+        ephem.δ = Math.sin(ephem.δ) * temp;  ???? NO 
+   mag5: my star-dots use ints, should be double
+   mag5: using 2000 as year is bad: it's a leap year (the date scale)
+   mag5 and ephem.js: the Julian Date function is wrong for negative years; Math.floor should be Maths.truncate.
+   Math.pow is undesirable (according to Meeus)
+*/
+public final class Build {
+  
+  /** 
+   As a standalone program, generate the planisphere as a pair of PDF files.
+   The files are saved to the file system, in an existing directory (see config.ini). 
+  */
+  public static void main(String... args) throws DocumentException, IOException {
+    log("Building a planisphere from a config file...");
+    
+    log("Config:");
+    Config config = new ConfigFromFile().init();
+    log(config.toString());
+    
+    log("Generating star chart PDF.");
+    GenerateStarChart starChart = new GenerateStarChart(config);
+    starChart.outputTo(streamFor(STAR_CHART_FILE, config));
+
+    log("Generating transparency PDF.");
+    GenerateTransparency transparency = new GenerateTransparency(config);
+    transparency.outputTo(streamFor(TRANSPARENCY_FILE, config));
+    
+    log("File saved to " + fullFileName(STAR_CHART_FILE, config));
+    log("File saved to " + fullFileName(TRANSPARENCY_FILE, config));
+    log("Done.");
+  }
+
+  //PRIVATE 
+  
+  private static OutputStream streamFor(String fileName, Config config) throws FileNotFoundException {
+    return new FileOutputStream(fullFileName(fileName, config));
+  }
+  
+  private static String fullFileName(String name, Config config) {
+    String result = config.outputDir() + File.separator + name;
+    return result;
+  }
+}
