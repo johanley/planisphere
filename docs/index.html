@@ -14,9 +14,11 @@
 <h2>Precise, Customizable Planisphere</h2>
 
  This project generates a precise, customizable planisphere, as two PDF files (a star chart and a transparency).
- The two files are then printed (on a high-resolution printer), and the results are attached together in the middle.
+ The two files are then printed on a high-resolution printer, and the results are attached together in the middle.
  One file is meant for printing on card stock, and the other as a transparency.
  The transparency rotates around a central rivet.
+ 
+ <P>The source code is <a href='https://github.com/johanley/planisphere'>here</a>.
  
  <P>The planisphere uses the sterographic projection, which is appropriate only for latitudes outside the tropics.
  (That is the main defect of this projection.)
@@ -25,7 +27,7 @@
  
  <P>The code can also be used in a servlet environment to 
  <a href='https://kb.itextsupport.com/home/it7kb/faq/how-can-i-serve-a-pdf-to-a-browser-without-storing-a-file-on-the-server-side'>generate PDFs as byte streams</a>
-  that are served to the browser. In that case, the configuration comes from user input in a form, not a config.ini text file.
+  that are served to the browser. In that case, the configuration comes from user input in a form, not a <a href=''>config.ini</a> text file.
  
  <P>The main design goals of this planisphere are:
  <ul>
@@ -38,7 +40,7 @@
   Include only <b>minimal text and markings</b>, and only what's necessary for the correct operation of the planisphere. 
  </ul>
  
- <P>The planisphere's star chart includes (<a href='starchart.pdf'>example</a>):
+ <P>The planisphere's star chart includes (<a href='starchart.pdf'>example PDF</a>):
  <ul>
   <li>stars brighter than magnitude 5.01 (derived from the Yale Bright Star Catalog)
   <li>the position of the Sun for every day at 18h (in the configured time zone)
@@ -54,7 +56,7 @@
  
  
  <P>The planisphere's transparency goes on top of the star chart. 
- The transparency includes ( (<a href='transparency.pdf'>example</a>)):
+ The transparency includes (<a href='transparency.pdf'>example PDF</a>)):
  <ul>
   <li>a time-scale with divisions for every 2 minutes (or 1 minute, if you choose)
   <li>markings for every degree of altitude on the meridian, and every degree of azimuth on the horizon
