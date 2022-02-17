@@ -19,7 +19,7 @@
  The transparency rotates around a central rivet.
  
  <P>The planisphere uses the sterographic projection, which is appropriate only for latitudes outside the tropics.
- (That is its main defect.)
+ (That is the main defect of this projection.)
  
  <P>When run as a stand-alone program, the top-level class for generating the two planisphere files is <code>planisphere.Build</code>.
  
@@ -33,15 +33,15 @@
   <li>be much more <b>precise</b> than the typical planisphere. 
   (The main source of error will almost always be the mechanical mis-centering between the star chart and the transparency.)
   <li>allow for <b>time-travel</b> into the past or future, for thousands of years. 
-  (This is possible using a precession algorithm valid over long time scales, and by including 3D proper motion).
+  (This is possible since it uses a precession algorithm that's valid over long time scales, and by including 3D proper motion).
   <li>optimize for people who already know the night sky well. 
   Include only <b>minimal text and markings</b>, and only what's necessary for the correct operation of the planisphere. 
  </ul>
  
- <P>The planisphere's star chart includes:
+ <P>The planisphere's star chart includes (<a href='starchart.pdf'>example</a>):
  <ul>
   <li>stars brighter than magnitude 5.01 (derived from the Yale Bright Star Catalog)
-  <li>the position of the Sun, every day at 18h (in the configured time zone)
+  <li>the position of the Sun for every day at 18h (in the configured time zone)
   <li>the path of the Moon's orbit on July 1 of the configured year
   <li>the celestial equator
   <li>the positions of the radiant of the brightest meteor showers (configurable)
@@ -52,8 +52,9 @@
   over the course of the year.
  </ul>
  
+ 
  <P>The planisphere's transparency goes on top of the star chart. 
- The transparency includes:
+ The transparency includes ( (<a href='transparency.pdf'>example</a>)):
  <ul>
   <li>a time-scale with divisions for every 2 minutes (or 1 minute, if you choose)
   <li>markings for every degree of altitude on the meridian, and every degree of azimuth on the horizon
@@ -125,7 +126,7 @@
  <ul>
   <li>the top-level main class, for running as a standalone program, is named Build.java
   <li>all text files, and all .java files, use the UTF-8 encoding; your dev environment must also treat them as UTF-8
-  <li>the project uses an old version of the <a href='https://itextsupport.com/apidocs/iText5/5.5.9/>'iText java library (5.5.13)</a>
+  <li>the project uses an old version of the <a href='https://itextsupport.com/apidocs/iText5/5.5.9/'>iText java library (5.5.13)</a>
   <li>vector graphics are used (not raster graphics)
   <li>the fonts are embedded in the PDF
   <li>WARNING: different printers may render thin lines differently
@@ -170,7 +171,7 @@
   <li>an updated version of the YBS, with modern parallax and proper motion values.
   <li>access to ELP 2000-85 for the Moon (see above).
   <li>an expression for the inclination of the Moon's orbit, instead of a constant. 
-  This may be in Mathematical Astronomy Morsels, by Meeus.
+  This may be in <em>Mathematical Astronomy Morsels</em>, by Meeus.
  </ul>
 </body>
 </html>
