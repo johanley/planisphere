@@ -27,7 +27,8 @@
  
  <P>The code can also be used in a servlet environment to 
  <a href='https://kb.itextsupport.com/home/it7kb/faq/how-can-i-serve-a-pdf-to-a-browser-without-storing-a-file-on-the-server-side'>generate PDFs as byte streams</a>
-  that are served to the browser. In that case, the configuration comes from user input in a form, not a <a href=''>config.ini</a> text file.
+  that are served to the browser. In that case, the configuration comes from user input in a form, not a 
+  <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/config/config.ini'>config.ini</a> text file.
  
  <P>The main design goals of this planisphere are:
  <ul>
@@ -56,7 +57,7 @@
  
  
  <P>The planisphere's transparency goes on top of the star chart. 
- The transparency includes (<a href='transparency.pdf'>example PDF</a>)):
+ The transparency includes (<a href='transparency.pdf'>example PDF</a>):
  <ul>
   <li>a time-scale with divisions for every 2 minutes (or 1 minute, if you choose)
   <li>markings for every degree of altitude on the meridian, and every degree of azimuth on the horizon
@@ -72,8 +73,8 @@
   <li>the two output files are in PDF format, as greyscale, single-page documents
   <li>the two files need to be printed (one as a transparency), and attached together in the center
   <li>for best results, you should <b>use a high quality, high resolution printer</b>; many home printers lack high resolution
-  <li>it has black stars and lines on a white background, for high contrast under dark conditions
-  <li>the epoch used by the catalog is J2000, but precession is applied to the positions
+  <li>it has black stars and lines on a white background, for high contrast
+  <li>the epoch used by the star catalog is J2000, but precession is applied to the star positions
   <li>no lines are included to delineate the approximate border of the Milky Way
   <li>a textual configuration file is used to let people change some settings without changing the code  
  </ul>
@@ -126,21 +127,21 @@
  
  <P>Notes about the implementation:
  <ul>
-  <li>the top-level main class, for running as a standalone program, is named Build.java
   <li>all text files, and all .java files, use the UTF-8 encoding; your dev environment must also treat them as UTF-8
   <li>the project uses an old version of the <a href='https://itextsupport.com/apidocs/iText5/5.5.9/'>iText java library (5.5.13)</a>
   <li>vector graphics are used (not raster graphics)
   <li>the fonts are embedded in the PDF
   <li>WARNING: different printers may render thin lines differently
   <li>the author has run this code only on Windows OS, not on Linux
-  <li>the logging can be made silent simply by changing one setting in the {@link planisphere.util.LogUtil} class. 
+  <li>the logging can be made silent simply by changing one setting in the 
+  <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/util/LogUtil.java'>LogUtil</a> class 
  </ul>
  
  <P>Some data I used in building this tool:
  <ul>
   <li>stars: the star catalog is a slightly modified version of the Yale Bright Star catalog (YBS)
   <li>planets: the VSOP87D data for the planets, by <a href='https://ui.adsabs.harvard.edu/abs/1988A%26A...202..309B/abstract'>Bretagnon and Francou</a>.
-  <li>Moon: the abridged form of ELP 2000-82 as published in Astronomical Algorithms, by Meeus 1991.
+  <li>Moon: the abridged form of ELP 2000-82 as published in <em>Astronomical Algorithms</em>, by Meeus 1991.
   <li>precession: algorithm and tables for P/Q, X/Y, and p/epsilon from 
     <a href='https://ui.adsabs.harvard.edu/abs/2011A%26A...534A..22V/abstract'>this paper</a> by Vondrák, Capitaine, and Wallace.
  </ul>
