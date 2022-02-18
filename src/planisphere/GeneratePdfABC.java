@@ -21,6 +21,7 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import planisphere.astro.time.AstroUtil;
 import planisphere.config.Config;
 import static planisphere.config.Constants.*;
 import planisphere.draw.ChartUtil;
@@ -111,6 +112,11 @@ public abstract class GeneratePdfABC {
     document.addAuthor(AUTHOR); 
     document.addTitle("Planisphere");
     document.addSubject("Planisphere for the night sky, for amateur astronomers.");
+    document.addKeywords(
+      config.location() + " latitude:" + AstroUtil.radsToDegreeString(config.latitude()) + 
+      " longitude:" + AstroUtil.radsToDegreeString(config.longitude()) + 
+      " hours from UT:" + config.hoursOffsetFromUT() + " declination gap:" + config.declinationGap() + "°" 
+    );
   }
 
   private void initGraphicsContext() {

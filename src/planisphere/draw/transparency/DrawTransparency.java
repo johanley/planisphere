@@ -118,11 +118,8 @@ public final class DrawTransparency {
     String latText = "φ " + degrees(config.latitude());
     String longText = "λ " + degrees(config.longitude());
     
-    Double timeCorr = Maths.radsToDegs(config.radsWestOfCentralMeridian()) * 4; //minutes
-    timeCorr = Maths.round(timeCorr * 100)/100.0;
-    String timeCorrText = timeCorr + "m";
-    String sign = (timeCorr < 0) ? "-" : "+";
-    timeCorrText = "LMT" + sign + timeCorrText;
+    String plus = config.hoursOffsetFromUT() > 0 ? "+" : "";
+    String timeCorrText = "UT"+ plus + config.hoursOffsetFromUT() + "h" + config.minutesOffsetFromUT() + "m";
     
     //position the text near the top of the meridian
     Double dec = Maths.degToRads(config.declinationLimit() + sign() * 4.0);

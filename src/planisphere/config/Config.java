@@ -22,16 +22,19 @@ import planisphere.math.Maths;
 */
 public final class Config {
   
-  public Config(Integer year, String location, Double latitude, Double longitude, Integer hoursOffsetFromUT, Integer minutesOffsetFromUT, Double declinationLimit,
-       Float width, Float height, String outputDir, String fontDir, Integer greyConstellationLines, 
-      Integer smallestTimeDivision, String radiants, String monthNames, String lunarTransitsTitle, String planetaryTransitsTitle, String planetNames){
+  public Config(
+    Integer year, String location, Double latitude, Double longitude, Integer hoursOffsetFromUT, 
+    Integer minutesOffsetFromUT, Double declinationGap, Float width, Float height, 
+    String outputDir, String fontDir, Integer greyConstellationLines, Integer smallestTimeDivision, 
+    String radiants, String monthNames, String lunarTransitsTitle, String planetaryTransitsTitle, String planetNames
+  ){
     this.year = year;
     this.location = location;
     this.latitude = latitude;
     this.longitude = longitude;
     this.hoursOffsetFromUT = hoursOffsetFromUT;
     this.minutesOffsetFromUT = minutesOffsetFromUT;
-    this.declinationLimit = declinationLimit;
+    this.declinationGap = declinationGap;
     this.width = width;
     this.height = height;
     this.outputDir = outputDir;
@@ -71,17 +74,15 @@ public final class Config {
   */
   public Integer minutesOffsetFromUT() {  return minutesOffsetFromUT;  }
   
-  /** 
-   The extreme declination to be shown on the planisphere, in degrees.
-   
-   <P>The limit of declination in the part of the sky opposite the celestial pole.
-   For northern latitudes, this is a limit of southern declination (a negative number).
-   For southern latitudes, this is a limit of northern declination (a positive number).
-   With the stereographic projection, in most cases it's usually not desirable to go all the 
-   way to the horizon in that part of the sky, in order to decrease the maximum relative distortion across 
-   the chart. This setting is closely related to your chosen latitude. 
+  /**
+   In the northern (southern) hemisphere, this number of degrees of declination will be abandoned in 
+   in the south (north). With the stereographic projection, in most cases it's usually not desirable 
+   to go all the way to the horizon in the south (north).
+   In very high latitudes, this may be set to 0, or even to negative amounts, in order to see 
+   the Sun graze the horizon.
+   A decimal number between -30 and 30 degrees.
   */
-  public Double declinationLimit() { return declinationLimit; }
+  public Double declinationGap() { return declinationGap; }
   
   /** 
    Page width in points (72 points per inch).
@@ -139,6 +140,13 @@ public final class Config {
   /** The names of planets on the back of the star chart. */
   public String planetNames() { return planetNames; }
   
+  /** The extreme declination to be shown on the planisphere, in degrees. Calculated field. */
+  public Double declinationLimit() {
+    double lat = Maths.radsToDegs(latitude);
+    double sign = isNorthernHemisphere() ? +1 : -1;
+    return lat - sign*90.0  + sign*declinationGap;
+  }
+  
   /** Radians. Calculated field. */
   public Double radsWestOfCentralMeridian() {
     double hours = hoursOffsetFromUT() + minutesOffsetFromUT()/60.0; //avoid integer division!
@@ -173,7 +181,7 @@ public final class Config {
     toStringLine(Setting.hours_offset_from_ut, hoursOffsetFromUT(), result);
     toStringLine(Setting.minutes_offset_from_ut, minutesOffsetFromUT(), result);
     toStringLine(Setting.degrees_west_of_central_meridian, AstroUtil.radsToDegreeString(radsWestOfCentralMeridian()), result);
-    toStringLine(Setting.declination_limit, declinationLimit(), result);
+    toStringLine(Setting.declination_gap, declinationGap(), result);
     toStringLine(Setting.year, year(), result);
     toStringLine(Setting.font_directory, fontDir(), result);
     toStringLine(Setting.grey_constellation_lines, greyConstellationLines(), result);
@@ -192,7 +200,7 @@ public final class Config {
   private Double longitude;
   private Integer hoursOffsetFromUT;
   private Integer minutesOffsetFromUT;
-  private Double declinationLimit;
+  private Double declinationGap;
   
   private Float width;
   private Float height;

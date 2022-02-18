@@ -39,11 +39,6 @@ public final class ConfigFromFile {
     for(String line : lines) {
       processEach(line.trim());
     }
-    double geometricalDeclinationLimit = -(90 - Maths.radsToDegs(latitude)); // degs
-    if (declinationLimit < geometricalDeclinationLimit) {
-      String msg = "WARNING: your declination limit is below the real horizon.";
-      log(msg);
-    }
     return buildConfigObjectFromSettings();
   }
 
@@ -60,7 +55,7 @@ public final class ConfigFromFile {
   private Double longitude;
   private Integer hoursOffsetFromUT;
   private Integer minutesOffsetFromUT;
-  private Double declinationLimit;
+  private Double declinationGap;
   
   private Float width;
   private Float height;
@@ -105,8 +100,8 @@ public final class ConfigFromFile {
       else if (matches(Setting.minutes_offset_from_ut, parts)) {
         minutesOffsetFromUT = asInteger(parts);
       }
-      else if (matches(Setting.declination_limit, parts)) {
-        declinationLimit = asDouble(parts);
+      else if (matches(Setting.declination_gap, parts)) {
+        declinationGap = asDouble(parts);
       }
       else if (matches(Setting.year, parts)) {
         year = asInteger(parts);
@@ -169,7 +164,7 @@ public final class ConfigFromFile {
   }
 
   private Config buildConfigObjectFromSettings() {
-    return new Config(year, location, latitude, longitude, hoursOffsetFromUT, minutesOffsetFromUT, declinationLimit, 
+    return new Config(year, location, latitude, longitude, hoursOffsetFromUT, minutesOffsetFromUT, declinationGap, 
         width, height, outputDir, fontDir, greyConstellationLines, smallestTimeDivision, radiants, monthNames, lunarTransitsTitle, 
         planetaryTransitsTitle, planetNames);
   }
