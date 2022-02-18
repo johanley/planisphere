@@ -13,10 +13,10 @@
 
 <h2>Precise, Customizable Planisphere</h2>
 
- This project generates a precise, customizable planisphere, as two PDF files (a star chart and a transparency).
- The two files are then printed on a high-resolution printer, and the results are attached together in the middle.
+ This project generates a precise, customizable planisphere as two PDF files (a <a href='starchart.pdf'>star chart</a> and a <a href='transparency.pdf'>transparency</a>).
+ The two files are then printed on a high-resolution printer, and the results are attached together in the middle with a rivet.
  One file is meant for printing on card stock, and the other as a transparency.
- The transparency rotates around a central rivet.
+ The transparency rotates around the central rivet.
  
  <P>The source code is <a href='https://github.com/johanley/planisphere'>here</a>.
  
@@ -35,14 +35,15 @@
   <li>allow <b><a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/config/config.ini'>customization</a></b>,  
   including for a given <b>location and year</b>.
   <li>be much more <b>precise</b> than the typical planisphere. 
-  (The main source of error will almost always be the mechanical mis-centering between the star chart and the transparency.)
+  The main source of error in the planisphere produced by this project will almost always be the 
+  mechanical misalignment between the star chart and the transparency, not in its design.
   <li>allow for <b>time-travel</b> into the past or future, for thousands of years. 
-  (This is possible since it uses a precession algorithm that's valid over long time scales, and by including 3D proper motion).
+  This is possible since it uses a precession algorithm that's valid over long time scales, and by including 3D proper motion.
   <li>optimize for people who already know the night sky well. 
   Include only <b>minimal text and markings</b>, and only what's necessary for the correct operation of the planisphere. 
  </ul>
  
- <P>The planisphere's star chart includes (<a href='starchart.pdf'>example PDF</a>):
+ <P>The planisphere's star chart includes (<a href='starchart.pdf'>example PDF</a>, with the star chart on page 2):
  <ul>
   <li>stars brighter than magnitude 5.01 (derived from the Yale Bright Star Catalog)
   <li>the position of the Sun for every day at 18h (in the configured time zone)
@@ -69,15 +70,14 @@
  
  <P>Other general notes about the planisphere:
  <ul>
-  <li>it's written for mid-latitude locations; as is, it's not really appropriate for locations near the equator
+  <li>it's not really appropriate for locations near the equator (because of its projection)
   <li>no allowance is made anywhere for a summer hour (daylight savings time)
   <li>the two output files are in PDF format, as greyscale, single-page documents
   <li>the two files need to be printed (one as a transparency), and attached together in the center
   <li>for best results, you should <b>use a high quality, high resolution printer</b>; many home printers lack high resolution
   <li>it has black stars and lines on a white background, for high contrast
   <li>the epoch used by the star catalog is J2000, but precession is applied to the star positions
-  <li>no lines are included to delineate the approximate border of the Milky Way
-  <li>a textual configuration file is used to let people change some settings without changing the code  
+  <li>the Milky Way is not indicated
  </ul>
  
  An effort has been made to make <b>as few approximations as possible</b>:
@@ -86,7 +86,7 @@
   The effect of precession is detectable on a small-scale star chart, even after only 20 years.
   <li>the date-scale is generated specific to a given lat/long, offset from UT, <em>and year</em>.
   Creating a planisphere that is designed for a specific year is unusual. 
-  The date-scale uses the local sidereal time for 20h local mean time every day. This increases precision.
+  The date-scale uses the local sidereal time at 20h standard time every day. This increases precision.
   <li>a correction is applied for the difference in longitude between the observer and the central meridian of a time zone.
   This allows the time-scale to be in Standard Time (UT plus/minus an offset), not Local Mean Time.
   <li>the time-scale shows mean solar time (to match your clock), not sidereal time. The sidereal day is 
@@ -115,14 +115,9 @@
  In this way, the main source of error will usually be mechanical, from the inexact alignment of the centers 
  of the transparency and the star chart (instrumental error). 
  
- <P>For years other than that for which the planisphere was generated, the precision will of course be significantly reduced, 
- typically to no better than about 4 minutes of time.
+ <P>For years other than that for which the planisphere was generated, the precision will of course be significantly reduced.
  
- <P>One option is to print 4 sequential years, and use them in a 4 year cycle, if you wish.
- For example, you could reuse one printed for 2022 four years later in 2026, with an error in sidereal 
- time on the order of about 10 seconds. Eventually, precession will add up, so this won't work perpetually.  
- 
- <P>Planispheres are seldom used as precise instruments.
+ <P>Planispheres are seldom expected to be precise.
  Nevertheless, it's always interesting to push an instrument to its limits, to see how far you can go.
  That said, many users will be perfectly content with planispheres having significantly lower precision.
  
@@ -147,7 +142,7 @@
     <a href='https://ui.adsabs.harvard.edu/abs/2011A%26A...534A..22V/abstract'>this paper</a> by Vondrák, Capitaine, and Wallace.
  </ul>
  
- <P>Things I learned in building this tool:
+ <P>Things I learned while building this tool:
  <ul>
   <li>implementations of calculating a Julian Date from a calendar date are usually mediocre (NOVAS, SOFA). 
   Many implementations unnecessarily restrict the input range.
