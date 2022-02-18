@@ -37,24 +37,25 @@
   <li>be much more <b>precise</b> than the typical planisphere. 
   The main source of error in the planisphere produced by this project will almost always be the 
   mechanical misalignment between the star chart and the transparency, not in its design.
+  <li>to predict the transit time of an object on the celestial equator <b>to within approximately 1 minute</b>. 
   <li>allow for <b>time-travel</b> into the past or future, for thousands of years. 
   This is possible since it uses a precession algorithm that's valid over long time scales, and by including 3D proper motion.
   <li>optimize for people who already know the night sky well. 
-  Include only <b>minimal text and markings</b>, and only what's necessary for the correct operation of the planisphere. 
+  Include only <b>minimal text and markings</b>, and only what's necessary for the correct operation of the planisphere.
  </ul>
  
  <P>The planisphere's star chart includes (<a href='starchart.pdf'>example PDF</a>, with the star chart on page 2):
  <ul>
   <li>stars brighter than magnitude 5.01 (derived from the Yale Bright Star Catalog)
-  <li>the position of the Sun for every day at 18h (in the configured time zone)
+  <li>the position of the Sun for every day at 18h (in the configured time zone, for the configured year)
   <li>the path of the Moon's orbit on July 1 of the configured year
   <li>the celestial equator
-  <li>the positions of the radiant of the brightest meteor showers (configurable)
-  <li>the constellations are shown in a simple way, without names (to reduce clutter for those who already know the night sky)
-  <li>the date-scale indicates the observer's sidereal time at 20h each day of the year, in their own time zone
-  <li>the back of the star chart includes tables with the time of transit of the Moon for every day of the year, and the time of transit 
-  of all the bright planets, for the 15th of every month. These can be used to get approximate positions for the Moon and bright planets, 
-  over the course of the year.
+  <li>the radiant positions for the brightest meteor showers (configurable)
+  <li>the constellations as simple stick drawings, without names (to reduce clutter for those who already know the night sky)
+  <li>a date-scale to indicate the observer's sidereal time at 20h each day of the year, in their own time zone
+  <li>tables (on the back) with the time of transit of the Moon for every day of the year, and the time of transit 
+  of all the bright planets for the 15th of every month. These can be used to get approximate positions for the Moon and bright planets 
+  over the course of the configured year.
  </ul>
  
  <P>The planisphere's transparency goes on top of the star chart. 
@@ -69,12 +70,11 @@
  
  An effort has been made to make <b>as few approximations as possible</b>:
  <ul>
-  <li>the star catalog has precession applied to a given year, configured in a text file. 
+  <li>the star catalog has precession applied to the configured year. 
   The effect of precession is detectable on a small-scale star chart, even after only 20 years.
   <li>the date-scale is generated specific to a given lat/long, offset from UT, <em>and year</em>.
-  Creating a planisphere that is designed for a specific year is unusual. 
-  The date-scale uses the local sidereal time at 20h standard time every day. This increases precision.
-  <li>a correction is applied for the difference in longitude between the observer and the central meridian of a time zone.
+   The date-scale uses the local sidereal time at 20h standard time every day. This increases precision.
+  <li>a correction is applied for the difference in longitude between the observer and the central meridian of their time zone.
   This allows the time-scale to be in Standard Time (UT plus/minus an offset), not Local Mean Time.
   <li>the time-scale shows mean solar time (to match your clock), not sidereal time. The sidereal day is 
   shorter than the mean solar day, by about 3m 56s. This means that the time-scale shows slightly less than 24 hours.
@@ -93,7 +93,7 @@
   <li>the date-scale usually shows a small discontinuity between Dec 31 and Jan 1.
   This is because the date-scale is specific to a given year. 
   It shows the observer's sidereal time at 20h in their configured time zone.
-  <li>the time-scale on the tranparency has as discontinuity near 08h. 
+  <li>the time-scale on the tranparency has as discontinuity, which I decided to place near 08h. 
   This is because the solar day and the sidereal day aren't the same length.
  </ul>
  
@@ -120,20 +120,22 @@
   <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/util/LogUtil.java'>LogUtil</a> class 
  </ul>
  
- <P>Some data I used in building this tool:
+ <P>Items I used in building this tool:
  <ul>
   <li>stars: the star catalog is a slightly modified version of the Yale Bright Star catalog (YBS)
   <li>planets: the VSOP87D data for the planets, by <a href='https://ui.adsabs.harvard.edu/abs/1988A%26A...202..309B/abstract'>Bretagnon and Francou</a>.
   <li>Moon: the abridged form of ELP 2000-82 as published in <em>Astronomical Algorithms</em>, by Meeus 1991.
   <li>precession: algorithm and tables for P/Q, X/Y, and p/epsilon from 
     <a href='https://ui.adsabs.harvard.edu/abs/2011A%26A...534A..22V/abstract'>this paper</a> by Vondrák, Capitaine, and Wallace.
+  <li><em>Astronomical Algorithms</em> by Jean Meeus, 1991
+  <li><em>Explanatory Supplement to the Astronomical Ephemeris</em>, 1961  
  </ul>
  
  <P>Things I learned while building this tool:
  <ul>
   <li>implementations of calculating a Julian Date from a calendar date are usually mediocre (NOVAS, SOFA). 
   Many implementations unnecessarily restrict the input range.
-  Many implementations are deeply cryptic. (For this reason, I made my own algorithm.)
+  Many implementations are deeply cryptic. (For this reason, I implemented my own algorithm.)
   <li>calculating 3D proper motions is not difficult (see  <a href='https://ui.adsabs.harvard.edu/abs/1989AJ.....97.1197K/abstract'>Kaplan et al 1989</a>, section IV, page 1203).
   <li>many tools, including those produced to implement IAU standards, are optimized to produce accurate results only within a few hundred years 
   of J2000, and are unsuitable for use outside that range, without careful scrutiny. 

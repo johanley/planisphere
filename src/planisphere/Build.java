@@ -49,8 +49,6 @@ import planisphere.draw.transparency.GenerateTransparency;
 
  
  Clean the drawing code, between transp and starchart.
- Post to github when complete, along with documentation.
- Courtesy jar for running the code from the command line.
  
  Cloudy nights post: see https://www.cloudynights.com/topic/799573-the-planisphere/page-2, where a lady
   is asking for a custom version.
@@ -81,9 +79,7 @@ import planisphere.draw.transparency.GenerateTransparency;
    ephem.js: precession has extra line that shouldn't be there ?? 
        var temp = Math.acos(Math.sqrt(A*A + B*B)); //0..pi YES 
         ephem.δ = Math.sin(ephem.δ) * temp;  ???? NO 
-   mag5: my star-dots use ints, should be double
-   mag5: using 2000 as year is bad: it's a leap year (the date scale)
-   mag5 and ephem.js: the Julian Date function is wrong for negative years; Math.floor should be Maths.truncate.
+   ephem.js: the Julian Date function is wrong for negative years; Math.floor should be Maths.truncate.
    Math.pow is undesirable (according to Meeus)
 */
 public final class Build {
