@@ -117,7 +117,7 @@ public final class DrawPoles {
   
   /** Open circles. */
   private void movementOfPoles() {
-    log("Ecliptic pole over 26,000 years.");
+    log("Ecliptic pole, back in time, over 52,000 years.");
     LongTermPrecession precession = new LongTermPrecession();
     int START_YEAR = 2000;
     for(int i = 0; i < 260; ++i) {

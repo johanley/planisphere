@@ -13,6 +13,8 @@ import com.itextpdf.text.DocumentException;
 import planisphere.config.Config;
 import planisphere.config.ConfigFromFile;
 import static planisphere.config.Constants.*;
+
+import planisphere.draw.starchart.DrawPoles;
 import planisphere.draw.starchart.GenerateStarChart;
 import planisphere.draw.transparency.GenerateTransparency;
 
