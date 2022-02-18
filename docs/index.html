@@ -30,7 +30,8 @@
   that are served to the browser. In that case, the configuration comes from user input in a form, not a 
   <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/config/config.ini'>config.ini</a> text file.
  
- <P>The main <b>design goals</b> of this planisphere are:
+<h2>Design Goals</h2>
+The main <b>design goals</b> of this planisphere are:
  <ul>
   <li>allow <b><a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/config/config.ini'>customization</a></b>,  
   including for a given <b>location and year</b>.
@@ -44,7 +45,20 @@
   Include only <b>minimal text and markings</b>, and only what's necessary for the correct operation of the planisphere.
  </ul>
  
- <P>The planisphere's star chart includes (<a href='starchart.pdf'>example PDF</a>, with the star chart on page 2):
+ <P>The goal is to predict the transit time of an object on the celestial equator to within approximately 1 minute.
+ This is possible, but only if you generate a planisphere for a specific lat/long and year.
+ In this way, the main source of error will usually be mechanical, from the inexact alignment of the centers 
+ of the transparency and the star chart (instrumental error). 
+ 
+ <P>For years other than that for which the planisphere was generated, the precision will of course be significantly reduced.
+ 
+ <P>Planispheres are seldom expected to be precise.
+ Nevertheless, it's always interesting to push an instrument to its limits, to see how far you can go.
+ That said, many users will be perfectly content with planispheres having significantly lower precision.
+ 
+ <h2>What's Included</h2>
+ 
+ The planisphere's star chart includes (<a href='starchart.pdf'>example PDF</a>, with the star chart on page 2):
  <ul>
   <li>stars brighter than magnitude 5.01 (derived from the Yale Bright Star Catalog)
   <li>the position of the Sun for every day at 18h (in the configured time zone, for the configured year)
@@ -68,6 +82,8 @@
   <li>a special circle at 0.9 degrees below the horizon, for computing the time of sunset and sunrise
  </ul>
  
+ <h2>Few Approximations</h2>
+ 
  An effort has been made to make <b>as few approximations as possible</b>:
  <ul>
   <li>the star catalog has precession applied to the configured year. 
@@ -88,7 +104,9 @@
   For the Moon, the rise/set altitude is in the range of +0.08 to +0.18 degrees, because of its large horizontal parallax.
  </ul>
  
- <p><b>Discontinuities</b> in the planisphere (by design):
+ <h2>Discontinuities</h2>
+ 
+ There are two small <b>discontinuities</b> in the planisphere (by design), which bear demonstrate the astronomical reality:
  <ul>
   <li>the date-scale usually shows a small discontinuity between Dec 31 and Jan 1.
   This is because the date-scale is specific to a given year. 
@@ -97,18 +115,9 @@
   This is because the solar day and the sidereal day aren't the same length.
  </ul>
  
- <P>The goal is to predict the transit time of an object on the celestial equator to within approximately 1 minute.
- This is possible, but only if you generate a planisphere for a specific lat/long and year.
- In this way, the main source of error will usually be mechanical, from the inexact alignment of the centers 
- of the transparency and the star chart (instrumental error). 
  
- <P>For years other than that for which the planisphere was generated, the precision will of course be significantly reduced.
- 
- <P>Planispheres are seldom expected to be precise.
- Nevertheless, it's always interesting to push an instrument to its limits, to see how far you can go.
- That said, many users will be perfectly content with planispheres having significantly lower precision.
- 
- <P>Notes about the implementation:
+ <h2>Implementation</h2>
+ Notes about the implementation:
  <ul>
   <li>all text files, and all .java files, use the UTF-8 encoding; your dev environment must also treat them as UTF-8
   <li>the author has run this code only on Windows OS, not on Linux
@@ -119,7 +128,9 @@
   <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/util/LogUtil.java'>LogUtil</a> class 
  </ul>
  
- <P>Items I used in building this tool:
+ <h2>Tools Used</h2>
+ 
+ Items I used in building this tool:
  <ul>
   <li>stars: the star catalog is a slightly modified version of the Yale Bright Star catalog (YBS)
   <li>planets: the VSOP87D data for the planets, by <a href='https://ui.adsabs.harvard.edu/abs/1988A%26A...202..309B/abstract'>Bretagnon and Francou</a>.
@@ -131,7 +142,8 @@
   <li>an old version of the <a href='https://itextsupport.com/apidocs/iText5/5.5.9/'>iText java library (5.5.13)</a>
  </ul>
  
- <P>Things I learned while building this tool:
+ <h2>What I Learned</h2>
+ Things I learned while building this tool:
  <ul>
   <li>implementations of calculating a Julian Date from a calendar date are usually mediocre (NOVAS, SOFA). 
   Many implementations unnecessarily restrict the input range.
