@@ -20,7 +20,7 @@
  
  <P>The source code is <a href='https://github.com/johanley/planisphere'>here</a>.
  
- <P>The planisphere uses the <b>sterographic projection</b>, which is appropriate only for latitudes outside the tropics.
+ <P>The planisphere uses the <b>stereographic projection</b>, which is appropriate only for latitudes outside the tropics.
  (That is the main defect of this projection.)
  
  <P>When run as a stand-alone program, the top-level class for generating the two planisphere files is <code>planisphere.Build</code>.
@@ -44,11 +44,6 @@ The main <b>design goals</b> of this planisphere are:
   <li>optimize for people who already know the night sky well. 
   Include only <b>minimal text and markings</b>, and only what's necessary for the correct operation of the planisphere.
  </ul>
- 
- <P>The goal is to predict the transit time of an object on the celestial equator to within approximately 1 minute.
- This is possible, but only if you generate a planisphere for a specific lat/long and year.
- In this way, the main source of error will usually be mechanical, from the inexact alignment of the centers 
- of the transparency and the star chart (instrumental error). 
  
  <P>For years other than that for which the planisphere was generated, the precision will of course be significantly reduced.
  
@@ -111,7 +106,7 @@ The main <b>design goals</b> of this planisphere are:
   <li>the date-scale usually shows a small discontinuity between Dec 31 and Jan 1.
   This is because the date-scale is specific to a given year. 
   It shows the observer's sidereal time at 20h in their configured time zone.
-  <li>the time-scale on the tranparency has as discontinuity, which I decided to place near 08h. 
+  <li>the time-scale on the transparency has as discontinuity, which I decided to place near 08h. 
   This is because the solar day and the sidereal day aren't the same length.
  </ul>
  
