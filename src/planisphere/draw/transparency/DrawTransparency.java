@@ -5,9 +5,7 @@ import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
-import java.time.LocalDateTime;
 
-import planisphere.astro.star.Position;
 import planisphere.config.Config;
 import planisphere.config.Constants;
 import planisphere.draw.ChartUtil;

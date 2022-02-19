@@ -52,8 +52,8 @@ public final class LongTermPrecession {
    See <a href='https://ui.adsabs.harvard.edu/abs/1977A%26A....58....1L/abstract'>Lieske et al 1977</a>. 
   */
   public Matrix rotationMatrix(double jd) {
-    Vector k = eclipticPole(jd);
-    Vector n = equatorialPole(jd);
+    Vector k = eclipticNorthPole(jd);
+    Vector n = equatorialNorthPole(jd);
     Vector w = n.cross(k).unit();
     return new Matrix(
       w,
@@ -63,11 +63,11 @@ public final class LongTermPrecession {
   }
   
   /**
-   Return a unit vector that points to the ecliptic pole for the given date, using J2000 mean equator and equinox.
+   Return a unit vector that points to the north ecliptic pole for the given date, using J2000 mean equator and equinox.
    Computes P<sub>A</sub> and Q<sub>A</sub>, parameters that represent the direction of the secularly-moving ecliptic pole.
    @param jd should be in TT, terrestrial time, which involves ΔT from UT; I'm not implementing that here. 
   */
-  public Vector eclipticPole(double jd){
+  public Vector eclipticNorthPole(double jd){
     double T = AstroUtil.julianCenturiesSinceJ2000(jd);
     double P = Maths.arcsecToRads(P(T)); //rads
     double Q = Maths.arcsecToRads(Q(T)); //rads
@@ -83,18 +83,19 @@ public final class LongTermPrecession {
     );
   }
   
-  public Position eclipticPoleRaDec(double jd) {
-    Vector v = eclipticPole(jd);
+  /** Return the position of the north ecliptic pole for the given date, using J2000 mean equator and equinox. */
+  public Position eclipticNorthPoleRaDec(double jd) {
+    Vector v = eclipticNorthPole(jd);
     Position result = XYZ.positionWithUnitDistance(v);
     return result;
   }
  
   /**
-   Return a unit vector that points to the equatorial pole for the given date, using J2000 mean equator and equinox.
+   Return a unit vector that points to the north equatorial pole for the given date, using J2000 mean equator and equinox.
    Computes X<sub>A</sub> and Y<sub>A</sub>, parameters that represent the direction of the secularly-moving equatorial pole.
    @param jd should be in TT, terrestrial time, which involves ΔT from UT; I'm not implementing that here. 
   */
-  Vector equatorialPole(double jd){
+  Vector equatorialNorthPole(double jd){
     double T = AstroUtil.julianCenturiesSinceJ2000(jd);
     double X = Maths.arcsecToRads(X(T)); //rads
     double Y = Maths.arcsecToRads(Y(T)); //rads
@@ -108,8 +109,9 @@ public final class LongTermPrecession {
     );
   }
   
-  public Position equatorialPoleRaDec(double jd) {
-    Vector v = equatorialPole(jd);
+  /** Return the position of the north equatorial pole for the given date, using J2000 mean equator and equinox. */
+  public Position equatorialNorthPoleRaDec(double jd) {
+    Vector v = equatorialNorthPole(jd);
     Position result = XYZ.positionWithUnitDistance(v);
     return result;
   }
@@ -204,11 +206,11 @@ public final class LongTermPrecession {
     LogUtil.log(jd + " JD for -1374 (1375 BC) May 3 at  13:52:19.2, Gregorian proleptic calendar.");
     
     // should be pecl = ( +0.0004 1724 7857 6400 1342 −0.4049 5491 1045 7616 2693 +0.9143 3656 0531 2655 2350 ) 
-    Vector eclipticPole = p.eclipticPole(jd);
+    Vector eclipticPole = p.eclipticNorthPole(jd);
     LogUtil.log("Ecliptic pole: " + eclipticPole);
     
     // should be pequ = = ( −0.2943 7643 7973 6903 1532 −0.1171 9098 0233 7025 7855 +0.9484 7708 8240 8209 1796 ) 
-    Vector equatorialPole = p.equatorialPole(jd);
+    Vector equatorialPole = p.equatorialNorthPole(jd);
     LogUtil.log("Equatorial pole: " + equatorialPole);
     
     Matrix rotatioMatrix = p.rotationMatrix(jd);

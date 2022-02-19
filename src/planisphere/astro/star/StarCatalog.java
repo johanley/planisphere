@@ -55,6 +55,7 @@ public final class StarCatalog {
    <P>Actions taken on the data:
    <ul>
     <li>discard novae
+    <li>apply precession and proper motion
     <li>reduce the magnitude of T CrB in order to make it invisible
     <li>fuse close doubles (about 75 in number) into a single star of appropriate magnitude 
     <li>add proper names to stars ('Vega', for instance)
@@ -65,16 +66,22 @@ public final class StarCatalog {
    The data for constellation lines was taken from a previous project, that mistakenly retained T CrB. 
     
    <P>As a side effects, this method saves the resulting star catalog as a file. 
-   This is meant for developer convenience, so that they data can be easily examined.   
+   This is meant for developer convenience, so that they data can be easily examined.
+   
+   <P>If the precessionJd is null, then precession and proper motion are not applied.   
   */
   public void generateIntermediateStarCatalog(Double precessionJd) throws IOException {
     readInRawStandardCatalogWhileDiscardingUnwantedItems();
-    applyProperMotion(precessionJd);
-    applyPrecession(precessionJd);
+    if (precessionJd != null) {
+      log("Applying precession and proper motion to the star catalog. Year: " + config.year());
+      applyProperMotion(precessionJd);
+      applyPrecession(precessionJd);
+    }
+    else {
+      log("Not applying precession or proper motion. Year: " + config.year());
+    }
     tweakCatalogData();
     addProperNamesToStars();
-    //sortByRightAscension(); 
-    //sortByMagnitude(); 
     saveToIntermediateFile();
     //saveHDIdentifiers();
     scanForMissingItems();

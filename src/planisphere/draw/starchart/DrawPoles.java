@@ -27,8 +27,8 @@ import planisphere.draw.Projection;
 public final class DrawPoles {
 
   public DrawPoles(
-      List<Star> stars, ConstellationLines constellationLines, 
-      Projection projection, Graphics2D g, Config config
+    List<Star> stars, ConstellationLines constellationLines, 
+    Projection projection, Graphics2D g, Config config
   ) {
     this.width = config.width();
     this.height = config.height();
@@ -123,20 +123,22 @@ public final class DrawPoles {
     for(int i = 0; i < 260; ++i) {
       double jd = GregorianCal.jd(START_YEAR - (i * 200), 1, 0.0); //back in time
       
-      Position equatorialPole = precession.equatorialPoleRaDec(jd);
-      draw(equatorialPole);
+      Position equatorialNorthPole = precession.equatorialNorthPoleRaDec(jd);
+      draw(equatorialNorthPole);
       
-      Position eclipticPole = precession.eclipticPoleRaDec(jd);
-      draw(eclipticPole);
-      
+      Position eclipticNorthPole = precession.eclipticNorthPoleRaDec(jd);
+      draw(eclipticNorthPole);
     }
   }
   
   private void draw(Position polePosition) {
+    if (!config.isNorthernHemisphere()) {
+      polePosition = polePosition.opposite(); //south pole!
+    }
+    
     Point2D.Double where = projection.project(polePosition.δ, polePosition.α);
     double r = 0.5;
     Shape circle = new Ellipse2D.Double(where.x - r, where.y - r, r * 2, r * 2);
     g.draw(circle);
   }
-
 }

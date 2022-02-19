@@ -1,7 +1,5 @@
 package planisphere.math;
 
-import static planisphere.util.LogUtil.*;
-
 import planisphere.config.Constants;
 
 /** A 3x3 rotation matrix. */

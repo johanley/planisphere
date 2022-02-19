@@ -1,5 +1,5 @@
-package planisphere.draw.starchart;
- 
+package planisphere.astro.precession;
+
 import static planisphere.util.LogUtil.log;
 
 import java.awt.Graphics2D;
@@ -13,34 +13,30 @@ import planisphere.GeneratePdfABC;
 import planisphere.astro.constellation.ConstellationLines;
 import planisphere.astro.star.Star;
 import planisphere.astro.star.StarCatalog;
-import planisphere.astro.time.GregorianCal;
 import planisphere.config.Config;
 import planisphere.draw.Bounds;
 import planisphere.draw.ChartUtil;
 import planisphere.draw.Projection;
 import planisphere.draw.StereographicProjection;
+import planisphere.draw.starchart.DrawPoles;
 
-/** Generate the star chart on the back of the planisphere. */
-public final class GenerateStarChart extends GeneratePdfABC {
+public final class GeneratePolePrecession extends GeneratePdfABC {
 
-  public GenerateStarChart(Config config){
+  public GeneratePolePrecession(Config config){
     super(config);
   }
   
   /**
    Stars and constellation lines. Circles for the ecliptic and the equator.
-   Date scale on the outer rim, to indicate the local sidereal time at 20h local mean time, for the given date.
    Uses a stereographic projection.
-   See {@link DrawStarChart}.
+   See {@link DrawPoles}.
   */
   protected void addContentToTheDocument(Graphics2D g) throws DocumentException, MalformedURLException, IOException {
-    log("Star chart.");
+    log("Star chart showing the movement of the poles of the ecliptic and equator.");
     
     Bounds bounds = config.starChartBounds();
     StarCatalog starCatalog = new StarCatalog(config);
-    Double janFirst = GregorianCal.jd(config.year(), 1, 1.0);
-    log("Applying precession with JD " + janFirst + ", for Jan 1.0 " + config.year());
-    starCatalog.generateIntermediateStarCatalog(janFirst);
+    starCatalog.generateIntermediateStarCatalog(null);
     List<Star> stars = starCatalog.filterPolar(ChartUtil.LIMITING_MAG, bounds.minDecDeg, bounds.maxDecDeg, ChartUtil.EDGE_OVERLAP_DEGS);
     log("Using " + stars.size() + " stars out of " + starCatalog.all().size());
     
@@ -50,11 +46,9 @@ public final class GenerateStarChart extends GeneratePdfABC {
     
     Projection projection = new StereographicProjection(config);
 
-    BackOfStarChart back = new BackOfStarChart(document, config);
-    back.addContent();
     startNewPage();
     
-    DrawStarChart drawStarChart = new DrawStarChart(stars, constellationLines, projection, g, config);
-    drawStarChart.draw();
-  }
- }
+    DrawPoles drawPoles = new DrawPoles(stars, constellationLines, projection, g, config);
+    drawPoles.draw();
+  }  
+}
