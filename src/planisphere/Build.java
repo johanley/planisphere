@@ -1,5 +1,7 @@
 package planisphere;
 
+import static planisphere.config.Constants.STAR_CHART_FILE;
+import static planisphere.config.Constants.TRANSPARENCY_FILE;
 import static planisphere.util.LogUtil.log;
 
 import java.io.File;
@@ -12,9 +14,6 @@ import com.itextpdf.text.DocumentException;
 
 import planisphere.config.Config;
 import planisphere.config.ConfigFromFile;
-import static planisphere.config.Constants.*;
-
-import planisphere.draw.starchart.DrawPoles;
 import planisphere.draw.starchart.GenerateStarChart;
 import planisphere.draw.transparency.GenerateTransparency;
 
@@ -55,7 +54,8 @@ import planisphere.draw.transparency.GenerateTransparency;
  Cloudy nights post: see https://www.cloudynights.com/topic/799573-the-planisphere/page-2, where a lady
   is asking for a custom version.
 
- This incorrectly implies the ecliptic pole is stationary: https://en.wikipedia.org/wiki/Orbital_pole#Ecliptic_pole
+ This incorrectly implies the ecliptic pole is stationary: 
+ https://en.wikipedia.org/wiki/Orbital_pole#Ecliptic_pole
 
  https://www.cloudynights.com/topic/690886-planisphere-hack/
  Post to https://www.quasarastronomy.com.au/ ?
@@ -71,10 +71,6 @@ import planisphere.draw.transparency.GenerateTransparency;
      Athens 500BC. Sumeria 3200BC. 10,000BC. 10,000AD. Stonehenge. Australia 10,000BC.
      The obliquity of the ecliptic has changed over time: Meeus, page 135, +/- 10,000 years, has a range of about 2 degrees.
        How much longer was the summer-solstice day, in the year 8000BC, at some location?
-     Find and log the max proper motions.
-     https://sci.esa.int/web/gaia/-/59207-the-future-of-the-orion-constellation-with-logos
-     https://sci.esa.int/web/gaia/-/59206-the-future-of-the-orion-constellation
-     https://sci.esa.int/web/gaia/-/59004-two-million-stars-on-the-move  - linear extrapolation
     
 
  PROBS FOUND 

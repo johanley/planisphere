@@ -28,7 +28,7 @@ public final class DrawTransparency {
   public void draw() {
     drawProjectionBoundary();
     drawTimeScale();
-    circleForCelestialPole();
+    centeringAffordance();
     altitudes();
     meridian();
     altitudeScaleOnMeridian();
@@ -84,11 +84,16 @@ public final class DrawTransparency {
   }
   
   /** 
-   For accurate centering, a small circle on the transparency lines up with the cross on the star chart.
-   This is important, since the main source of error is likely misalignment. 
+   For accurate centering, circles on the transparency lines up with the cross on the star chart, like 
+   a bulls-eye. This is important, since the main source of error is likely misalignment.
+   The affordance needs to be big enough such that it's not hidden when making the hole. 
   */
-  private void circleForCelestialPole() {
-    double r = 3.0;
+  private void centeringAffordance() {
+    circleForCelestialPole(3.0);
+    circleForCelestialPole(6.0);
+  }
+  
+  private void circleForCelestialPole(double r) {
     Point2D.Double pole = new Point2D.Double(chartUtil.getWidth()/2.0, chartUtil.getHeight()/2.0);
     Shape circle = new Ellipse2D.Double(pole.x - r, pole.y - r, r * 2, r * 2);
     g.draw(circle);
