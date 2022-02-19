@@ -78,7 +78,6 @@ import planisphere.draw.transparency.GenerateTransparency;
        var temp = Math.acos(Math.sqrt(A*A + B*B)); //0..pi YES 
         ephem.δ = Math.sin(ephem.δ) * temp;  ???? NO 
    ephem.js: the Julian Date function is wrong for negative years; Math.floor should be Maths.truncate.
-   Math.pow is undesirable (according to Meeus)
 */
 public final class Build {
   
