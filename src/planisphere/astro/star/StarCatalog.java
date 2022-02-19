@@ -528,7 +528,7 @@ public final class StarCatalog {
   
   private void applyProperMotion(Double jd) {
     if (config.year() == 2000) {
-      log("Not applying proper motion since year is the same as the catalog year.");
+      log("Not applying proper motion, since year is the same as the catalog year.");
       return;
     }
     
