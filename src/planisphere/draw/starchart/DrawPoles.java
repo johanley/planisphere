@@ -117,28 +117,33 @@ public final class DrawPoles {
   
   /** Open circles. */
   private void movementOfPoles() {
-    log("Ecliptic pole, back in time, over 52,000 years.");
     LongTermPrecession precession = new LongTermPrecession();
     int START_YEAR = 2000;
-    for(int i = 0; i < 260; ++i) {
-      double jd = GregorianCal.jd(START_YEAR - (i * 200), 1, 0.0); //back in time
+    int NUM_STEPS = 190;
+    int STEP_SIZE = 200;
+    for(int i = 0; i < NUM_STEPS; ++i) {
+      double jd = GregorianCal.jd(START_YEAR - (i * STEP_SIZE), 1, 0.0); //back in time
       
+      int multiplier = (i % 10 == 0 ) ? 2 : 1;
+      double r = 0.5 * multiplier;
       Position equatorialNorthPole = precession.equatorialNorthPoleRaDec(jd);
-      draw(equatorialNorthPole);
+      draw(equatorialNorthPole, r, true);
       
       Position eclipticNorthPole = precession.eclipticNorthPoleRaDec(jd);
-      draw(eclipticNorthPole);
+      draw(eclipticNorthPole, r, false);
     }
+    log("Ecliptic pole, back in time " + NUM_STEPS * STEP_SIZE + " years, in steps of " + STEP_SIZE + " years.");
   }
   
   /** Draws the south pole if the latitude is negative. */
-  private void draw(Position polePosition) {
+  private void draw(Position polePosition, double r, boolean isEquator) {
     if (!config.isNorthernHemisphere()) {
       polePosition = polePosition.opposite(); //south pole!
     }
-    
+    if (!isEquator) {
+      r = r * 0.25;
+    }
     Point2D.Double where = projection.project(polePosition.δ, polePosition.α);
-    double r = 0.5;
     Shape circle = new Ellipse2D.Double(where.x - r, where.y - r, r * 2, r * 2);
     g.draw(circle);
   }

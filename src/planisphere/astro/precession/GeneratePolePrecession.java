@@ -47,8 +47,6 @@ public final class GeneratePolePrecession extends GeneratePdfABC {
     
     Projection projection = new StereographicProjection(config);
 
-    startNewPage();
-    
     DrawPoles drawPoles = new DrawPoles(stars, constellationLines, projection, g, config);
     drawPoles.draw();
   }  
