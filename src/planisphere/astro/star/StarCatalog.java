@@ -1,6 +1,6 @@
 package planisphere.astro.star;
 
-import static java.util.Comparator.comparing;
+import static planisphere.util.LogUtil.log;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -19,9 +19,9 @@ import java.util.Set;
 
 import planisphere.astro.precession.LongTermPrecession;
 import planisphere.astro.time.AstroUtil;
+import planisphere.config.Config;
 import planisphere.math.Maths;
 import planisphere.util.DataFileReader;
-import static planisphere.util.LogUtil.*;
 
 /** 
  A custom, ad hoc star catalog, based on the Yale Bright Star Catalog (r5), but with modifications (see below).
@@ -37,6 +37,10 @@ import static planisphere.util.LogUtil.*;
 */
 public final class StarCatalog {
 
+  public StarCatalog(Config config) {
+    this.config = config;
+  }
+  
   /**
    These items are discarded from the underlying catalog.
    14 items in the YBS are novae, and are simply DISCARDED; they really shouldn't be there. 
@@ -161,6 +165,7 @@ public final class StarCatalog {
   
   // PRIVATE 
 
+  private Config config;
   private List<Star> stars = new ArrayList<>();
   private static final Double DIM = 7.0;
   
@@ -311,16 +316,6 @@ public final class StarCatalog {
       }
     }
     log("Added " + count + " proper names for stars.");
-  }
-
-  private void sortByRightAscension() {
-    log("Sort by increasing right ascension.");
-    Collections.sort(stars, comparing(Star::getRightAscension));
-  }
-  
-  private void sortByMagnitude() {
-    log("Sort by magnitude, to better handle drawing-overlaps. Draw brighter/bigger first.");
-    Collections.sort(stars, comparing(Star::getMagnitude));
   }
 
   private void saveToIntermediateFile() throws IOException {
@@ -532,6 +527,11 @@ public final class StarCatalog {
   }
   
   private void applyProperMotion(Double jd) {
+    if (config.year() == 2000) {
+      log("Applying proper motion since year is the same as the catalog year.");
+      return;
+    }
+    
     log("Applying proper motion.");
     List<Stat> stats = new ArrayList<>();
     Star fastest = null;
