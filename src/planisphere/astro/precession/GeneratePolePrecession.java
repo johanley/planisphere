@@ -20,6 +20,7 @@ import planisphere.draw.Projection;
 import planisphere.draw.StereographicProjection;
 import planisphere.draw.starchart.DrawPoles;
 
+/** Generate a PDF for the precession demo showing the movement of the poles.*/
 public final class GeneratePolePrecession extends GeneratePdfABC {
 
   public GeneratePolePrecession(Config config){

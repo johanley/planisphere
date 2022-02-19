@@ -131,6 +131,7 @@ public final class DrawPoles {
     }
   }
   
+  /** Draws the south pole if the latitude is negative. */
   private void draw(Position polePosition) {
     if (!config.isNorthernHemisphere()) {
       polePosition = polePosition.opposite(); //south pole!
