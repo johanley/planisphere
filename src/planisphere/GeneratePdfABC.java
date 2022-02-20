@@ -113,7 +113,7 @@ public abstract class GeneratePdfABC {
     document.addTitle("Planisphere");
     document.addSubject("Planisphere for the night sky, for amateur astronomers.");
     document.addKeywords(
-      config.location() + " latitude:" + AstroUtil.radsToDegreeString(config.latitude()) + 
+      config.location() + " year:" + config.year() + " latitude:" + AstroUtil.radsToDegreeString(config.latitude()) + 
       " longitude:" + AstroUtil.radsToDegreeString(config.longitude()) + 
       " hours from UT:" + config.hoursOffsetFromUT() + " declination gap:" + config.declinationGap() + "°" 
     );
