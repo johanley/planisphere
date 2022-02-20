@@ -169,7 +169,11 @@ The main <b>design goals</b> of this planisphere are:
   This may be in <em>Mathematical Astronomy Morsels</em>, by Meeus.
  </ul>
  
- <h2>Movement of the Poles</h2>
+ 
+ <h3>Explorations Over Long Time-Scales</h3>
+ 
+ 
+ <h3>Movement of the Poles</h3>
  The motion of the poles of both the equator and the ecliptic can be robustly demonstrated with this code, since it 
  uses a robust algorithm for long-term precession, published in 2011. (See the <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/draw/starchart/DrawPoles.java'>DrawPoles</a> class.)
  
@@ -183,10 +187,12 @@ The main <b>design goals</b> of this planisphere are:
  <P>Most images meant to demonstrate long-term precession are mediocre for two reasons: they show a closed loop, 
  and they neglect altogether the motion of the ecliptic pole.
  
- <h2>Year of Closest Approach to the Equatorial Pole</h2>
+ 
+ 
+ <h3>Year of Closest Approach to the Equatorial Pole</h3>
  (These are the raw results; they should be rounded to appropriate values, about 5' of arc, and about 10 years of time.)
  
-<P>For the years -100,000..+100,000, in the northern sky:
+<P>For the years -100,000..+100,000 in the northern sky:
 <pre>
  Star  Year   Separation
 -----------------------------------
@@ -200,7 +206,7 @@ The main <b>design goals</b> of this planisphere are:
 τ Her - 7606 +0°31'9.014''
 </pre>
 
-<P>For the years -100,000..+100,000, in the southern sky:
+<P>For the years -100,000..+100,000 in the southern sky:
 <pre>
   Star  Year   Separation
 -------------------------------------
@@ -215,7 +221,7 @@ The main <b>design goals</b> of this planisphere are:
 σ Pup -14090 +0°23'6.263''
 </pre>
 
-<P>For the years -15,000..+15000, in the northern sky:
+<P>For the years -15,000..+15,000 in the northern sky:
 <pre>
  Star  Year   Separation
 -----------------------------------
@@ -229,21 +235,32 @@ The main <b>design goals</b> of this planisphere are:
 τ Her - 7606 +0°31'9.014''            <a href='basic/basic_chart-7606-N.pdf'>chart</a>
 </pre>
 
-<P>For the years -15,000..+15000, in the southern sky:
+<P>For the years -15,000..+15,000 in the southern sky:
 <pre>
  Star  Year   Separation
 -----------------------------------
 α Dor - 6973 +9°6'57.754'' 
 γ Dor - 6867 +4°57'53.914'' 
 α Eri - 3358 +6°59'38.094'' Achernar
-γ Cha + 4125 +1°31'59.941'' 
-α Car +13842 +7°27'12.079'' Canopus
-ω Car + 5788 +0°46'2.105'' 
-δ Vel + 9253 +0°8'16.185'' 
+γ Cha + 4125 +1°31'59.941''            <a href='basic/basic_chart+4215-S.pdf'>chart</a>
+α Car +13842 +7°27'12.079'' Canopus    <a href='basic/basic_chart+13842-S.pdf'>chart</a>
+ω Car + 5788 +0°46'2.105''             <a href='basic/basic_chart+5788-S.pdf'>chart</a>
+δ Vel + 9253 +0°8'16.185''             <a href='basic/basic_chart+9253-S.pdf'>chart</a>
 γ Vel -15000 +2°31'20.866'' Regor
-σ Pup -14090 +0°23'6.263''  
+σ Pup -14090 +0°23'6.263''             <a href='basic/basic_chart-14090-S.pdf'>chart</a>
 </pre>
  
+
+
+<h3>Times in History</h3>
+<pre>
+ Year   Description                   Chart
+----------------------------------------------
++ 150   Ptolemy of Alexandria     <a href='basic/basic_chart+150-N.pdf'>chart</a>
+-2796   Egypt (Thuban at pole)    <a href='basic/basic_chart-2796-N.pdf'>chart</a>
+- 590   Thales of Miletus         <a href='basic/basic_chart-590-N.pdf'>chart</a>
+-8000   Neolithic revolution      <a href='basic/basic_chart-8000-N.pdf'>north</a>, <a href='basic/basic_chart-8000-S.pdf'>south</a>  
+</pre>
  
 </body>
 </html>
