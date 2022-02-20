@@ -1,5 +1,5 @@
 package planisphere.draw.starchart;
- 
+
 import static planisphere.util.LogUtil.log;
 
 import java.awt.Graphics2D;
@@ -19,21 +19,17 @@ import planisphere.draw.ChartUtil;
 import planisphere.draw.Projection;
 import planisphere.draw.StereographicProjection;
 
-/** Generate the star chart on the back of the planisphere. */
-public final class GenerateStarChart extends GeneratePdfABC {
-
-  public GenerateStarChart(Config config){
+public final class GenerateBasicStarChart extends GeneratePdfABC {
+  
+  public GenerateBasicStarChart(Config config){
     super(config);
   }
   
   /**
    Stars and constellation lines. Circles for the ecliptic and the equator.
-   Date scale on the outer rim, to indicate the local sidereal time at 20h local mean time, for the given date.
-   Uses a stereographic projection.
-   See {@link DrawStarChart}.
   */
   protected void addContentToTheDocument(Graphics2D g) throws DocumentException, MalformedURLException, IOException {
-    log("Star chart.");
+    log("Basic star chart.");
     
     StarCatalog starCatalog = new StarCatalog(config);
     Double janFirst = GregorianCal.jd(config.year(), 1, 1.0);
@@ -48,11 +44,8 @@ public final class GenerateStarChart extends GeneratePdfABC {
     
     Projection projection = new StereographicProjection(config);
 
-    BackOfStarChart back = new BackOfStarChart(document, config);
-    back.addContent();
-    startNewPage();
-    
-    DrawStarChart drawStarChart = new DrawStarChart(stars, constellationLines, projection, g, config);
-    drawStarChart.draw();
-  }
- }
+    DrawBasicStarChart basic = new DrawBasicStarChart(stars, constellationLines, projection, g, config);
+    basic.draw();
+  }  
+
+}

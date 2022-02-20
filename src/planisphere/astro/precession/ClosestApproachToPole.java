@@ -80,13 +80,13 @@ public final class ClosestApproachToPole {
 
   /** Run the script. */
   public static void main(String... args) throws IOException {
-    int MAX_YEAR = 100000;
+    int MAX_YEAR = 15000;
     String[] STAR_NAMES_N = {"α Lyr", "α Cyg", "α UMi", "β UMi", "α Cep", "λ Cep", "α Dra", "τ Her"};
     String[] STAR_NAMES_S = {"α Dor", "γ Dor", "α Eri", "γ Cha", "α Car", "ω Car", "δ Vel", "γ Vel", "σ Pup"};
     log("Finding years of closest approach for stars near the pole, in the range -" + MAX_YEAR + "..+" + MAX_YEAR);
     
     ClosestApproachToPole approach = new ClosestApproachToPole(MAX_YEAR);
-    for (String starName : STAR_NAMES_N) {
+    for (String starName : STAR_NAMES_S) {
       Closest closest = approach.findTheClosestApproachToThePole(starName);
       if (closest != null) {
         log(starName + " " + closest.year + " " + closest.separation() + " " + closest.properName);

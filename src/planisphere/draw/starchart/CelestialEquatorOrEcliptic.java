@@ -8,22 +8,31 @@ import java.awt.Stroke;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
+import planisphere.astro.precession.LongTermPrecession;
+import planisphere.astro.time.GregorianCal;
 import planisphere.config.Config;
 import planisphere.draw.ChartUtil;
 import planisphere.draw.Projection;
 import planisphere.math.Maths;
 
-/** Show the celestial equator as a circle centered on the pole. */
-final class CelestialEquator {
+/** 
+ Show the celestial equator as a circle centered on the pole.
+ Show the ecliptic as a circle, with obliquity for the configured year. 
+*/
+final class CelestialEquatorOrEcliptic {
   
-  CelestialEquator(Projection projection, Graphics2D g, Config config){
+  CelestialEquatorOrEcliptic(Projection projection, Graphics2D g, Config config){
     this.projection = projection;
     this.g = g;
     this.config = config;
   }
   
-  void draw() {
+  void drawEquator() {
     circularPath(ZERO_DECLINATION, LITTLE_DASH, false);
+  }
+  
+  void drawEcliptic() {
+    circularPath(obliquity(), LITTLE_DASH, true);
   }
   
   private Projection projection;
@@ -52,5 +61,11 @@ final class CelestialEquator {
     g.draw(circle);
     g.setStroke(orig);
     g.setColor(origColor);
+  }
+  
+  private double obliquity() {
+    LongTermPrecession precession = new LongTermPrecession();
+    double jd = GregorianCal.jd(config.year(), 1, 1.0);
+    return precession.obliquity(jd);
   }
 }

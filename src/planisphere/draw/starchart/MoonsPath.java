@@ -57,7 +57,7 @@ final class MoonsPath {
     Color origColor = g.getColor();
     g.setColor(config.greyConstellationLines());
     Stroke orig = g.getStroke();
-    float dash1[] = {CelestialEquator.LITTLE_DASH};
+    float dash1[] = {CelestialEquatorOrEcliptic.LITTLE_DASH};
     BasicStroke dashed = new BasicStroke(ChartUtil.STROKE_WIDTH_CONSTELLATION_LINE, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1.0f, dash1, 0.0f);
     g.setStroke(dashed); 
     g.draw(circle);

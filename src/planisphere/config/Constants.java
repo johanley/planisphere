@@ -24,6 +24,9 @@ public final class Constants {
   /** File name for the output PDF for pole precession demo - {@value}.  */
   public static final String PRECESSION_DEMO_FILE = "pole_precession.pdf";
   
+  /** File name for the output PDF for a basic star chart - {@value}.  */
+  public static final String BASIC_CHART_FILE = "basic_chart.pdf";
+  
   /** Name of the document's creator. */
   public static final String AUTHOR = "John O'Hanley";
   

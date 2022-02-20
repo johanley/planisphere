@@ -17,13 +17,10 @@ import planisphere.config.Config;
 import planisphere.draw.ChartUtil;
 import planisphere.draw.Projection;
 
-/**
- Draw the constellations and the date scale.
- This class has knowledge of the drawing context and the core data, but nothing else. 
-*/
-public final class DrawStarChart {
-  
-  public DrawStarChart(
+/** Draw a basic star chart for demonstrating various items. Not part of the planisphere.*/
+public final class DrawBasicStarChart {
+
+  public DrawBasicStarChart(
     List<Star> stars, ConstellationLines constellationLines, 
     Projection projection, Graphics2D g, Config config
   ) {
@@ -38,46 +35,32 @@ public final class DrawStarChart {
     this.config = config;
   }
   
-  /** Draw the constellation lines and stars. */
+  /** Draw the constellation lines and stars, the celestial pole, the equator, and ecliptic. */
   public void draw() {
     log("Creating chart h:"+ height + " w:"+width);
-
     drawProjectionBoundary();
-    drawDateScale();
-    
     findStarPositions(stars, projection);
     chartUtil.clippingOn(projection, g);
     drawConstellationLines();
     drawStarDots();
     crossForCelestialPole(); 
-    equator();
-    sun();
-    moon();
-    meteorShowerRadiants();
+    equatorAndEcliptic();
+    
+    additionalItems();
+    
     chartUtil.clippingOff(g);
   }
+  
+  /** Empty default implementation, for drawing custom items on top of the basic star chart. */
+  protected void additionalItems() {}
   
   //PRIVATE
   
   private Config config; 
-  
-  /** Various utility methods for drawing, and data. */
   private ChartUtil chartUtil;
-  
-  /** What projection is used to draw the chart. */
   private Projection projection;
-  
-  /** 
-   The graphics context.
-   IMPORTANT: pdf files and libraries have a built-in graphics context. 
-   You can draw directly into the pdf. 
-  */
   private Graphics2D g;
-
-  /** Filtered using settings. */
   private List<Star> stars;
-  
-  /** All constellation lines, for the whole sky. */
   private Map<String, List<List<Integer>>> lines;
   
   /** 
@@ -94,12 +77,6 @@ public final class DrawStarChart {
     log("Projection boundary.");
     Shape boundary = projection.innerBoundary();
     g.draw(boundary);
-  }
-  
-  /**  The date for which the corresponding Right Ascension is due south at 8pm Local Mean Time. */
-  private void drawDateScale() {
-    DateScale dateScale = new DateScale(projection, g, chartUtil, config);
-    dateScale.drawDateScale();
   }
   
   private void drawConstellationLines() {
@@ -138,24 +115,9 @@ public final class DrawStarChart {
     g.draw(path);
   }
   
-  private void equator() {
+  private void equatorAndEcliptic() {
     CelestialEquatorOrEcliptic eclipticAndEq = new CelestialEquatorOrEcliptic(projection, g, config);
     eclipticAndEq.drawEquator();
+    eclipticAndEq.drawEcliptic();
   }
-  
-  private void sun() {
-    SunMarks sunDots = new SunMarks(projection, g, config);
-    sunDots.draw();
-  }
-  
-  private void moon() {
-    MoonsPath moonsPath = new MoonsPath(projection, g, config);
-    moonsPath.draw();
-  }
-  
-  private void meteorShowerRadiants() {
-    ShowerRadiant showerRadiant = new ShowerRadiant(projection, g, config);
-    showerRadiant.draw();
-  }
-
 }
