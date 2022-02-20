@@ -32,7 +32,7 @@ public class ChartUtil {
    That can only be done if stars that are off-chart actually participate in the chart-building.
    This settings lets the caller create a set of stars that include those beyond the edge of the chart. 
   */  
-  public static final Integer EDGE_OVERLAP_DEGS = 60; 
+  public static final Integer EDGE_OVERLAP_DEGS = 55; 
 
   /**
    The font used for the PDF.   

@@ -112,6 +112,18 @@ public final class StarCatalog {
     return result;
   }
 
+  /** Filter the whole catalog by a limiting magnitude. */
+  public List<Star> filterByMag(Double limitingMag){
+    List<Star> result = new ArrayList<>();
+    for (Star star : stars) {
+      if (Maths.inRange(-5.0, limitingMag, star.MAG)) {
+        result.add(star);
+        //there's no real need to make a copy of the star object, since the data is treated as read-only
+      }
+    }
+    return result;
+  }
+
   /**
    Filter the star catalog in a way suitable for a polar chart, where the right ascension changes rapidly.
    All angular params are in degrees. 
