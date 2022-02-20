@@ -1,6 +1,7 @@
 package planisphere.draw.starchart;
 
 import java.awt.BasicStroke;
+
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.geom.GeneralPath;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import planisphere.draw.ChartUtil;
+import static planisphere.util.LogUtil.warn;
 
 /** Lines joining stars in a given constellation. */
 class Constellations {
@@ -58,11 +60,10 @@ class Constellations {
        Point2D.Double point = starPoints.get(index);
        path.lineTo(point.x, point.y);
        //find cases where it's a line that crosses the whole chart
-       /*
        if (Math.abs(point.x - start.x) > 2500) {
-         System.out.println("CROSSES THE WHOLE CHART>2500. Poly: " + polyline + " index:" + index + " point.x:" + point.x + " start.x:" + start.x);
+         warn("CONSTELLATION LINE CROSSES THE WHOLE CHART. Abandoning. Poly: " + polyline + " index:" + index + " point.x:" + point.x + " start.x:" + start.x);
+         return; //abandon the polyline
        }
-       */
      }
      Stroke orig = g.getStroke();
      //print seems to be finer than screen!
