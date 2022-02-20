@@ -23,6 +23,9 @@ import planisphere.math.Maths;
  
  <P>This algo uses the proper motion as defined by the Yale Bright Star catalog.
  If the data for 3D proper motion is available, then it is used.
+ J2000 coords are used throughout.
+ Proper motion is applied to the star's J2000 position, for a given year. 
+ Then that position is compared with the position of the equator pole, also expressed in J2000 coords.
 
  <P>Example output for northern stars, in the range -100,000..+100,000 years:
 <pre>
@@ -78,10 +81,11 @@ public final class ClosestApproachToPole {
   /** Run the script. */
   public static void main(String... args) throws IOException {
     int MAX_YEAR = 100000;
-    ClosestApproachToPole approach = new ClosestApproachToPole(MAX_YEAR);
     String[] STAR_NAMES_N = {"α Lyr", "α Cyg", "α UMi", "β UMi", "α Cep", "λ Cep", "α Dra", "τ Her"};
     String[] STAR_NAMES_S = {"α Dor", "γ Dor", "α Eri", "γ Cha", "α Car", "ω Car", "δ Vel", "γ Vel", "σ Pup"};
     log("Finding years of closest approach for stars near the pole, in the range -" + MAX_YEAR + "..+" + MAX_YEAR);
+    
+    ClosestApproachToPole approach = new ClosestApproachToPole(MAX_YEAR);
     for (String starName : STAR_NAMES_N) {
       Closest closest = approach.findTheClosestApproachToThePole(starName);
       if (closest != null) {
@@ -154,6 +158,4 @@ public final class ClosestApproachToPole {
       return AstroUtil.radsToDegreeString(Maths.HALF_PI - declination);
     }
   }
-
-  
 }
