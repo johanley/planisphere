@@ -14,7 +14,6 @@ import planisphere.astro.constellation.ConstellationLines;
 import planisphere.astro.star.Star;
 import planisphere.astro.star.StarCatalog;
 import planisphere.config.Config;
-import planisphere.draw.Bounds;
 import planisphere.draw.ChartUtil;
 import planisphere.draw.Projection;
 import planisphere.draw.StereographicProjection;
@@ -35,10 +34,9 @@ public final class GeneratePolePrecession extends GeneratePdfABC {
   protected void addContentToTheDocument(Graphics2D g) throws DocumentException, MalformedURLException, IOException {
     log("Star chart showing the movement of the poles of the ecliptic and equator.");
     
-    Bounds bounds = config.starChartBounds();
     StarCatalog starCatalog = new StarCatalog(config);
     starCatalog.generateIntermediateStarCatalog(null);
-    List<Star> stars = starCatalog.filterPolar(ChartUtil.LIMITING_MAG, bounds.minDecDeg, bounds.maxDecDeg, ChartUtil.EDGE_OVERLAP_DEGS);
+    List<Star> stars = starCatalog.filterByMag(ChartUtil.LIMITING_MAG);
     log("Using " + stars.size() + " stars out of " + starCatalog.all().size());
     
     ConstellationLines constellationLines = new ConstellationLines();

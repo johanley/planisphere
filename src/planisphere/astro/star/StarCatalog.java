@@ -88,54 +88,16 @@ public final class StarCatalog {
     scanForMissingItems();
   }
   
-  /**
-   Filter the catalog into a subset, in a way suited for the equatorial charts.
-   Angular params are in degrees, except for the hours.
-   Overlap (in degrees) is about the issue of constellation lines near the EDGES of the chart.
-   Since weird things can happen with projections when you are far from the center of projection, it's 
-   likely prudent to filter the set of stars, to ignore those that are definitely way outside the chart. 
+  /** 
+   Filter the whole catalog by a limiting magnitude.
+   In this project, it's not prudent to filter by geometry, a range of declination, say. That's because there's 
+   a high risk of leaving things out: precession and proper motion changes the relative positions a great deal over 
+   long time scales. 
   */
-  public List<Star> filterEquatorial(Double limitingMag, Double minDec, Double maxDec, Double minHour, Double maxHour, Integer overlap){
-    List<Star> result = new ArrayList<>();
-    Double minDecl = Maths.degToRads(minDec - overlap);
-    Double maxDecl = Maths.degToRads(maxDec + overlap);
-    Double minRa = Maths.hoursToRads(minHour) - Maths.degToRads(overlap);
-    Double maxRa = Maths.hoursToRads(maxHour) + Maths.degToRads(overlap);
-    for (Star star : stars) {
-      if (Maths.inRange(minDecl, maxDecl, star.DEC) &&
-          Maths.inRangeRa(minRa, maxRa, star.RA) &&
-          Maths.inRange(-5.0, limitingMag, star.MAG)) {
-        result.add(star);
-        //there's no real need to make a copy of the star object, since the data is treated as read-only
-      }
-    }
-    return result;
-  }
-
-  /** Filter the whole catalog by a limiting magnitude. */
   public List<Star> filterByMag(Double limitingMag){
     List<Star> result = new ArrayList<>();
     for (Star star : stars) {
       if (Maths.inRange(-5.0, limitingMag, star.MAG)) {
-        result.add(star);
-        //there's no real need to make a copy of the star object, since the data is treated as read-only
-      }
-    }
-    return result;
-  }
-
-  /**
-   Filter the star catalog in a way suitable for a polar chart, where the right ascension changes rapidly.
-   All angular params are in degrees. 
-   Overlap (in degrees) is about the issue of constellation lines near the EDGES of the chart.
-  */
-  public List<Star> filterPolar(Double limitingMag, Double minDec, Double maxDec, Integer overlap){
-    List<Star> result = new ArrayList<>();
-    Double minDecl = Maths.degToRads(minDec - overlap);
-    Double maxDecl = Maths.degToRads(maxDec + overlap);
-    for (Star star : stars) {
-      if (Maths.inRange(minDecl, maxDecl, star.DEC) &&
-          Maths.inRange(-5.0, limitingMag, star.MAG)) {
         result.add(star);
         //there's no real need to make a copy of the star object, since the data is treated as read-only
       }

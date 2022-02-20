@@ -36,12 +36,11 @@ public final class GenerateStarChart extends GeneratePdfABC {
   protected void addContentToTheDocument(Graphics2D g) throws DocumentException, MalformedURLException, IOException {
     log("Star chart.");
     
-    Bounds bounds = config.starChartBounds();
     StarCatalog starCatalog = new StarCatalog(config);
     Double janFirst = GregorianCal.jd(config.year(), 1, 1.0);
     log("Applying precession with JD " + janFirst + ", for Jan 1.0 " + config.year());
     starCatalog.generateIntermediateStarCatalog(janFirst);
-    List<Star> stars = starCatalog.filterPolar(ChartUtil.LIMITING_MAG, bounds.minDecDeg, bounds.maxDecDeg, ChartUtil.EDGE_OVERLAP_DEGS);
+    List<Star> stars = starCatalog.filterByMag(ChartUtil.LIMITING_MAG);
     log("Using " + stars.size() + " stars out of " + starCatalog.all().size());
     
     ConstellationLines constellationLines = new ConstellationLines();

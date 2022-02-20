@@ -27,14 +27,6 @@ public class ChartUtil {
   public static final Double LIMITING_MAG = 5.01;
   
   /**
-   Overlap at the edge of a chart.
-   The lines that join stars often need to go "off the chart", when they are near the edge.
-   That can only be done if stars that are off-chart actually participate in the chart-building.
-   This settings lets the caller create a set of stars that include those beyond the edge of the chart. 
-  */  
-  public static final Integer EDGE_OVERLAP_DEGS = 40; 
-
-  /**
    The font used for the PDF.   
    WARNING: Greek letters don't render in all fonts.
    Please see {@link mag5.book.MyFontMapper} as well.
