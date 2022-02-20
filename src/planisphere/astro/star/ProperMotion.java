@@ -43,9 +43,9 @@ import planisphere.math.Vector;
   <P>The Gaia database has precise data, but it has nearly no data for stars of magnitude < 3. 
   The instrumentation was originally designed for stars dimmer than the 5th magnitude.
 */
-final class ProperMotion {
+public final class ProperMotion {
   
-  ProperMotion(double jd){
+  public ProperMotion(double jd){
     this.jd = jd;
   }
   
@@ -53,7 +53,7 @@ final class ProperMotion {
    Changes the star's data in place.
    Returns the amount of proper motion applied, in arcseconds. 
   */
-  double applyTo(Star star) {
+  public double applyTo(Star star) {
     boolean hasAllData = star.PARALLAX != null && star.PARALLAX > 0 && star.RADIAL_VELOCITY != null;
     double result = hasAllData ? threeD(star) : twoD(star);
     return result;

@@ -102,6 +102,26 @@ public final class Star {
   /** Identifier in the FK5 catalog. */
   public String FK5_DESIGNATION;
   
+  public Star copy() {
+    Star result = new Star();
+    result.INDEX = this.INDEX;
+    result.NAME = this.NAME;
+    result.BAYER_COMPASS_POINT = this.BAYER_COMPASS_POINT;
+    result.RA = this.RA;
+    result.MAG = this.MAG;
+    result.DEC = this.DEC;
+    result.PROPER_NAME = this.PROPER_NAME;
+    result.PROPER_MOTION_RA = this.PROPER_MOTION_RA;
+    result.PROPER_MOTION_DEC = this.PROPER_MOTION_DEC;
+    result.PARALLAX = this.PARALLAX;
+    result.RADIAL_VELOCITY = this.RADIAL_VELOCITY;
+    result.DM_DESIGNATION = this.DM_DESIGNATION;
+    result.HD_DESIGNATION = this.HD_DESIGNATION;
+    result.SAO_DESIGNATION = this.SAO_DESIGNATION;
+    result.FK5_DESIGNATION = this.FK5_DESIGNATION;
+    return result;
+  }
+  
   /** How this object is formatted into a single line in text file (utf-8). */  
   @Override public String toString(){
     String sep = ",";

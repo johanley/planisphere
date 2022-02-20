@@ -15,6 +15,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import planisphere.astro.precession.LongTermPrecession;
@@ -165,6 +166,26 @@ public final class StarCatalog {
             }
           }
         }
+      }
+    }
+    return result;
+  }
+  
+  public Optional<Star> findByProperName(String properName) {
+    Optional<Star> result = Optional.empty();
+    for (Star star : stars) {
+      if (star.PROPER_NAME.equalsIgnoreCase(properName)) {
+        result = Optional.of(star);
+      }
+    }
+    return result;
+  }
+  
+  public Optional<Star> findByName(String name) {
+    Optional<Star> result = Optional.empty();
+    for (Star star : stars) {
+      if (star.NAME.equalsIgnoreCase(name)) {
+        result = Optional.of(star);
       }
     }
     return result;
