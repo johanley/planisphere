@@ -30,6 +30,17 @@
   that are served to the browser. In that case, the configuration comes from user input in a form, not a 
   <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/config/config.ini'>config.ini</a> text file.
  
+<h2>Using a Standalone Program To Make a Planisphere</h2>
+ <ul>
+  <li>review the config.ini file, and change the settings to suit your needs.
+  <li>run <code>planisphere.Build</code> class to generate your two PDF files.
+  <li>print the PDF files on a <b>high-resolution printer</b> (you may need to take the files to a print shop for best results).
+  <li>print the starchart.pdf on card stock (thick paper). One page, double-sided.
+  <li>print the transparency on a (you guessed it) a transparency, and not as paper. One page, single-sided.
+  <li>using the affordances on the star chart and transparency at the celestial pole, <b>carefully align</b> the transparency on top of the star chart.
+  <li>attach the transparency to the star chart <a href='https://www.mcmaster.com/two-piece-rivets/'>using a rivet</a> (or something similar).
+ </ul>
+
 <h2>Design Goals</h2>
 The main <b>design goals</b> of this planisphere are:
  <ul>
@@ -56,12 +67,12 @@ The main <b>design goals</b> of this planisphere are:
  The planisphere's star chart includes (<a href='starchart.pdf'>example PDF</a>, with the star chart on page 2):
  <ul>
   <li>stars brighter than magnitude 5.01 (derived from the Yale Bright Star Catalog)
-  <li>the position of the Sun for every day at 18h (in the configured time zone, for the configured year)
+  <li>the position of the Sun at 18h standard time for every day (using the configured time zone and year)
   <li>the path of the Moon's orbit on July 1 of the configured year
   <li>the celestial equator
   <li>the radiant positions for the brightest meteor showers (configurable)
   <li>the constellations as simple stick drawings, without names (to reduce clutter for those who already know the night sky)
-  <li>a date-scale to indicate the observer's sidereal time at 20h each day of the year, in their own time zone
+  <li>a date-scale to indicate the observer's sidereal time at 20h standard time each day of the year, in their own time zone
   <li>tables (on the back) with the time of transit of the Moon for every day of the year, and the time of transit 
   of all the bright planets for the 15th of every month. These can be used to get approximate positions for the Moon and bright planets 
   over the course of the configured year.
