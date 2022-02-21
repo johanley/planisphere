@@ -10,12 +10,14 @@ import java.awt.geom.Point2D;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 import planisphere.astro.constellation.ConstellationLines;
 import planisphere.astro.star.Star;
 import planisphere.config.Config;
 import planisphere.draw.ChartUtil;
 import planisphere.draw.Projection;
+import planisphere.math.Maths;
 
 /**
  Draw the constellations and the date scale.
@@ -55,7 +57,7 @@ public final class DrawStarChart {
     moon();
     meteorShowerRadiants();
     chartUtil.clippingOff(g);
-    drawGuidelinesForScissors();
+    itemsOutsideTheChart();
   }
   
   //PRIVATE
@@ -158,21 +160,9 @@ public final class DrawStarChart {
     ShowerRadiant showerRadiant = new ShowerRadiant(projection, g, config);
     showerRadiant.draw();
   }
-
-  private void drawGuidelinesForScissors() {
-    if (config.width() < config.height()) {
-      // make it square
-      double diff = config.height() - config.width();
-      double chopOffAtEachEnd = diff * 0.5;
-      drawHorizontalLineAt(config.height() - chopOffAtEachEnd);
-      drawHorizontalLineAt(chopOffAtEachEnd);
-    }
-  }
   
-  private void drawHorizontalLineAt(double y) {
-    GeneralPath path = new GeneralPath();
-    path.moveTo(0, y);
-    path.lineTo(config.width(), y);
-    g.draw(path);
+  private void itemsOutsideTheChart() {
+    OutsideTheChart outside = new OutsideTheChart(config, g, chartUtil);
+    outside.draw();
   }
 }
