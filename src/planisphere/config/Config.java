@@ -3,6 +3,9 @@ package planisphere.config;
 import static planisphere.astro.time.AstroUtil.DEGREES_PER_HOUR;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 import planisphere.astro.time.AstroUtil;
 import planisphere.draw.Bounds;
@@ -167,6 +170,19 @@ public final class Config {
     double lowerDec = isNorthernHemisphere() ? declinationLimit() : -POLE;
     double upperDec = isNorthernHemisphere() ? POLE : declinationLimit();
     return new Bounds(lowerDec, upperDec, 0.0, 24.0);
+  }
+  
+  /** Month names. Calculated field. */
+  public List<String> monthNamesList(){
+    List<String> result = new ArrayList<>();
+    String[] parts = monthNames.split(Pattern.quote(","));
+    for(String part : parts) {
+      result.add(part.trim());
+    }
+    if (result.size() != 12) {
+      throw new RuntimeException("You don't have 12 month names specified in the config file.");
+    }
+    return result;
   }
 
   /** For debugging. All config settings. */

@@ -85,8 +85,7 @@ final class BackOfStarChart {
     table.setWidths(relativeWidths);
     
     addHeaderCell(table, BLANK_ENTRY); 
-    String[] monthNames = config.monthNames().split(Pattern.quote(","));
-    for(String monthName : monthNames) {
+    for(String monthName : config.monthNamesList()) {
       addHeaderCell(table, monthName.trim()); 
     }
     table.setHeaderRows(1);
@@ -138,8 +137,7 @@ final class BackOfStarChart {
     table.setWidths(relativeWidths);
     
     addHeaderCell(table, BLANK_ENTRY); 
-    String[] monthNames = config.monthNames().split(Pattern.quote(","));
-    for(String monthName : monthNames) {
+    for(String monthName : config.monthNamesList()) {
       addHeaderCell(table, monthName.trim()); 
     }
     table.setHeaderRows(1);

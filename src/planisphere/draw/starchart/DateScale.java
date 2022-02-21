@@ -9,10 +9,8 @@ import java.awt.Stroke;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.regex.Pattern;
 
 import planisphere.astro.time.DailySiderealTime;
 import planisphere.astro.time.SiderealTime;
@@ -29,7 +27,6 @@ public final class DateScale {
     this.g = g;
     this.chartUtil = chartUtil;
     this.config = config;
-    this.months = months(config.monthNames());
   }
 
   void drawDateScale() {
@@ -39,6 +36,7 @@ public final class DateScale {
     g.draw(circle(sizeOfTransparency())); //for cutting with scissors
     log("Tick marks for days. Almost all years will show a discontinuity at year end. That's expected.");
     SiderealTime sidTime = new SiderealTime(config);
+    List<String> monthNames = config.monthNamesList();
     for(DailySiderealTime dst : sidTime.everyDayOfTheYear(config.year())) {
       double theta = dst.getRa();
       int unitLength = 3;
@@ -48,7 +46,7 @@ public final class DateScale {
       Point2D.Double end = convertToXY(r2, theta);
       tickMark(start, end); 
       if (dst.getDay() == 1) {
-        showMonth(theta, months.get(dst.getMonth()-1)); 
+        showMonth(theta, monthNames.get(dst.getMonth()-1)); 
       }
     }
   }
@@ -56,21 +54,7 @@ public final class DateScale {
   private Projection projection;
   private Graphics2D g;
   private ChartUtil chartUtil;
-  private List<String> months;
   private Config config;
-  
-  private List<String> months(String raw){
-    List<String> result = new ArrayList<>();
-    String[] parts = raw.split(Pattern.quote(","));
-    for(String part : parts) {
-      result.add(part.trim());
-    }
-    
-    if (result.size() != 12) {
-      throw new RuntimeException("You don't have 12 month names specified in the config file.");
-    }
-    return result;
-  }
   
   /** Reflect the x for the southern hemisphere. */
   private int sign() {
