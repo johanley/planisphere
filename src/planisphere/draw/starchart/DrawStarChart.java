@@ -164,12 +164,8 @@ public final class DrawStarChart {
       // make it square
       double diff = config.height() - config.width();
       double chopOffAtEachEnd = diff * 0.5;
-      
-      double bottomLineY = config.height() - chopOffAtEachEnd;
-      drawHorizontalLineAt(bottomLineY);
-      
-      double topLineY = chopOffAtEachEnd;
-      drawHorizontalLineAt(topLineY);
+      drawHorizontalLineAt(config.height() - chopOffAtEachEnd);
+      drawHorizontalLineAt(chopOffAtEachEnd);
     }
   }
   
