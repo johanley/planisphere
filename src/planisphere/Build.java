@@ -48,9 +48,6 @@ import planisphere.draw.transparency.GenerateTransparency;
 
 ---------------------------------------------------------------------------------------------
 
- 
- Clean the drawing code, between transp and starchart.
- 
  Cloudy nights post: see https://www.cloudynights.com/topic/799573-the-planisphere/page-2, where a lady
   is asking for a custom version.
 
@@ -61,18 +58,8 @@ import planisphere.draw.transparency.GenerateTransparency;
  Post to https://www.quasarastronomy.com.au/ ?
  https://www.shadowspro.com/en/index.html
  
- Send to SkyNews ?
  Link from https://en.wikipedia.org/wiki/Planisphere
  
- Demo: precession and proper motion ! +/- 15,000 years, to get in one full precessional cycle.
-     the sky 2,500 years ago would need proper motion? yes
-     12,000 years hence the pole is close to Vega
-     the YBS catalog has proper motion data! 
-     Athens 500BC. Sumeria 3200BC. 10,000BC. 10,000AD. Stonehenge. Australia 10,000BC.
-     The obliquity of the ecliptic has changed over time: Meeus, page 135, +/- 10,000 years, has a range of about 2 degrees.
-       How much longer was the summer-solstice day, in the year 8000BC, at some location?
-    
-
  PROBS FOUND 
    ephem.js: precession has extra line that shouldn't be there ?? 
        var temp = Math.acos(Math.sqrt(A*A + B*B)); //0..pi YES 

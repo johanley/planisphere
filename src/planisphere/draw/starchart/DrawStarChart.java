@@ -55,6 +55,7 @@ public final class DrawStarChart {
     moon();
     meteorShowerRadiants();
     chartUtil.clippingOff(g);
+    drawGuidelinesForScissors();
   }
   
   //PRIVATE
@@ -158,4 +159,24 @@ public final class DrawStarChart {
     showerRadiant.draw();
   }
 
+  private void drawGuidelinesForScissors() {
+    if (config.width() < config.height()) {
+      // make it square
+      double diff = config.height() - config.width();
+      double chopOffAtEachEnd = diff * 0.5;
+      
+      double bottomLineY = config.height() - chopOffAtEachEnd;
+      drawHorizontalLineAt(bottomLineY);
+      
+      double topLineY = chopOffAtEachEnd;
+      drawHorizontalLineAt(topLineY);
+    }
+  }
+  
+  private void drawHorizontalLineAt(double y) {
+    GeneralPath path = new GeneralPath();
+    path.moveTo(0, y);
+    path.lineTo(config.width(), y);
+    g.draw(path);
+  }
 }
