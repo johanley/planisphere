@@ -2,7 +2,6 @@ package planisphere.draw.transparency;
 
 import java.awt.Graphics2D;
 import java.awt.Shape;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
@@ -26,7 +25,7 @@ public final class DrawTransparency {
   public void draw() {
     drawProjectionBoundary();
     drawTimeScale();
-    centeringAffordance();
+    //centeringAffordance();
     altitudes();
     meridian();
     altitudeScaleOnMeridian();
@@ -79,22 +78,6 @@ public final class DrawTransparency {
   private void altitudeScaleOnMeridian() {
     AltitudeBarScale abs = new AltitudeBarScale(projection, g, chartUtil, config);
     abs.draw();
-  }
-  
-  /** 
-   For accurate centering, circles on the transparency lines up with the cross on the star chart, like 
-   a bulls-eye. This is important, since the main source of error is likely misalignment.
-   The affordance needs to be big enough such that it's not hidden when making the hole. 
-  */
-  private void centeringAffordance() {
-    circleForCelestialPole(3.0);
-    circleForCelestialPole(6.0);
-  }
-  
-  private void circleForCelestialPole(double r) {
-    Point2D.Double pole = new Point2D.Double(chartUtil.getWidth()/2.0, chartUtil.getHeight()/2.0);
-    Shape circle = new Ellipse2D.Double(pole.x - r, pole.y - r, r * 2, r * 2);
-    g.draw(circle);
   }
   
   private void meridian() {
