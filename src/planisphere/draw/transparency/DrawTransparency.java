@@ -25,7 +25,6 @@ public final class DrawTransparency {
   public void draw() {
     drawProjectionBoundary();
     drawTimeScale();
-    //centeringAffordance();
     altitudes();
     meridian();
     altitudeScaleOnMeridian();
