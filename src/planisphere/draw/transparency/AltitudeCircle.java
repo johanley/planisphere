@@ -26,16 +26,7 @@ final class AltitudeCircle {
   void draw(double alt) {
     Details details = details(alt);
     chartUtil.clippingOn(projection, g);
-    
-    Color origColor = g.getColor();
-    if (alt != 0) {
-      g.setColor(config.greyConstellationLines());
-    }
     g.draw(details.circle);
-    if (alt != 0) {
-      g.setColor(origColor);
-    }
-    
     chartUtil.clippingOff(g);
     /*
     Not needed, when the one-degree scale is present anyways.

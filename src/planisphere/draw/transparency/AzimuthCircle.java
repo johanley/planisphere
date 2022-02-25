@@ -93,15 +93,7 @@ final class AzimuthCircle {
     }
     g.setClip(cropArea);
     g.clip(horizonCircle()); //add a second clipping region
-    
-    Color origColor = g.getColor();
-    if (ClipZenith.YES == clipZenith) {
-      g.setColor(config.greyConstellationLines());
-    }
-
     g.draw(circle);
-    
-    g.setColor(origColor);
     chartUtil.clippingOff(g);
   }
 }
