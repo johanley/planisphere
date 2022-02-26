@@ -45,14 +45,14 @@ public final class SolarPosition {
   }
 
   /** Radians. With nutation and aberration. */
-  double apparentλ(double jd) {
+  public double apparentλ(double jd) {
     double λ = geometricλ(jd);
     Nutation nutation = new Nutation(jd);
     return Maths.in2pi(λ + nutation.Δψ() + aberration()); 
   }
   
   /** Radians. */
-  double geometricλ(double jd) {
+  public double geometricλ(double jd) {
     double L = meanLEarth(jd);
     return Maths.in2pi(L + Math.PI);  
   }

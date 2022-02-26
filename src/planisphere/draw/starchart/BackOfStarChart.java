@@ -1,5 +1,8 @@
 package planisphere.draw.starchart;
 
+import java.text.DecimalFormat;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
@@ -22,9 +25,11 @@ import com.itextpdf.text.pdf.GrayColor;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 
+import planisphere.astro.moon.FractionIlluminated;
 import planisphere.astro.moon.LunarPosition;
 import planisphere.astro.planets.Planet;
 import planisphere.astro.planets.PlanetPosition;
+import planisphere.astro.planets.SolarPosition;
 import planisphere.astro.planets.Transit;
 import planisphere.config.Config;
 import planisphere.config.Constants;
@@ -42,17 +47,24 @@ final class BackOfStarChart {
   /**
     A table showing the times of every lunar transit for the year.
     Months can have a day with no lunar transit. Those days occur near full Moon.
-    Dates and times are in the observer's local time zone.   
+    
+    <P>A second table has the times of transit for the bright planets on the 15th of every month.
+    
+    <P>Dates and times are in the observer's local time zone.   
   */
   void addContent() throws DocumentException  {
     LogUtil.log("Transit times on the back of the star chart: Moon.");
     emptyLines(5);
     title(config.location() + " " + config.year() + " " + latLongEtc());
     title(config.lunarTransitsTitle());
+    
     emptyLines(1);
+    
     Transit lunar = new Transit(config);
     LunarPosition sourceOf = new LunarPosition();
-    tableFor(lunar.transitsForEveryDayOfTheYear(sourceOf::position));
+    FractionIlluminated fractionIllumin = new FractionIlluminated(new SolarPosition(), new LunarPosition());
+    Map<LocalDate, Double> fractions = fractionIllumin.forEveryDayOfTheYear(config);
+    tableForBoth(lunar.transitsForEveryDayOfTheYear(sourceOf::position), fractions);
     
     LogUtil.log("Transit times on the back of the star chart: Planets.");
     title(config.planetaryTransitsTitle());
@@ -70,14 +82,13 @@ final class BackOfStarChart {
   private static final String BLANK_ENTRY = "";
   private static final String TIME_FORMAT =  "HH:mm";
   
-  private static final int PERCENTAGE_WIDTH_LUNAR = 45;
+  private static final int PERCENTAGE_WIDTH_LUNAR = 75;
   
   private static final int PERCENTAGE_WIDTH_PLANETS = 50;
   
   private static final String URL = "github.com/johanley/planisphere";
 
-  /** If there is no lunar transit on a given day, show entries as blanks. */
-  private void tableFor(List<Optional<LocalDateTime>> lunarTransits) throws DocumentException {
+  private void tableForBoth(List<Optional<LocalDateTime>> lunarTransits, Map<LocalDate, Double> lunarFractionIlluminated) throws DocumentException {
     PdfPTable table = new PdfPTable(NUM_COLUMNS);
     table.setWidthPercentage(PERCENTAGE_WIDTH_LUNAR);
     table.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -96,17 +107,30 @@ final class BackOfStarChart {
           addRowCell(table, String.format("%2s", day));
         }
         else {
-          Optional<LocalDateTime> dateTime = lookupTransitTime(col, day, lunarTransits);
-          if (dateTime.isEmpty()) {
-            addRowCell(table, BLANK_ENTRY);
-          }
-          else {
-            addRowCell(table, timeOf(dateTime));
-          }
+          addRowCell(table, entryFor(col, day, lunarTransits, lunarFractionIlluminated));
         }
       }
     }
     document.add(table);
+  }
+  
+  private String entryFor(int col, int day, List<Optional<LocalDateTime>> lunarTransits, Map<LocalDate, Double> lunarFractionIlluminated){
+    String result = "";
+    try {
+      LocalDate date = LocalDate.of(config.year(), col, day);
+      Double fraction = lunarFractionIlluminated.get(date);
+      DecimalFormat dec = new DecimalFormat("0.00");
+      result = dec.format(fraction);
+      
+      Optional<LocalDateTime> dateTime = lookupTransitTime(col, day, lunarTransits);
+      if (dateTime.isPresent()) {
+        result = result + " " + timeOf(dateTime);
+      }
+    }
+    catch(DateTimeException ex) {
+      //the year-month-day combo is not valid; do nothing; no data will be present
+    }
+    return result;
   }
   
   /** For the 15th of each month. */
@@ -214,7 +238,7 @@ final class BackOfStarChart {
     Phrase phrase = new Phrase(chunk);
     PdfPCell cell = new PdfPCell(phrase);
     cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-    cell.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
     //cell.setLeading(0f, 1.1f); // 0 + 1.5 times the font height
     //cell.setPaddingBottom(1);
     //cell.setPaddingLeft(1);

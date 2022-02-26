@@ -23,7 +23,7 @@ import planisphere.util.LogUtil;
 */
 public final class GregorianCal {
   
-  /** Return the Julian Date (JD) corresponding to the given moment in the Gregorian calendar (UT). */
+  /** Return the Julian Date (JD) corresponding to the given moment in the Gregorian calendar (UT), at Greenwich. */
   public static double jd(int year, int month, double day) {
     double result = 0.0;
     int sign = year < 0 ? -1 : 1;
@@ -56,7 +56,7 @@ public final class GregorianCal {
     return jd(ut.getYear(), ut.getMonthValue(), ut.getDayOfMonth(), ut.getHour(), ut.getMinute(), seconds);
   }
   
-  /** Return the Julian Date (JD) corresponding to the given moment in the Gregorian calendar (UT). */
+  /** Return the Julian Date (JD) corresponding to the given moment in the Gregorian calendar (UT), at Greenwich. */
   public static Double jd(int year, int month, int day, int hour, int min, double fractionalSeconds) {
     double fractionalDay = fractionalDay(day, hour, min, fractionalSeconds);
     return jd(year, month, fractionalDay);

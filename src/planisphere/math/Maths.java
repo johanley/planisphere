@@ -107,7 +107,7 @@ public class Maths {
     long result = Math.round(val);
     return (int)result;
   }
-
+  
   public static float asFloat(double val) {
     return (float)(val);
   }

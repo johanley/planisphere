@@ -14,7 +14,10 @@ public final class Constants {
 
   /** The right ascension on the star chart that's below the celestial pole, when the page is held upright. */
   public static double LOWER_RA = 6.0;
-
+  
+  /** A representative time in the evening, when an amateur astronomer might start observing. */
+  public static Integer LOCAL_EVENING_HOUR = 20;
+  
   /** File name for the output PDF for the front (transparency) - {@value}.  */
   public static final String TRANSPARENCY_FILE = "transparency.pdf";
 
