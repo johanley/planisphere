@@ -12,6 +12,7 @@ import planisphere.astro.precession.LongTermPrecession;
 import planisphere.astro.precession.Nutation;
 import planisphere.config.Config;
 import planisphere.config.ConfigFromFile;
+import planisphere.config.Constants;
 import planisphere.math.Maths;
 import planisphere.util.LogUtil;
 
@@ -68,7 +69,7 @@ public final class SiderealTime {
    The Standard Time in the configured time zone, 
    for which the daily sidereal time is found for the configured position - {@value}. 
   */
-  public static final int CLOCK_TIME = 20;
+  public static final int CLOCK_TIME = Constants.LOCAL_EVENING_HOUR;
 
   //PRIVATE
   
