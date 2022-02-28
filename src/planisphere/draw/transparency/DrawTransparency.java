@@ -1,7 +1,9 @@
 package planisphere.draw.transparency;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
@@ -30,6 +32,7 @@ public final class DrawTransparency {
     altitudeScaleOnMeridian();
     eastWestAzimuthsAndOthers();
     azimuthTickMarks();
+    centeringAffordance();
     textLatitudeAndTimeCorr();
   }
   
@@ -78,6 +81,26 @@ public final class DrawTransparency {
     AltitudeBarScale abs = new AltitudeBarScale(projection, g, chartUtil, config);
     abs.draw();
   }
+  
+  /** 
+   This affordance is meant BOTH for centering of the transparency on the chart, AND for the placement of the rivet which 
+   joins the transparency to the chart. The affordance needs to accommodate both large and small rivets: it 
+   shouldn't be completely hidden when placing the rivet.
+  */
+  private void centeringAffordance() {
+    circleForCelestialPole(6.0);
+    circleForCelestialPole(2.0);
+  }
+  
+  private void circleForCelestialPole(double r) {
+    Point2D.Double pole = new Point2D.Double(chartUtil.getWidth()/2.0, chartUtil.getHeight()/2.0);
+    Shape circle = new Ellipse2D.Double(pole.x - r, pole.y - r, r * 2, r * 2);
+    Color origColor = g.getColor();
+    g.setColor(Color.WHITE);
+    g.fill(circle);
+    g.setColor(origColor);
+    g.draw(circle);
+  }  
   
   private void meridian() {
     GeneralPath path = new GeneralPath();
