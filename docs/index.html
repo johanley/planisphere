@@ -40,22 +40,22 @@ Generate:
 
  <P>Print: 
  <ul>
-  <li>print the PDF files on a <b>high-resolution printer</b> (you may need to use a commercial print shop for best results).
+  <li>print the PDF files on a <b>high-resolution printer</b>. You may need to use a commercial print shop for best results. (For me, the cost is about $12 dollars.)
   <li>print <code>the starchart.pdf</code> file on card stock (thick paper). One page, double-sided.
-  <li>print the <code>transparency.pdf</code> file on (you guessed it) a transparency. One page, single-sided.
+  <li>print the <code>transparency.pdf</code> file on a transparency. One page, single-sided.
  </ul>
   
  <P>Cut and attach: 
   <ul>
   <li>make the star chart square, by cutting the star chart along the indicated horizontal lines above and below the star chart. 
   (This is needed only if the PDF is not square to begin with.) 
-  <li>make the transparency circular, by cutting along its outermost circular border
+  <li>make the transparency circular, by cutting along its outermost circular border.
   <li><b>carefully align</b> the transparency on top of the star chart. The outermost circles, for the date-scale and the time-scale,
   should line up neatly along their full border, 360 degrees. 
   <li>attach the transparency to the star chart <a href='https://www.mcmaster.com/two-piece-rivets/'>using a rivet</a> (or something similar).
  </ul>
  
- <P>You may get best results by doing the the cutting at the last.
+ <P><b>You may get best results by doing the the cutting at the last.</b>
  Having the paper and the transparency the same size helps to center the transparency on the paper.
  
  <P>Verify the centering. Examine the intersection of the celestial equator with the horizon. 
@@ -81,7 +81,7 @@ The main <b>design goals</b> of this planisphere are:
  
  <P>Planispheres are seldom expected to be precise.
  Nevertheless, it's always interesting to push an instrument to its limits, to see how far you can go.
- That said, many users will be perfectly content with planispheres having significantly lower precision.
+ That said, many people will be perfectly content with planispheres having significantly lower precision.
  
  <h2>What's Included</h2>
  
@@ -94,10 +94,12 @@ The main <b>design goals</b> of this planisphere are:
   <li>the radiant positions for the brightest meteor showers (configurable)
   <li>the constellations as simple stick drawings, without names (to reduce clutter for those who already know the night sky)
   <li>a date-scale to indicate the observer's sidereal time at 20h standard time each day of the year, in their own time zone
-  <li>tables (on the back) with the time of transit of the Moon for every day of the year, and the time of transit 
-  of all the bright planets for the 15th of every month. These can be used to get approximate positions for the Moon and bright planets 
-  over the course of the configured year.
+  <li>a table on the back for the Moon, with both the fraction illuminated and its time of transit for every day of the year
+  <li>a table on the back for the bright planets, with the time of transit of the planet on the 15th of every month. 
  </ul>
+ 
+ <P>The tables for the Moon and bright planets are used to get approximate positions for those objects over the course of the configured year.
+ 
  
  <P>The planisphere's transparency goes on top of the star chart. 
  The transparency includes (<a href='transparency.pdf'>example PDF</a>):
@@ -157,7 +159,7 @@ The main <b>design goals</b> of this planisphere are:
  
  <h2>Tools Used</h2>
  
- Items I used in building this tool:
+ Items used in building this tool:
  <ul>
   <li>stars: the star catalog is a slightly modified version of the Yale Bright Star catalog (YBS)
   <li>planets: the VSOP87D data for the planets, by <a href='https://ui.adsabs.harvard.edu/abs/1988A%26A...202..309B/abstract'>Bretagnon and Francou</a>.
@@ -174,7 +176,9 @@ The main <b>design goals</b> of this planisphere are:
  <ul>
   <li>implementations of calculating a Julian Date from a calendar date are usually mediocre (NOVAS, SOFA). 
   Many implementations unnecessarily restrict the input range.
-  Many implementations are deeply cryptic. (For this reason, I implemented my own algorithm.)
+  Many implementations are deeply cryptic. (For this reason, I implemented my own algorithm. 
+  See <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/astro/time/JulianCal.java'>JulianCal</a> and 
+  <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/astro/time/GregorianCal.java'>GregorianCal</a>.)
   <li>calculating 3D proper motions is not difficult (see  <a href='https://ui.adsabs.harvard.edu/abs/1989AJ.....97.1197K/abstract'>Kaplan et al 1989</a>, section IV, page 1203).
   <li>many tools, including those produced to implement IAU standards, are optimized to produce accurate results only within a few hundred years 
   of J2000, and are unsuitable for use outside that range, without careful scrutiny. 
@@ -288,7 +292,7 @@ The main <b>design goals</b> of this planisphere are:
 
 <h3>Times in History</h3>
 <pre>
- Year   Description                   Chart
+ Year   Description                Chart
 ----------------------------------------------
 + 150   Ptolemy of Alexandria     <a href='basic/basic_chart+150-N.pdf'>chart</a>
 -2796   Egypt (Thuban at pole)    <a href='basic/basic_chart-2796-N.pdf'>chart</a>
