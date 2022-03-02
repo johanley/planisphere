@@ -63,6 +63,7 @@ public final class ConfigFromFile {
   
   private String fontDir = "";
   private Integer greyConstellationLines;
+  private Integer greyAltAzLines;
   private Integer smallestTimeDivision;
   private String radiants = "";
   private String monthNames = "";
@@ -111,6 +112,9 @@ public final class ConfigFromFile {
       }
       else if (matches(Setting.grey_constellation_lines, parts)) {
         greyConstellationLines = asInteger(parts);
+      }
+      else if (matches(Setting.grey_alt_az_lines, parts)) {
+        greyAltAzLines = asInteger(parts);
       }
       else if (matches(Setting.smallest_time_division, parts)) {
         smallestTimeDivision = asInteger(parts);
@@ -164,8 +168,11 @@ public final class ConfigFromFile {
   }
 
   private Config buildConfigObjectFromSettings() {
-    return new Config(year, location, latitude, longitude, hoursOffsetFromUT, minutesOffsetFromUT, declinationGap, 
-        width, height, outputDir, fontDir, greyConstellationLines, smallestTimeDivision, radiants, monthNames, lunarTransitsTitle, 
-        planetaryTransitsTitle, planetNames);
+    return new Config(
+      year, location, latitude, longitude, hoursOffsetFromUT, minutesOffsetFromUT, declinationGap, 
+      width, height, outputDir, fontDir, greyConstellationLines, greyAltAzLines, 
+      smallestTimeDivision, radiants, monthNames, lunarTransitsTitle, 
+      planetaryTransitsTitle, planetNames
+    );
   }
 }

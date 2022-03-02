@@ -26,8 +26,14 @@ final class AltitudeCircle {
   void draw(double alt) {
     Details details = details(alt);
     chartUtil.clippingOn(projection, g);
+    Color orig = g.getColor();
+    if (Math.abs(alt) > 0) {
+      //the horizon is always black
+      g.setColor(config.greyAltAzLines());
+    }
     g.draw(details.circle);
     chartUtil.clippingOff(g);
+    g.setColor(orig);
     /*
     Not needed, when the one-degree scale is present anyways.
     if (Math.abs(alt) < 11 && Math.abs(alt) > 1.0) {

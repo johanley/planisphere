@@ -15,6 +15,7 @@ enum Setting {
   year,
   font_directory,
   grey_constellation_lines,
+  grey_alt_az_lines,
   smallest_time_division,
   radiants,
   month_names,

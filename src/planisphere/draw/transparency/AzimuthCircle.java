@@ -28,7 +28,7 @@ final class AzimuthCircle {
   /** Draw an arc from the east to the west, going through the zenith. */
   void eastWest() {
     EastWestCircle eastWestCircle = eastWestCircle();
-    drawCircleHere(eastWestCircle.ctr, eastWestCircle.radius, ClipZenith.NO);
+    drawCircleHere(eastWestCircle.ctr, eastWestCircle.radius, ClipZenith.NO, ForceBlack.YES);
   }
   
   void otherAzimuths() {
@@ -41,10 +41,10 @@ final class AzimuthCircle {
       int sign = angle < Maths.HALF_PI ? -1 : 1;
       double Δx =  sign * R0 * tan(angle); //change from the center of the east-west circle
       Point2D.Double ctr = new Point2D.Double(ewc.ctr.x + Δx, ewc.ctr.y);
-      drawCircleHere(ctr, radius, ClipZenith.YES);
+      drawCircleHere(ctr, radius, ClipZenith.YES, ForceBlack.NO);
       //do it again, but with a parity flip in x
       ctr = new Point2D.Double(ewc.ctr.x - Δx, ewc.ctr.y);
-      drawCircleHere(ctr, radius, ClipZenith.YES);
+      drawCircleHere(ctr, radius, ClipZenith.YES, ForceBlack.NO);
     }
   }
   
@@ -54,6 +54,7 @@ final class AzimuthCircle {
   private Config config;
   private static double STEP_SIZE = Maths.degToRads(10.0);
   private enum ClipZenith { YES, NO; }
+  private enum ForceBlack { YES, NO; }
   
   /** The east-west azimuth circle is used as the basis for all the other azimuth circles. */
   private static class EastWestCircle {
@@ -79,7 +80,7 @@ final class AzimuthCircle {
     return deets.circle;
   }
   
-  private void drawCircleHere(Point2D.Double ctr, double radius, ClipZenith clipZenith) {
+  private void drawCircleHere(Point2D.Double ctr, double radius, ClipZenith clipZenith, ForceBlack black) {
     double w = 2 * radius;
     double h = w; //always a circular arc
     Shape circle = new Ellipse2D.Double(ctr.x - radius, ctr.y - radius, w, h);
@@ -93,7 +94,12 @@ final class AzimuthCircle {
     }
     g.setClip(cropArea);
     g.clip(horizonCircle()); //add a second clipping region
+    Color orig = g.getColor();
+    if (ForceBlack.NO == black) {
+      g.setColor(config.greyAltAzLines());
+    }
     g.draw(circle);
+    g.setColor(orig);
     chartUtil.clippingOff(g);
   }
 }

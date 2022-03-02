@@ -28,7 +28,7 @@ public final class Config {
   public Config(
     Integer year, String location, Double latitude, Double longitude, Integer hoursOffsetFromUT, 
     Integer minutesOffsetFromUT, Double declinationGap, Float width, Float height, 
-    String outputDir, String fontDir, Integer greyConstellationLines, Integer smallestTimeDivision, 
+    String outputDir, String fontDir, Integer greyConstellationLines, Integer greyAltAzLines, Integer smallestTimeDivision, 
     String radiants, String monthNames, String lunarTransitsTitle, String planetaryTransitsTitle, String planetNames
   ){
     this.year = year;
@@ -43,6 +43,7 @@ public final class Config {
     this.outputDir = outputDir;
     this.fontDir = fontDir;
     this.greyConstellationLines = new Color(greyConstellationLines, greyConstellationLines, greyConstellationLines);
+    this.greyAltAzLines = new Color(greyAltAzLines, greyAltAzLines, greyAltAzLines);
     this.smallestTimeDivision = smallestTimeDivision;
     this.radiants = radiants;
     this.monthNames = monthNames;
@@ -112,6 +113,9 @@ public final class Config {
   
   /** The shade of grey used to render the constellation lines (and other items). */
   public Color greyConstellationLines() { return greyConstellationLines; }
+  
+  /** The shade of grey used to render the altitude-azimuth lines on the transparency. */
+  public Color greyAltAzLines() { return greyAltAzLines; }
   
   /** 
    The smallest division of time on the time-scale, in minutes.
@@ -201,6 +205,7 @@ public final class Config {
     toStringLine(Setting.year, year(), result);
     toStringLine(Setting.font_directory, fontDir(), result);
     toStringLine(Setting.grey_constellation_lines, greyConstellationLines(), result);
+    toStringLine(Setting.grey_alt_az_lines, greyAltAzLines(), result);
     toStringLine(Setting.smallest_time_division, smallestTimeDivision(), result);
     toStringLine(Setting.radiants, meteorShowerRadiants(), result);
     toStringLine(Setting.month_names, monthNames(), result);
@@ -224,6 +229,7 @@ public final class Config {
   
   private String fontDir = "";
   private Color greyConstellationLines;
+  private Color greyAltAzLines;
   private Integer smallestTimeDivision;
   private String radiants = "";
   private String monthNames = "";
