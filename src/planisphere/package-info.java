@@ -7,8 +7,6 @@
  <P>The planisphere uses the sterographic projection, which is appropriate only for latitudes outside the tropics.
  (That is its main defect.)
  
- <P>This code was originally written by John O'Hanley in early 2022, in Stratford, PEI, Canada.
- 
  <P>When run as a stand-alone program, the top-level class for generating the two planisphere files is <code>planisphere.Build</code>.
  
  <P>The code can also be used in a servlet environment to 
