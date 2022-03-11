@@ -14,7 +14,7 @@
 <h2>A Precise and Customizable Planisphere</h2>
 
  This project generates a precise, customizable planisphere as two PDF files (a <a href='starchart.pdf'>star chart</a> and a <a href='transparency.pdf'>transparency</a>).
- The two files are then printed on a high-resolution printer, and the results are attached together in the middle with a rivet.
+ The two files are then printed on a high-resolution printer, and the results are attached together in the center with a rivet.
  One file is meant for printing on card stock, and the other as a transparency.
  The transparency rotates around the central rivet.
  
@@ -23,24 +23,29 @@
  <P>The planisphere uses the <b>stereographic projection</b>, which is appropriate only for latitudes outside the tropics.
  (That is the main defect of this projection.)
  
- <P>When run as a stand-alone program, the top-level class for generating the two planisphere files is <code>planisphere.Build</code>.
+ <P>The output is configured using a 
+ <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/config/config.ini'>config.ini</a> text file.
+ A number of minor settings, which most people would not want to change, are hard-coded.
  
- <P>The code can also be used in a servlet environment to 
- <a href='https://kb.itextsupport.com/home/it7kb/faq/how-can-i-serve-a-pdf-to-a-browser-without-storing-a-file-on-the-server-side'>generate PDFs as byte streams</a>
-  that are served to the browser. In that case, the configuration comes from user input in a form, not a 
-  <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/config/config.ini'>config.ini</a> text file.
- 
-<h2>Use as a Standalone Program to Make a Planisphere</h2>
-Generate:
+<h2>How To Make The Planisphere</h2>
+ Generate the PDF files using a form on the web (which uses this project's code):
+ <ul>
+  <li>I've created a basic form <a href='http://astronomytonight.net/planisphere/form.jsp'>here</a>
+  <li>the amount of config that can be done using this web form is limited to the basics, but is likely adequate for most people
+  <li>generate two PDF files, one after the other, and save them somewhere on your computer
+ </ul>
+
+ Or, if you download this project's source code, you can generate the PDF files using a stand-alone program, from the command line:
  <ul>
   <li>review the <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/config/config.ini'>config.ini</a> file, and change it to suit your needs.
   The width and height need to match the paper size to be used on the printer. Save the changes.
   <li>run the <code>planisphere.Build</code> class to generate two PDF files.
  </ul>
-
+ 
  <P>Print: 
  <ul>
-  <li>print the PDF files on a <b>high-resolution printer</b>. You may need to use a commercial print shop for best results. (For me, the cost is about $12 dollars.)
+  <li>print the PDF files on a <b>high-resolution printer</b>. You may need to use a commercial print shop for best results. 
+  (For me, the cost is about $12.)
   <li>print <code>the starchart.pdf</code> file on card stock (thick paper). One page, double-sided.
   <li>print the <code>transparency.pdf</code> file on a transparency. One page, single-sided.
  </ul>
@@ -51,20 +56,21 @@ Generate:
   (This is needed only if the PDF is not square to begin with.) 
   <li>make the transparency circular, by cutting along its outermost circular border.
   <li><b>carefully align</b> the transparency on top of the star chart. The outermost circles, for the date-scale and the time-scale,
-  should line up neatly along their full border, 360 degrees. 
-  <li>attach the transparency to the star chart <a href='https://www.mcmaster.com/two-piece-rivets/'>using a rivet</a> (or something similar).
+  should line up neatly along their full border, 360 degrees.
+  <li>also refer to the small bulls-eye affordance at the very center, which is to be centered on the celestial pole.
+  <li>attach the transparency to the star chart <a href='https://www.mcmaster.com/two-piece-rivets/'>using a rivet</a>, or something similar. 
+  (I've had success with a small lapel pin).
  </ul>
  
- <P><b>You may get best results by doing the the cutting at the last.</b>
- Having the paper and the transparency the same size helps to center the transparency on the paper.
- 
- <P>Verify the centering. Examine the intersection of the celestial equator with the horizon. 
+ <P><b>Verify the centering</b>. Examine the intersection of the celestial equator with the horizon. 
  As you rotate the transparency 360 degrees, the intersection point of the celestial equator with the horizon should 
  always coincide with the east-west point. 
 
 <h2>Design Goals</h2>
 The main <b>design goals</b> of this planisphere are:
  <ul>
+  <li>to <b>optimize the design for experts, not beginners</b>
+  <li>include only <b>minimal text and markings</b>, and only what's necessary for the correct operation of the planisphere.
   <li>allow <b><a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/config/config.ini'>customization</a></b>,  
   including for a given <b>location and year</b>.
   <li>be much more <b>precise</b> than the typical planisphere. 
@@ -73,8 +79,6 @@ The main <b>design goals</b> of this planisphere are:
   <li>to predict the transit time of an object on the celestial equator <b>to within approximately 1 minute</b>. 
   <li>allow for <b>time-travel</b> into the past or future, for thousands of years. 
   This is possible since it uses a precession algorithm that's valid over long time scales, and by including 3D proper motion.
-  <li>optimize for people who already know the night sky well. 
-  Include only <b>minimal text and markings</b>, and only what's necessary for the correct operation of the planisphere.
  </ul>
  
  <P>For years other than that for which the planisphere was generated, the precision will of course be significantly reduced.
@@ -82,6 +86,7 @@ The main <b>design goals</b> of this planisphere are:
  <P>Planispheres are seldom expected to be precise.
  Nevertheless, it's always interesting to push an instrument to its limits, to see how far you can go.
  That said, many people will be perfectly content with planispheres having significantly lower precision.
+ 
  
  <h2>What's Included</h2>
  
