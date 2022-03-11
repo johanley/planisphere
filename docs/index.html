@@ -16,7 +16,7 @@
  This project generates a precise, customizable planisphere as two PDF files (a <a href='starchart.pdf'>star chart</a> and a <a href='transparency.pdf'>transparency</a>).
  The two files are then printed on a high-resolution printer, and the results are attached together in the center with a rivet.
  One file is meant for printing on card stock, and the other as a transparency.
- The transparency rotates around the central rivet.
+ The transparency rotates around a central rivet or pin.
  
  <P>The source code is <a href='https://github.com/johanley/planisphere'>here</a>.
  
@@ -93,10 +93,10 @@ The main <b>design goals</b> of this planisphere are:
  The planisphere's star chart includes (<a href='starchart.pdf'>example PDF</a>, with the star chart on page 2):
  <ul>
   <li>stars brighter than magnitude 5.01 (derived from the Yale Bright Star Catalog)
-  <li>the position of the Sun at 18h standard time for every day (using the configured time zone and year)
-  <li>the path of the Moon's orbit on July 1 of the configured year
+  <li>the position of the Sun at 18h standard time for every day (using the configured time zone and year) - <a href='suns-position.png'>example</a>
+  <li>the path of the Moon's orbit on July 1 of the configured year - <a href='lunar-orbit.png'>example</a>
   <li>the celestial equator
-  <li>the radiant positions for the brightest meteor showers (configurable)
+  <li>the radiant positions for the brightest meteor showers (configurable) - <a href='meteor-showers.png'>example</a>
   <li>the constellations as simple stick drawings, without names (to reduce clutter for those who already know the night sky)
   <li>a date-scale to indicate the observer's sidereal time at 20h standard time each day of the year, in their own time zone
   <li>a table on the back for the Moon, with both the fraction illuminated and its time of transit for every day of the year
