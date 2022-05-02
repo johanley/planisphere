@@ -86,6 +86,9 @@ public final class PrecessionOLD {
     }
     else {
       result.δ = Math.acos(Math.sqrt(A*A + B*B)); //0..pi, but always near 90 deg
+      if (pos.δ < 0) {
+        result.δ = -result.δ;
+      }
       /*
       double temp = Math.acos(Math.sqrt(A*A + B*B)); //0..pi
       result.δ = Math.sin(pos.δ) * temp;
