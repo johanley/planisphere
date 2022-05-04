@@ -1,7 +1,5 @@
 package planisphere.astro.star;
 
-import planisphere.draw.CompassPoint;
-
 /** Data-carrier for stars. */
 public final class Star {
   
@@ -14,9 +12,6 @@ public final class Star {
    Possibly empty, never null; 
   */
   public String NAME;
-  
-  /** Where the Bayer designation should be drawn on the chart, with respect to the star. */
-  public CompassPoint BAYER_COMPASS_POINT;
   
   /** 
    Greek letter only. May have a number after the letter.
@@ -72,7 +67,6 @@ public final class Star {
   
   /** 
    'Vega', for instance. Possibly empty, never null.
-   CAREFUL: the name varies with language! 
   */
   public String PROPER_NAME = "";
   
@@ -93,20 +87,13 @@ public final class Star {
   /** Heliocentric radial velocity in km/s. */
   public Double RADIAL_VELOCITY;
   
-  /** Identifier in the Durchmusterung catalog. */
-  public String DM_DESIGNATION;
   /** Identifier in the Henry Draper catalog. */
   public String HD_DESIGNATION;
-  /** Identifier in the SAO catalog. */
-  public String SAO_DESIGNATION;
-  /** Identifier in the FK5 catalog. */
-  public String FK5_DESIGNATION;
   
   public Star copy() {
     Star result = new Star();
     result.INDEX = this.INDEX;
     result.NAME = this.NAME;
-    result.BAYER_COMPASS_POINT = this.BAYER_COMPASS_POINT;
     result.RA = this.RA;
     result.MAG = this.MAG;
     result.DEC = this.DEC;
@@ -115,10 +102,7 @@ public final class Star {
     result.PROPER_MOTION_DEC = this.PROPER_MOTION_DEC;
     result.PARALLAX = this.PARALLAX;
     result.RADIAL_VELOCITY = this.RADIAL_VELOCITY;
-    result.DM_DESIGNATION = this.DM_DESIGNATION;
     result.HD_DESIGNATION = this.HD_DESIGNATION;
-    result.SAO_DESIGNATION = this.SAO_DESIGNATION;
-    result.FK5_DESIGNATION = this.FK5_DESIGNATION;
     return result;
   }
   

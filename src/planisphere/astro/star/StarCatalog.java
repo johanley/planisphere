@@ -370,10 +370,7 @@ public final class StarCatalog {
     
     result.PARALLAX = optionalDouble(line, 162, 5);
     result.RADIAL_VELOCITY = optionalDouble(line, 167, 4);
-    result.DM_DESIGNATION = slice(line, 15, 11);
     result.HD_DESIGNATION = slice(line, 26, 6);
-    result.SAO_DESIGNATION = slice(line, 32, 6);
-    result.FK5_DESIGNATION = slice(line, 38, 4);
 
     return result;
   }
@@ -601,24 +598,15 @@ public final class StarCatalog {
   private void scanForMissingItems() {
     int countParallax = 0;
     int countRadialVelocity = 0;
-    int countDM = 0;
     int countHD = 0; 
-    int countSAO = 0; 
-    int countFK5 = 0; 
     for(Star star : stars) {
       countParallax = countParallax + missing(star.PARALLAX);
       countRadialVelocity = countRadialVelocity + missing(star.RADIAL_VELOCITY);
-      countDM = countDM + missing(star.DM_DESIGNATION);
       countHD = countHD + missing(star.HD_DESIGNATION);
-      countSAO = countSAO + missing(star.SAO_DESIGNATION);
-      countFK5 = countFK5 + missing(star.FK5_DESIGNATION);
     }
     log("Num stars missing parallax: " + countParallax);
     log("Num stars missing radial velocity: " + countRadialVelocity);
-    log("Num stars missing DM: " + countDM);
     log("Num stars missing HD: " + countHD);
-    log("Num stars missing SAO: " + countSAO);
-    log("Num stars missing FK5: " + countFK5);
   }
   
   private int missing(Object thing) { 
