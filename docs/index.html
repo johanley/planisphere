@@ -235,7 +235,11 @@ The main <b>design goals</b> of this planisphere are:
  <h3>Year of Closest Approach to the Equatorial Pole</h3>
  These are the raw results, using data from Hipparcos-2 astrometry, with full 3D kinematics for proper motion. 
  The error bars in the underlying data are not used in these calculations.
- See the <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/astro/precession/ClosestApproachToPole.java'>ClosestApproachToPole</a> class.
+ 
+ <P>See the <a href='https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf'>underlying paper</a> (Figure 11)  
+ for estimates of the accuracy of the precession algorithm over long time scales.
+ 
+ <P>See the <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/astro/precession/ClosestApproachToPole.java'>ClosestApproachToPole</a> class.
  
  
 <P>For the years -100,000..+100,000 in the northern sky:
@@ -252,8 +256,12 @@ The main <b>design goals</b> of this planisphere are:
 τ Her - 7607 +0°31'31.678'' 
 </pre>
 Note how close Polaris comes to the pole! 
-A previous, less accurate calculation with the Yale Bright Star Catalog gave a result of about 4 arcmin for the minimum separation of Polaris over the 
-same time frame.
+However, according to the <a href='https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf'>underlying paper</a> (see its Figure 11), 
+the precession algorithm has an error of about 30 arcseconds on a timescale of 75,000 years.
+In addition, a more robust calculation would take into account the errors in the underlying Hipparcos-2 astrometric data.
+
+<P>A previous, less accurate calculation using data from the Yale Bright Star Catalog gave a result of about 4 arcmin for the minimum separation of Polaris over the 
+same time frame. 
 
 <P>For the years -100,000..+100,000 in the southern sky:
 <pre>
