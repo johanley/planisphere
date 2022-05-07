@@ -92,7 +92,7 @@ The main <b>design goals</b> of this planisphere are:
  
  The planisphere's star chart includes (<a href='starchart.pdf'>example PDF</a>, with the star chart on page 2):
  <ul>
-  <li>stars brighter than magnitude 5.01 (derived from the Yale Bright Star Catalog)
+  <li>stars brighter than magnitude 5.02 (derived from this <a href='https://github.com/johanley/star-catalog'>open source bright star catalog</a>)
   <li>the position of the Sun at 18h standard time for every day (using the configured time zone and year) - <a href='suns-position.png'>example</a>
   <li>the path of the Moon's orbit on July 1 of the configured year - <a href='lunar-orbit.png'>example</a>
   <li>the celestial equator
@@ -132,7 +132,7 @@ The main <b>design goals</b> of this planisphere are:
   version, you may want to change that to every minute.
   <li>for predicting sunrise and sunset, a special altitude of -0.9 degrees has been added, just below 0.0 degrees. 
   This accounts for refraction at the horizon, the Sun's mean semi-diameter, and for the observer being 
-  about 2 meters above the real horizon. (See the Explanatory Supplement to the Ephemeris, 1961, page 401).
+  about 2 meters above the real horizon. (See the <em>Explanatory Supplement to the Ephemeris</em>, 1961, page 401).
   Sunrise and sunset correspond to the center of the Sun's disk being at that altitude.
   For the stars, the rise/set altitude is near -0.57 degrees, not -0.9. 
   For the Moon, the rise/set altitude is in the range of +0.08 to +0.18 degrees, because of its large horizontal parallax.
@@ -196,15 +196,13 @@ The main <b>design goals</b> of this planisphere are:
   <li>for the position of the Moon, it would have been best to use ELP 2000-85, which is built for historical calculations. 
   An abridged version of that theory is published in <a href='https://ui.adsabs.harvard.edu/abs/1988A%26A...190..342C/abstract'>the original paper</a>, but I don't understand the paper. 
   It's also available in <a href='https://ui.adsabs.harvard.edu/abs/1991ltpf.book.....C/abstract'>book form</a>, but I can't find or view the book anywhere. 
-  <li>to match YBS data with another star catalog, the HD Henry Draper identifier is the best candidate for linking records.
-  <li>I was able to map YBS records to GAIA, using Hipparcos as an intermediary, and the HD identifier.
+  <li>to match data across catalogs, the HD Henry Draper identifier is often useful.
   <li>the GAIA database is poor for bright objects. Its detectors aren't designed for them. I considered using GAIA for this project, but it wasn't feasible.
   <li>the GAIA archive is a large relational database. Their tools use a flavour of SQL to do queries.
  </ul>
  
  <P>Things I'd like to have: 
  <ul>
-  <li>an updated version of the YBS, with modern parallax and proper motion values.
   <li>access to ELP 2000-85 for the Moon (see above).
   <li>an expression for the inclination of the Moon's orbit, instead of a constant. 
   This may be in <em>Mathematical Astronomy Morsels</em>, by Meeus.
@@ -216,10 +214,11 @@ The main <b>design goals</b> of this planisphere are:
  
  <h3>Movement of the Poles</h3>
  The motion of the poles of both the equator and the ecliptic can be robustly demonstrated with this code, since it 
- uses a robust algorithm for long-term precession, published in 2011. (See the <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/draw/starchart/DrawPoles.java'>DrawPoles</a> class.)
+ uses a robust algorithm for long-term precession, published in 2011. 
+ (See the <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/astro/precession/BuildPolePrecession.java'>BuildPolePrecession</a> class.)
  
  <P>Here are examples of the motion of the poles going back into the past 38,000 years, in steps of 200 years at a time.
- Note how both poles move. The ecliptic pole is the smaller, darker arc near the center.
+ Note how both poles move. The ecliptic pole is the smaller, darker arc near the center. 
  <ul>
    <li><a href='pole_precession-N.pdf'>Northern poles</a> 
    <li><a href='pole_precession-S.pdf'>Southern poles</a> 
@@ -233,64 +232,69 @@ The main <b>design goals</b> of this planisphere are:
  
  
  <h3>Year of Closest Approach to the Equatorial Pole</h3>
- (These are the raw results; they should be rounded to appropriate values, about 5' of arc, and about 10 years of time.)
+ These are the raw results; they should be rounded to appropriate values, about 5' of arc, and about 10 years of time.
+ See the <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/astro/precession/ClosestApproachToPole.java'>ClosestApproachToPole</a> class.
+ 
  
 <P>For the years -100,000..+100,000 in the northern sky:
 <pre>
  Star  Year   Separation
 -----------------------------------
-α Lyr +63979 +0°04'8.452''  Vega
-α Cyg -40833 +2°52'14.376'' Deneb
-α UMi -74993 +0°04'10.233'' Polaris
-β UMi -27241 +2°08'1.127''  Kochab
-α Cep +58112 +0°07'19.003'' Alderamin
-λ Cep -44125 +0°21'6.772''
-α Dra - 2796 +0°5'42.758''  Thuban
-τ Her - 7606 +0°31'9.014''
+α Lyr +89851 +0°18'03.089'' Vega
+α Cyg -40834 +2°52'26.731'' Deneb
+α UMi -74968 +0°00'10.681'' Polaris 
+β UMi -27240 +2°08'43.000'' Kochab
+α Cep +58105 +0°05'13.585'' Alderamin
+λ Cep -44141 +0°15'18.849'' 
+α Dra - 2796 +0°05'50.601'' Thuban
+τ Her - 7607 +0°31'31.678'' 
 </pre>
+Note how close Polaris comes to the pole! 
+A previous, less accurate calculation with the Yale Bright Star Catalog gave a result of about 4 arcmin for the minimum separation of Polaris over the 
+same time frame.
 
 <P>For the years -100,000..+100,000 in the southern sky:
 <pre>
   Star  Year   Separation
 -------------------------------------
-α Dor -32096 +4°1'40.739''
-γ Dor -31853 +0°37'12.609''
-α Eri +73425 +3°46'22.983'' Achernar
-γ Cha -22457 +0°14'11.378''
-α Car +91315 +5°28'58.134'' Canopus
-ω Car -71406 +0°3'44.054''
-δ Vel + 9253 +0°8'16.185''
-γ Vel +36623 +0°9'23.857''  Regor
-σ Pup -14090 +0°23'6.263''
+α  Dor -32064 +4°04'47.559'' 
+γ  Dor -31862 +0°39'29.884'' 
+α  Eri +73449 +3°49'57.548'' Achernar
+γ  Cha -22453 +0°12'25.254'' 
+α  Car +91325 +5°24'48.682'' Canopus
+ω  Car -71400 +0°06'14.607'' 
+δ  Vel + 9245 +0°10'08.031'' Alsephina
+γ2 Vel +36629 +0°07'35.141'' Regor
+σ  Pup -14093 +0°22'46.678'' 
 </pre>
 
 <P>For the years -15,000..+15,000 in the northern sky:
 <pre>
  Star  Year   Separation
 -----------------------------------
-α Lyr -12047 +3°26'32.224'' Vega      <a href='basic/basic_chart-12047-N.pdf'>chart</a>
-α Cyg +10202 +7°27'26.954'' Deneb     <a href='basic/basic_chart+10202-N.pdf'>chart</a>
-α UMi + 2102 +0°27'37.062'' Polaris
-β UMi - 1060 +6°31'35.241'' Kochab    <a href='basic/basic_chart-1060-N.pdf'>chart</a>
-α Cep + 7539 +1°55'10.629'' Alderamin <a href='basic/basic_chart+7539-N.pdf'>chart</a>
-λ Cep + 7317 +4°55'32.898'' 
-α Dra - 2796 +0°05'42.758'' Thuban    <a href='basic/basic_chart-2796-N.pdf'>chart</a>
-τ Her - 7606 +0°31'9.014''            <a href='basic/basic_chart-7606-N.pdf'>chart</a>
+α Lyr -12049 +3°25'48.420'' Vega      <a href='basic/basic_chart-12049-N.pdf'>chart</a>
+α Cyg +10202 +7°27'23.976'' Deneb     <a href='basic/basic_chart+10202-N.pdf'>chart</a>
+α UMi + 2102 +0°27'37.558'' Polaris
+β UMi - 1059 +6°31'40.126'' Kochab    <a href='basic/basic_chart-1059-N.pdf'>chart</a>
+α Cep + 7539 +1°55'12.019'' Alderamin <a href='basic/basic_chart+7539-N.pdf'>chart</a>
+λ Cep + 7319 +4°54'51.287'' 
+α Dra - 2796 +0°05'50.601'' Thuban    <a href='basic/basic_chart-2796-N.pdf'>chart</a>
+τ Her - 7607 +0°31'31.678''           <a href='basic/basic_chart-7607-N.pdf'>chart</a>
 </pre>
 
 <P>For the years -15,000..+15,000 in the southern sky:
 <pre>
  Star  Year   Separation
 -----------------------------------
-α Dor - 6973 +9°6'57.754'' 
-γ Dor - 6867 +4°57'53.914'' 
-α Eri - 3358 +6°59'38.094'' Achernar
-γ Cha + 4125 +1°31'59.941''            <a href='basic/basic_chart+4215-S.pdf'>chart</a>
-α Car +13842 +7°27'12.079'' Canopus    <a href='basic/basic_chart+13842-S.pdf'>chart</a>
-ω Car + 5788 +0°46'2.105''             <a href='basic/basic_chart+5788-S.pdf'>chart</a>
-δ Vel + 9253 +0°8'16.185''             <a href='basic/basic_chart+9253-S.pdf'>chart</a>
-γ Vel -15000 +2°31'20.866'' Regor
-σ Pup -14090 +0°23'6.263''             <a href='basic/basic_chart-14090-S.pdf'>chart</a>
+α Dor  - 6963 +9°07'59.136'' 
+γ Dor  - 6869 +4°58'28.700'' 
+α Eri  - 3360 +6°59'19.067'' Achernar
+γ Cha  + 4125 +1°31'51.294''           <a href='basic/basic_chart+4125-S.pdf'>chart</a>  
+α Car  +13844 +7°26'46.462'' Canopus   <a href='basic/basic_chart+13844-S.pdf'>chart</a>  
+ω Car  + 5788 +0°45'51.105''           <a href='basic/basic_chart+5788-S.pdf'>chart</a>
+δ Vel  + 9245 +0°10'08.031'' Alsephina <a href='basic/basic_chart+9245-S.pdf'>chart</a>
+γ2 Vel -15000 +2°32'30.217'' Regor
+σ Pup  -14093 +0°22'46.678''           <a href='basic/basic_chart-14093-S.pdf'>chart</a>
 </pre>
  
 

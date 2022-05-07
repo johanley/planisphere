@@ -33,7 +33,7 @@ public final class GenerateBasicStarChart extends GeneratePdfABC {
     
     StarCatalog starCatalog = new StarCatalog(config);
     Double janFirst = GregorianCal.jd(config.year(), 1, 1.0);
-    log("Applying precession with JD " + janFirst + ", for Jan 1.0 " + config.year());
+    log("Applying proper motion/precession with JD " + janFirst + ", for Jan 1.0 " + config.year());
     starCatalog.generateIntermediateStarCatalog(janFirst);
     List<Star> stars = starCatalog.filterByMag(ChartUtil.LIMITING_MAG);
     log("Using " + stars.size() + " stars out of " + starCatalog.all().size());

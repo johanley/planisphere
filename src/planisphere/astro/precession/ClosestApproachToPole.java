@@ -21,10 +21,10 @@ import planisphere.math.Maths;
  <P>The paper on which the long-term precession algorithm is based states that its accuracy is within a few tenths of a degree 
  within 200,000 years of the present.
  
- <P>This algo uses the proper motion as defined by the Yale Bright Star catalog.
- If the data for 3D proper motion is available, then it is used.
+ <P>This algo uses the proper motion as defined by the underlying star catalog.
+ If the data for 3D proper motion is available (and it almost always is), then it is used.
  J2000 coords are used throughout.
- Proper motion is applied to the star's J2000 position, for a given year. 
+ Proper motion is applied to the star's J1991.25 position (the Hipparcos epoch for proper motion), for a given year. 
  Then that position is compared with the position of the equator pole, also expressed in J2000 coords.
 
  <P>Example output for northern stars, in the range -100,000..+100,000 years:
@@ -78,15 +78,19 @@ A more accurate method would then interpolate/search for a more precise date.
 */
 public final class ClosestApproachToPole {
 
+  public static final int MAX_YEAR = 15000;
+
   /** Run the script. */
   public static void main(String... args) throws IOException {
-    int MAX_YEAR = 15000;
+    
     String[] STAR_NAMES_N = {"α Lyr", "α Cyg", "α UMi", "β UMi", "α Cep", "λ Cep", "α Dra", "τ Her"};
-    String[] STAR_NAMES_S = {"α Dor", "γ Dor", "α Eri", "γ Cha", "α Car", "ω Car", "δ Vel", "γ Vel", "σ Pup"};
+    String[] STAR_NAMES_S = {"α Dor", "γ Dor", "α Eri", "γ Cha", "α Car", "ω Car", "δ Vel", "γ2 Vel", "σ Pup"};
+    
     log("Finding years of closest approach for stars near the pole, in the range -" + MAX_YEAR + "..+" + MAX_YEAR);
     
     ClosestApproachToPole approach = new ClosestApproachToPole(MAX_YEAR);
-    for (String starName : STAR_NAMES_S) {
+    //choose _N or _S here:
+    for (String starName : STAR_NAMES_N) {
       Closest closest = approach.findTheClosestApproachToThePole(starName);
       if (closest != null) {
         log(starName + " " + closest.year + " " + closest.separation() + " " + closest.properName);
@@ -134,7 +138,7 @@ public final class ClosestApproachToPole {
       //always apply proper motion before precession
       ProperMotion pm = new ProperMotion(ProperMotion.J1991_25, jd);
       //the proper motion code changes the state of the star in place; 
-      //we need to preserve the state of the incoming star object, as of J2000
+      //we need to preserve the state of the incoming star object
       Star copyWithPM = star.copy();
       pm.applyTo(copyWithPM);
       
