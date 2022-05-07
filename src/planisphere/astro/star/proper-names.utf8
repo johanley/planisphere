@@ -25,7 +25,7 @@ CMi α=Procyon, β=Gomeisa
 Cap
 Car α=Canopus, ε=Avior, β=Miaplacidus, ι=Aspidiske 
 Cas α=Schedir, β=Caph, δ=Ruchbah
-Cen α=Rigel Kent, β=Hadar, γ=Mulifain, θ=Menkent
+Cen α1=Rigel Kent, β=Hadar, γ=Mulifain, θ=Menkent
 Cep α=Alderamin
 Cet α=Menkar, β=Dipda, ο=Mira
 Col α=Phact
@@ -34,7 +34,7 @@ CrA
 CrB α=Alphecca
 Crv γ=Gienah
 Crt
-Cru α=Acrux, β=Mimosa, γ=Gacrux
+Cru α1=Acrux, β=Mimosa, γ=Gacrux
 Cyg α=Deneb, β=Albireo, γ=Sadr
 Del
 Dor
@@ -61,6 +61,7 @@ Mon
 Nor 
 Oph α=Rasalhague, β=Sheleb
 Ori α=Betelgeuse, β=Rigel, γ=Bellatrix, κ=Saiph, δ=Mintaka, ε=Alnilam, ζ=Alnitak
+Pav α=Peacock
 Peg α=Markab, β=Scheat, ε=Enif, γ=Algenib
 Per α=Mirfak, β=Algol
 Phe α=Ankaa
@@ -71,7 +72,7 @@ Pup
 Pyx
 Sge
 Sgr ε=Kaus Australis, δ=Media, λ=Kaus Borealis, σ=Nunki, ζ=Ascella
-Sco α=Antares, β=Graffias, λ=Shaula, δ=Dschubba
+Sco α=Antares, β=Graffias, λ=Shaula, δ=Dschubba, θ=Sargas
 Scl
 Sct
 Ser α=Unukalhai, η=Sabik
@@ -82,6 +83,6 @@ TrA α=Atria
 Tri
 UMa α=Dubhe, β=Merak, γ=Phecda, δ=Megrez, ε=Alioth, ζ=Mizar, η=Alkaid 
 UMi α=Polaris, β=Kochab
-Vel γ=Regor, λ=Suhail
+Vel γ2=Regor, λ=Suhail, δ=Alsephina
 Vir α=Spica, ε=Vindemiatrix, γ=Porrima
 Vul

@@ -45,6 +45,11 @@ public final class GenerateStarChart extends GeneratePdfABC {
     ConstellationLines constellationLines = new ConstellationLines();
     constellationLines.readData();
     log("Size of constellation lines map: " + constellationLines.all().size());
+    List<Star> missingStars = constellationLines.scanForAnyMissingStarsInThe(stars, starCatalog);
+    log("Num stars referenced by the constellation lines data structure that are missing from the core data: " + missingStars.size());
+    for (Star missingStar : missingStars) {
+      log(" " + missingStar);
+    }
     
     Projection projection = new StereographicProjection(config);
 

@@ -132,7 +132,7 @@ public final class ClosestApproachToPole {
       Double jd = GregorianCal.jd(y, 1, 1.0);
       
       //always apply proper motion before precession
-      ProperMotion pm = new ProperMotion(jd);
+      ProperMotion pm = new ProperMotion(ProperMotion.J1991_25, jd);
       //the proper motion code changes the state of the star in place; 
       //we need to preserve the state of the incoming star object, as of J2000
       Star copyWithPM = star.copy();

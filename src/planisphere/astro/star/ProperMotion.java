@@ -3,11 +3,9 @@ package planisphere.astro.star;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static planisphere.astro.time.AstroUtil.DAYS_PER_JULIAN_YEAR;
-import static planisphere.astro.time.AstroUtil.J2000;
 import static planisphere.astro.time.AstroUtil.KM_PER_AU;
 import static planisphere.astro.time.AstroUtil.SECONDS_PER_DAY;
 import static planisphere.astro.time.AstroUtil.angularSeparation;
-import static planisphere.astro.time.AstroUtil.julianYearsSinceJ2000;
 
 import planisphere.astro.precession.XYZ;
 import planisphere.math.Maths;
@@ -17,9 +15,10 @@ import planisphere.math.Vector;
 /** 
  Proper motion of a star across the sky.
 
- <P>This implementation uses only the data in the Yale Bright Star catalog.
- 2D proper motion is applied as a base, and 3D proper motion (for foreshortening effects) is 
- applied where the parallax and radial velocity are both available. Negative parallaxes are ignored.
+ <P>
+ 3D proper motion (for foreshortening effects) is applied as a base, and 
+ 2D proper motion is applied if data is missing (rare). 
+ Negative parallaxes are ignored.
  
  <P>Proper motion is always applied before applying precession.
  There are two methods of calculating proper motion: 2D and 3D.
@@ -29,7 +28,7 @@ import planisphere.math.Vector;
  as described by <a href='https://ui.adsabs.harvard.edu/abs/1989AJ.....97.1197K/abstract'>Kaplan et al 1989</a>, section IV, page 1203.
  
  <P>The 3D method requires more data than the 2D method. 
- It also requires parallax and radial velocity, along with the regular  proper motion in right ascension and declination.
+ It also requires parallax and radial velocity, along with the regular proper motion in right ascension and declination.
  
  <P>Proper motion can be applied only within certain limits of historical (and future) time,
  but I'm not sure what exactly those limits are in my case, which requires only 
@@ -39,19 +38,29 @@ import planisphere.math.Vector;
   Max proper motion : +10°12'.
   Number of stars that whose proper motion exceeded 1 degree: 88.
   Some notable bright stars have large proper motion: Proxima Centauri, Procyon, Sirius, Arcturus.
-  
-  <P>The Gaia database has precise data, but it has nearly no data for stars of magnitude < 3. 
-  The instrumentation was originally designed for stars dimmer than the 5th magnitude.
 */
 public final class ProperMotion {
   
-  public ProperMotion(double jd){
-    this.jd = jd;
+  /** The proper motion epoch of the Hipparcos catalog. */
+  public static double J1991_25 = 2448349.0625;
+  
+  /** 
+   Constructor.
+   @param jdStart when the proper motion begins
+   @param jdEnd when the proper motion ends
+  */
+  public ProperMotion(double jdStart, double jdEnd){
+    this.jdStart = jdStart;
+    this.jdEnd = jdEnd;
   }
   
   /** 
-   Changes the star's data in place.
-   Returns the amount of proper motion applied, in arcseconds. 
+   Changes the star's positional data in place.
+   The given star's position initially corresponds to jdStart passed to the constructor.
+   After this method returns, the star's position corresponds to jdEnd passed to the constructor.
+   
+   <P>Returns the amount of proper motion applied, in arcseconds.
+   The star's proper motion is in arcseconds, and its position is in rads. 
   */
   public double applyTo(Star star) {
     boolean hasAllData = star.PARALLAX != null && star.PARALLAX > 0 && star.RADIAL_VELOCITY != null;
@@ -59,20 +68,23 @@ public final class ProperMotion {
     return result;
   }
 
-  /** 
-   Classical 2D proper motion across the sky.
-   For the YBS catalog, the required data is always present. 
-  */
+  // PRIVATE 
+  
+  private double jdEnd;
+  private double jdStart;
+
+  private double julianYears() {
+    return julianDays() / DAYS_PER_JULIAN_YEAR; 
+  }
+  
+  private double julianDays() {
+    return jdEnd - jdStart;
+  }
+  
+  /** Classical 2D proper motion across the sky. Returns arcseconds. */
   private double twoD(Star star) {
-    /*
-    Important note from the catalog's docs:
-      Note on pmRA:
-       As usually assumed, the proper motion in RA is the projected
-       motion (cos(DE).d(RA)/dt), i.e. the total proper motion is
-       sqrt(pmRA^2^+pmDE^2^) 
-    */
     //note the factor for declination! note as well the behavior near the pole:
-    double years = julianYearsSinceJ2000(jd);
+    double years = julianYears();
     double Δα = (star.PROPER_MOTION_RA * years)/Math.cos(star.DEC); //arcsecs
     double Δδ = star.PROPER_MOTION_DEC * years; //arcsecs
     star.RA = star.RA + Maths.degToRads(Δα/3600.0); //no int div
@@ -82,10 +94,7 @@ public final class ProperMotion {
     return result; //arcsecs
   }
   
-  /** 
-   3D proper motion.
-   For the YBS catalog, the required data is not always present. 
-  */
+  /**  3D proper motion. Returns arcseconds. */
   private double threeD(Star star) {
     double pRads = Maths.arcsecToRads(star.PARALLAX); //rads
     double r = 1/pRads; //AU
@@ -105,8 +114,7 @@ public final class ProperMotion {
     Matrix rotations = new Matrix(row1, row2, row3);
     Vector udot0 = rotations.times(velocityComponents); //  AU/day, in 'standard' coordinates with axes in the right direction
 
-    double days = jd - J2000;
-    Vector u2 = u0.plus(udot0.times(days));
+    Vector u2 = u0.plus(udot0.times(julianDays()));
     Position newPos = XYZ.positionFrom(u2);
     Position oldPos = new Position(star.RA, star.DEC);
     
@@ -118,7 +126,4 @@ public final class ProperMotion {
     
     return Maths.radsToArcsecs(result);
   }
-  
-  private double jd;
-  
 }

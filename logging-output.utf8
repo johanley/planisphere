@@ -1,0 +1,881 @@
+Building a planisphere from a config file...
+Config:
+Reading config file: config.ini
+output_directory = C:\Temp
+  width = 612.0
+  height = 792.0
+  location = Halifax, NS
+  latitude = +44°37'12.0''
+  longitude = -63°36'36.0''
+  hours_offset_from_ut = -4
+  minutes_offset_from_ut = 0
+  degrees_west_of_central_meridian = +3°36'36.0''
+  declination_gap = 14.0
+  year = 2022
+  font_directory = C:\WINDOWS\FONTS
+  grey_constellation_lines = java.awt.Color[r=128,g=128,b=128]
+  grey_alt_az_lines = java.awt.Color[r=112,g=112,b=112]
+  smallest_time_division = 2
+  radiants = perseids:46.2,57.4 | eta-aquarids:338.0,-1.0 | quadrantids:230.1,48.5 | geminids:112.3,32.5
+  month_names = Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
+  lunar_transits_title = Moon: fraction illuminated and time of transit
+  planetary_transits_title = Planets: time of transit on the 15th of the month
+  planet_names = Mercury, Venus, Earth, Mars, Jupiter, Saturn
+Limiting magnitude: 5.02
+Generating star chart PDF.
+Open the doc. Initial setup of pdf Document. Setting page size, margins. Reading in fonts.
+Registering all fonts in C:\WINDOWS\FONTS
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.itextpdf.text.io.ByteBufferRandomAccessSource$1 (file:/C:/johanley/ProjectsPhoton/planisphere/lib/itextpdf-5.5.13.jar) to method java.nio.DirectByteBuffer.cleaner()
+WARNING: Please consider reporting this to the maintainers of com.itextpdf.text.io.ByteBufferRandomAccessSource$1
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Fresh graphics context, and a new page.
+Graphics font: Times New Roman
+Star chart.
+Applying precession with JD 2459580.5, for Jan 1.0 2022
+Read in raw catalog.
+Read this many lines: 5112
+Using this number of stars from catalog: 5112
+Applying proper motion / precession to the star catalog. Year: 2022
+Applying proper motion from 2448349.0625 to the target year 2022
+Finished applying proper motion.
+  Max proper motion : +0°2'42.99'' 61 Cyg mag 5.2 HD:201091
+  Number of stars that whose proper motion exceeded 1 degree: 0
+  Top 25 proper motions: 
+    +0°2'42.99'' 61 Cyg mag 5.2 HD:201091
+    +0°2'24.73'' ε Ind mag 4.69 HD:209100
+    +0°2'5.76'' ο2 Eri mag 4.43 HD:26965
+    +0°1'56.2'' μ Cas mag 5.17 HD:6582
+    +0°1'54.14'' α1 Cen mag -0.01 HD:128620
+    +0°1'53.92'' α2 Cen mag 1.35 HD:128621
+    +0°1'36.02''  mag 4.26 HD:20794
+    +0°1'11.14''  mag 5.79 HD:16160
+    +0°1'10.09'' α Boo mag -0.05 HD:124897
+    +0°1'8.97'' β Hyi mag 2.82 HD:2151
+    +0°1'4.46''  mag 5.57 HD:219134
+    +0°1'3.55'' ζ Tuc mag 4.23 HD:1581
+    +0°1'1.91''  mag 5.72 HD:131977
+    +0°0'59.09'' τ Cet mag 3.49 HD:10700
+    +0°0'56.52'' σ Dra mag 4.67 HD:185144
+    +0°0'53.38''  mag 5.36 HD:63077
+    +0°0'50.94'' δ Pav mag 3.55 HD:190248
+    +0°0'50.62'' ν2 Lup mag 5.65 HD:136352
+    +0°0'50.45''  mag 5.32 HD:191408
+    +0°0'48.68''  mag 4.89 HD:102365
+    +0°0'46.4'' 61 Vir mag 4.74 HD:115617
+    +0°0'45.72'' ζ1 Ret mag 5.53 HD:20766
+    +0°0'45.5'' ζ2 Ret mag 5.24 HD:20807
+    +0°0'45.11'' ν Ind mag 5.28 HD:211998
+    +0°0'44.6''  mag 5.57 HD:3443
+  Proper motions for stars of magnitude <= 1.5: 
+    +0°1'54.14'' α1 Cen mag -0.01 HD:128620
+    +0°1'53.92'' α2 Cen mag 1.35 HD:128621
+    +0°1'10.09'' α Boo mag -0.05 HD:124897
+    +0°0'41.19'' α CMa mag -1.44 HD:48915
+    +0°0'38.72'' α CMi mag 0.4 HD:61421
+    +0°0'20.31'' α Aql mag 0.76 HD:187642
+    +0°0'19.32'' β Gem mag 1.16 HD:62509
+    +0°0'13.33'' α Aur mag 0.08 HD:34029
+    +0°0'11.31'' α PsA mag 1.17 HD:216956
+    +0°0'10.75'' α Lyr mag 0.03 HD:172167
+    +0°0'7.65'' α Leo mag 1.36 HD:87901
+    +0°0'6.13'' α Tau mag 0.87 HD:29139
+    +0°0'2.92'' α Eri mag 0.45 HD:10144
+    +0°0'1.61'' α Vir mag 0.98 HD:116658
+    +0°0'1.41'' β Cru mag 1.25 HD:111123
+    +0°0'1.25'' β Cen mag 0.61 HD:122451
+    +0°0'1.19'' α1 Cru mag 0.77 HD:108248
+    +0°0'0.94'' α Car mag -0.62 HD:45348
+    +0°0'0.92'' α Ori mag 0.45 HD:39801
+    +0°0'0.81'' α Sco mag 1.06 HD:148478
+    +0°0'0.11'' ε CMa mag 1.5 HD:52089
+    +0°0'0.08'' α Cyg mag 1.25 HD:197345
+    +0°0'0.04'' β Ori mag 0.18 HD:34085
+Applying precession from J2000 to target JD: 2459580.5
+Populating precession data for periodic terms.
+Finished applying precession.
+Add proper names to stars.
+Processed names for this many constellations: 78
+Added 109 proper names for stars.
+Save to an intermediate file. Only needed for dev/debugging purposes.
+Writing to file. The file is for info/debugging purposes only. File name: C:\johanley\ProjectsPhoton\planisphere\stars.utf8
+Num stars missing parallax: 0
+Num stars missing radial velocity: 1
+Num stars missing HD: 2
+Using 1671 stars out of 5112
+Size of constellation lines map: 86
+Num stars referenced by the constellation lines data structure that are missing from the core data: 0
+Transit times on the back of the star chart: Moon.
+Populating ELP 2000-82 data for the Moon's periodic terms (without distance r).
+Number of terms in λ:  60, and β:60
+Loading periodic terms for Earth
+Transit times on the back of the star chart: Planets.
+Loading periodic terms for Mercury
+Loading periodic terms for Earth
+Loading periodic terms for Venus
+Loading periodic terms for Earth
+Loading periodic terms for Mars
+Loading periodic terms for Earth
+Loading periodic terms for Jupiter
+Loading periodic terms for Earth
+Loading periodic terms for Saturn
+Loading periodic terms for Earth
+Creating chart h:792.0 w:612.0
+Projection boundary.
+Date scale.
+Tick marks for days. Almost all years will show a discontinuity at year end. That's expected.
+  Apparent sidereal time for 2022-01-01T20:00, in the configured time zone: +2h32m0.492s
+  Apparent sidereal time for 2022-01-02T20:00, in the configured time zone: +2h35m57.051s
+  Apparent sidereal time for 2022-01-03T20:00, in the configured time zone: +2h39m53.609s
+  Apparent sidereal time for 2022-01-04T20:00, in the configured time zone: +2h43m50.167s
+  Apparent sidereal time for 2022-01-05T20:00, in the configured time zone: +2h47m46.726s
+  Apparent sidereal time for 2022-01-06T20:00, in the configured time zone: +2h51m43.284s
+  Apparent sidereal time for 2022-01-07T20:00, in the configured time zone: +2h55m39.842s
+  Apparent sidereal time for 2022-01-08T20:00, in the configured time zone: +2h59m36.4s
+  Apparent sidereal time for 2022-01-09T20:00, in the configured time zone: +3h3m32.958s
+  Apparent sidereal time for 2022-01-10T20:00, in the configured time zone: +3h7m29.516s
+  Apparent sidereal time for 2022-01-11T20:00, in the configured time zone: +3h11m26.074s
+  Apparent sidereal time for 2022-01-12T20:00, in the configured time zone: +3h15m22.632s
+  Apparent sidereal time for 2022-01-13T20:00, in the configured time zone: +3h19m19.19s
+  Apparent sidereal time for 2022-01-14T20:00, in the configured time zone: +3h23m15.748s
+  Apparent sidereal time for 2022-01-15T20:00, in the configured time zone: +3h27m12.305s
+  Apparent sidereal time for 2022-01-16T20:00, in the configured time zone: +3h31m8.863s
+  Apparent sidereal time for 2022-01-17T20:00, in the configured time zone: +3h35m5.42s
+  Apparent sidereal time for 2022-01-18T20:00, in the configured time zone: +3h39m1.978s
+  Apparent sidereal time for 2022-01-19T20:00, in the configured time zone: +3h42m58.535s
+  Apparent sidereal time for 2022-01-20T20:00, in the configured time zone: +3h46m55.092s
+  Apparent sidereal time for 2022-01-21T20:00, in the configured time zone: +3h50m51.65s
+  Apparent sidereal time for 2022-01-22T20:00, in the configured time zone: +3h54m48.207s
+  Apparent sidereal time for 2022-01-23T20:00, in the configured time zone: +3h58m44.764s
+  Apparent sidereal time for 2022-01-24T20:00, in the configured time zone: +4h2m41.321s
+  Apparent sidereal time for 2022-01-25T20:00, in the configured time zone: +4h6m37.878s
+  Apparent sidereal time for 2022-01-26T20:00, in the configured time zone: +4h10m34.434s
+  Apparent sidereal time for 2022-01-27T20:00, in the configured time zone: +4h14m30.991s
+  Apparent sidereal time for 2022-01-28T20:00, in the configured time zone: +4h18m27.548s
+  Apparent sidereal time for 2022-01-29T20:00, in the configured time zone: +4h22m24.104s
+  Apparent sidereal time for 2022-01-30T20:00, in the configured time zone: +4h26m20.661s
+  Apparent sidereal time for 2022-01-31T20:00, in the configured time zone: +4h30m17.217s
+  Apparent sidereal time for 2022-02-01T20:00, in the configured time zone: +4h34m13.773s
+  Apparent sidereal time for 2022-02-02T20:00, in the configured time zone: +4h38m10.329s
+  Apparent sidereal time for 2022-02-03T20:00, in the configured time zone: +4h42m6.885s
+  Apparent sidereal time for 2022-02-04T20:00, in the configured time zone: +4h46m3.441s
+  Apparent sidereal time for 2022-02-05T20:00, in the configured time zone: +4h49m59.997s
+  Apparent sidereal time for 2022-02-06T20:00, in the configured time zone: +4h53m56.553s
+  Apparent sidereal time for 2022-02-07T20:00, in the configured time zone: +4h57m53.108s
+  Apparent sidereal time for 2022-02-08T20:00, in the configured time zone: +5h1m49.664s
+  Apparent sidereal time for 2022-02-09T20:00, in the configured time zone: +5h5m46.22s
+  Apparent sidereal time for 2022-02-10T20:00, in the configured time zone: +5h9m42.775s
+  Apparent sidereal time for 2022-02-11T20:00, in the configured time zone: +5h13m39.33s
+  Apparent sidereal time for 2022-02-12T20:00, in the configured time zone: +5h17m35.885s
+  Apparent sidereal time for 2022-02-13T20:00, in the configured time zone: +5h21m32.44s
+  Apparent sidereal time for 2022-02-14T20:00, in the configured time zone: +5h25m28.995s
+  Apparent sidereal time for 2022-02-15T20:00, in the configured time zone: +5h29m25.55s
+  Apparent sidereal time for 2022-02-16T20:00, in the configured time zone: +5h33m22.105s
+  Apparent sidereal time for 2022-02-17T20:00, in the configured time zone: +5h37m18.66s
+  Apparent sidereal time for 2022-02-18T20:00, in the configured time zone: +5h41m15.215s
+  Apparent sidereal time for 2022-02-19T20:00, in the configured time zone: +5h45m11.769s
+  Apparent sidereal time for 2022-02-20T20:00, in the configured time zone: +5h49m8.324s
+  Apparent sidereal time for 2022-02-21T20:00, in the configured time zone: +5h53m4.878s
+  Apparent sidereal time for 2022-02-22T20:00, in the configured time zone: +5h57m1.432s
+  Apparent sidereal time for 2022-02-23T20:00, in the configured time zone: +6h0m57.987s
+  Apparent sidereal time for 2022-02-24T20:00, in the configured time zone: +6h4m54.541s
+  Apparent sidereal time for 2022-02-25T20:00, in the configured time zone: +6h8m51.095s
+  Apparent sidereal time for 2022-02-26T20:00, in the configured time zone: +6h12m47.649s
+  Apparent sidereal time for 2022-02-27T20:00, in the configured time zone: +6h16m44.203s
+  Apparent sidereal time for 2022-02-28T20:00, in the configured time zone: +6h20m40.757s
+  Apparent sidereal time for 2022-03-01T20:00, in the configured time zone: +6h24m37.311s
+  Apparent sidereal time for 2022-03-02T20:00, in the configured time zone: +6h28m33.864s
+  Apparent sidereal time for 2022-03-03T20:00, in the configured time zone: +6h32m30.418s
+  Apparent sidereal time for 2022-03-04T20:00, in the configured time zone: +6h36m26.972s
+  Apparent sidereal time for 2022-03-05T20:00, in the configured time zone: +6h40m23.525s
+  Apparent sidereal time for 2022-03-06T20:00, in the configured time zone: +6h44m20.079s
+  Apparent sidereal time for 2022-03-07T20:00, in the configured time zone: +6h48m16.632s
+  Apparent sidereal time for 2022-03-08T20:00, in the configured time zone: +6h52m13.186s
+  Apparent sidereal time for 2022-03-09T20:00, in the configured time zone: +6h56m9.739s
+  Apparent sidereal time for 2022-03-10T20:00, in the configured time zone: +7h0m6.293s
+  Apparent sidereal time for 2022-03-11T20:00, in the configured time zone: +7h4m2.846s
+  Apparent sidereal time for 2022-03-12T20:00, in the configured time zone: +7h7m59.399s
+  Apparent sidereal time for 2022-03-13T20:00, in the configured time zone: +7h11m55.953s
+  Apparent sidereal time for 2022-03-14T20:00, in the configured time zone: +7h15m52.506s
+  Apparent sidereal time for 2022-03-15T20:00, in the configured time zone: +7h19m49.059s
+  Apparent sidereal time for 2022-03-16T20:00, in the configured time zone: +7h23m45.612s
+  Apparent sidereal time for 2022-03-17T20:00, in the configured time zone: +7h27m42.166s
+  Apparent sidereal time for 2022-03-18T20:00, in the configured time zone: +7h31m38.719s
+  Apparent sidereal time for 2022-03-19T20:00, in the configured time zone: +7h35m35.272s
+  Apparent sidereal time for 2022-03-20T20:00, in the configured time zone: +7h39m31.825s
+  Apparent sidereal time for 2022-03-21T20:00, in the configured time zone: +7h43m28.378s
+  Apparent sidereal time for 2022-03-22T20:00, in the configured time zone: +7h47m24.931s
+  Apparent sidereal time for 2022-03-23T20:00, in the configured time zone: +7h51m21.484s
+  Apparent sidereal time for 2022-03-24T20:00, in the configured time zone: +7h55m18.038s
+  Apparent sidereal time for 2022-03-25T20:00, in the configured time zone: +7h59m14.591s
+  Apparent sidereal time for 2022-03-26T20:00, in the configured time zone: +8h3m11.144s
+  Apparent sidereal time for 2022-03-27T20:00, in the configured time zone: +8h7m7.697s
+  Apparent sidereal time for 2022-03-28T20:00, in the configured time zone: +8h11m4.25s
+  Apparent sidereal time for 2022-03-29T20:00, in the configured time zone: +8h15m0.804s
+  Apparent sidereal time for 2022-03-30T20:00, in the configured time zone: +8h18m57.357s
+  Apparent sidereal time for 2022-03-31T20:00, in the configured time zone: +8h22m53.91s
+  Apparent sidereal time for 2022-04-01T20:00, in the configured time zone: +8h26m50.463s
+  Apparent sidereal time for 2022-04-02T20:00, in the configured time zone: +8h30m47.017s
+  Apparent sidereal time for 2022-04-03T20:00, in the configured time zone: +8h34m43.57s
+  Apparent sidereal time for 2022-04-04T20:00, in the configured time zone: +8h38m40.124s
+  Apparent sidereal time for 2022-04-05T20:00, in the configured time zone: +8h42m36.677s
+  Apparent sidereal time for 2022-04-06T20:00, in the configured time zone: +8h46m33.231s
+  Apparent sidereal time for 2022-04-07T20:00, in the configured time zone: +8h50m29.784s
+  Apparent sidereal time for 2022-04-08T20:00, in the configured time zone: +8h54m26.338s
+  Apparent sidereal time for 2022-04-09T20:00, in the configured time zone: +8h58m22.891s
+  Apparent sidereal time for 2022-04-10T20:00, in the configured time zone: +9h2m19.445s
+  Apparent sidereal time for 2022-04-11T20:00, in the configured time zone: +9h6m15.999s
+  Apparent sidereal time for 2022-04-12T20:00, in the configured time zone: +9h10m12.553s
+  Apparent sidereal time for 2022-04-13T20:00, in the configured time zone: +9h14m9.107s
+  Apparent sidereal time for 2022-04-14T20:00, in the configured time zone: +9h18m5.661s
+  Apparent sidereal time for 2022-04-15T20:00, in the configured time zone: +9h22m2.215s
+  Apparent sidereal time for 2022-04-16T20:00, in the configured time zone: +9h25m58.769s
+  Apparent sidereal time for 2022-04-17T20:00, in the configured time zone: +9h29m55.323s
+  Apparent sidereal time for 2022-04-18T20:00, in the configured time zone: +9h33m51.877s
+  Apparent sidereal time for 2022-04-19T20:00, in the configured time zone: +9h37m48.432s
+  Apparent sidereal time for 2022-04-20T20:00, in the configured time zone: +9h41m44.986s
+  Apparent sidereal time for 2022-04-21T20:00, in the configured time zone: +9h45m41.54s
+  Apparent sidereal time for 2022-04-22T20:00, in the configured time zone: +9h49m38.095s
+  Apparent sidereal time for 2022-04-23T20:00, in the configured time zone: +9h53m34.65s
+  Apparent sidereal time for 2022-04-24T20:00, in the configured time zone: +9h57m31.204s
+  Apparent sidereal time for 2022-04-25T20:00, in the configured time zone: +10h1m27.759s
+  Apparent sidereal time for 2022-04-26T20:00, in the configured time zone: +10h5m24.314s
+  Apparent sidereal time for 2022-04-27T20:00, in the configured time zone: +10h9m20.869s
+  Apparent sidereal time for 2022-04-28T20:00, in the configured time zone: +10h13m17.424s
+  Apparent sidereal time for 2022-04-29T20:00, in the configured time zone: +10h17m13.98s
+  Apparent sidereal time for 2022-04-30T20:00, in the configured time zone: +10h21m10.535s
+  Apparent sidereal time for 2022-05-01T20:00, in the configured time zone: +10h25m7.09s
+  Apparent sidereal time for 2022-05-02T20:00, in the configured time zone: +10h29m3.646s
+  Apparent sidereal time for 2022-05-03T20:00, in the configured time zone: +10h33m0.201s
+  Apparent sidereal time for 2022-05-04T20:00, in the configured time zone: +10h36m56.757s
+  Apparent sidereal time for 2022-05-05T20:00, in the configured time zone: +10h40m53.313s
+  Apparent sidereal time for 2022-05-06T20:00, in the configured time zone: +10h44m49.869s
+  Apparent sidereal time for 2022-05-07T20:00, in the configured time zone: +10h48m46.425s
+  Apparent sidereal time for 2022-05-08T20:00, in the configured time zone: +10h52m42.981s
+  Apparent sidereal time for 2022-05-09T20:00, in the configured time zone: +10h56m39.537s
+  Apparent sidereal time for 2022-05-10T20:00, in the configured time zone: +11h0m36.093s
+  Apparent sidereal time for 2022-05-11T20:00, in the configured time zone: +11h4m32.65s
+  Apparent sidereal time for 2022-05-12T20:00, in the configured time zone: +11h8m29.206s
+  Apparent sidereal time for 2022-05-13T20:00, in the configured time zone: +11h12m25.763s
+  Apparent sidereal time for 2022-05-14T20:00, in the configured time zone: +11h16m22.319s
+  Apparent sidereal time for 2022-05-15T20:00, in the configured time zone: +11h20m18.876s
+  Apparent sidereal time for 2022-05-16T20:00, in the configured time zone: +11h24m15.433s
+  Apparent sidereal time for 2022-05-17T20:00, in the configured time zone: +11h28m11.99s
+  Apparent sidereal time for 2022-05-18T20:00, in the configured time zone: +11h32m8.547s
+  Apparent sidereal time for 2022-05-19T20:00, in the configured time zone: +11h36m5.104s
+  Apparent sidereal time for 2022-05-20T20:00, in the configured time zone: +11h40m1.661s
+  Apparent sidereal time for 2022-05-21T20:00, in the configured time zone: +11h43m58.218s
+  Apparent sidereal time for 2022-05-22T20:00, in the configured time zone: +11h47m54.776s
+  Apparent sidereal time for 2022-05-23T20:00, in the configured time zone: +11h51m51.333s
+  Apparent sidereal time for 2022-05-24T20:00, in the configured time zone: +11h55m47.89s
+  Apparent sidereal time for 2022-05-25T20:00, in the configured time zone: +11h59m44.448s
+  Apparent sidereal time for 2022-05-26T20:00, in the configured time zone: +12h3m41.006s
+  Apparent sidereal time for 2022-05-27T20:00, in the configured time zone: +12h7m37.563s
+  Apparent sidereal time for 2022-05-28T20:00, in the configured time zone: +12h11m34.121s
+  Apparent sidereal time for 2022-05-29T20:00, in the configured time zone: +12h15m30.679s
+  Apparent sidereal time for 2022-05-30T20:00, in the configured time zone: +12h19m27.237s
+  Apparent sidereal time for 2022-05-31T20:00, in the configured time zone: +12h23m23.795s
+  Apparent sidereal time for 2022-06-01T20:00, in the configured time zone: +12h27m20.353s
+  Apparent sidereal time for 2022-06-02T20:00, in the configured time zone: +12h31m16.911s
+  Apparent sidereal time for 2022-06-03T20:00, in the configured time zone: +12h35m13.47s
+  Apparent sidereal time for 2022-06-04T20:00, in the configured time zone: +12h39m10.028s
+  Apparent sidereal time for 2022-06-05T20:00, in the configured time zone: +12h43m6.586s
+  Apparent sidereal time for 2022-06-06T20:00, in the configured time zone: +12h47m3.145s
+  Apparent sidereal time for 2022-06-07T20:00, in the configured time zone: +12h50m59.703s
+  Apparent sidereal time for 2022-06-08T20:00, in the configured time zone: +12h54m56.261s
+  Apparent sidereal time for 2022-06-09T20:00, in the configured time zone: +12h58m52.82s
+  Apparent sidereal time for 2022-06-10T20:00, in the configured time zone: +13h2m49.379s
+  Apparent sidereal time for 2022-06-11T20:00, in the configured time zone: +13h6m45.937s
+  Apparent sidereal time for 2022-06-12T20:00, in the configured time zone: +13h10m42.496s
+  Apparent sidereal time for 2022-06-13T20:00, in the configured time zone: +13h14m39.054s
+  Apparent sidereal time for 2022-06-14T20:00, in the configured time zone: +13h18m35.613s
+  Apparent sidereal time for 2022-06-15T20:00, in the configured time zone: +13h22m32.172s
+  Apparent sidereal time for 2022-06-16T20:00, in the configured time zone: +13h26m28.73s
+  Apparent sidereal time for 2022-06-17T20:00, in the configured time zone: +13h30m25.289s
+  Apparent sidereal time for 2022-06-18T20:00, in the configured time zone: +13h34m21.848s
+  Apparent sidereal time for 2022-06-19T20:00, in the configured time zone: +13h38m18.407s
+  Apparent sidereal time for 2022-06-20T20:00, in the configured time zone: +13h42m14.965s
+  Apparent sidereal time for 2022-06-21T20:00, in the configured time zone: +13h46m11.524s
+  Apparent sidereal time for 2022-06-22T20:00, in the configured time zone: +13h50m8.083s
+  Apparent sidereal time for 2022-06-23T20:00, in the configured time zone: +13h54m4.642s
+  Apparent sidereal time for 2022-06-24T20:00, in the configured time zone: +13h58m1.2s
+  Apparent sidereal time for 2022-06-25T20:00, in the configured time zone: +14h1m57.759s
+  Apparent sidereal time for 2022-06-26T20:00, in the configured time zone: +14h5m54.318s
+  Apparent sidereal time for 2022-06-27T20:00, in the configured time zone: +14h9m50.877s
+  Apparent sidereal time for 2022-06-28T20:00, in the configured time zone: +14h13m47.435s
+  Apparent sidereal time for 2022-06-29T20:00, in the configured time zone: +14h17m43.994s
+  Apparent sidereal time for 2022-06-30T20:00, in the configured time zone: +14h21m40.553s
+  Apparent sidereal time for 2022-07-01T20:00, in the configured time zone: +14h25m37.111s
+  Apparent sidereal time for 2022-07-02T20:00, in the configured time zone: +14h29m33.67s
+  Apparent sidereal time for 2022-07-03T20:00, in the configured time zone: +14h33m30.228s
+  Apparent sidereal time for 2022-07-04T20:00, in the configured time zone: +14h37m26.787s
+  Apparent sidereal time for 2022-07-05T20:00, in the configured time zone: +14h41m23.345s
+  Apparent sidereal time for 2022-07-06T20:00, in the configured time zone: +14h45m19.904s
+  Apparent sidereal time for 2022-07-07T20:00, in the configured time zone: +14h49m16.462s
+  Apparent sidereal time for 2022-07-08T20:00, in the configured time zone: +14h53m13.021s
+  Apparent sidereal time for 2022-07-09T20:00, in the configured time zone: +14h57m9.579s
+  Apparent sidereal time for 2022-07-10T20:00, in the configured time zone: +15h1m6.137s
+  Apparent sidereal time for 2022-07-11T20:00, in the configured time zone: +15h5m2.695s
+  Apparent sidereal time for 2022-07-12T20:00, in the configured time zone: +15h8m59.253s
+  Apparent sidereal time for 2022-07-13T20:00, in the configured time zone: +15h12m55.812s
+  Apparent sidereal time for 2022-07-14T20:00, in the configured time zone: +15h16m52.37s
+  Apparent sidereal time for 2022-07-15T20:00, in the configured time zone: +15h20m48.927s
+  Apparent sidereal time for 2022-07-16T20:00, in the configured time zone: +15h24m45.485s
+  Apparent sidereal time for 2022-07-17T20:00, in the configured time zone: +15h28m42.043s
+  Apparent sidereal time for 2022-07-18T20:00, in the configured time zone: +15h32m38.601s
+  Apparent sidereal time for 2022-07-19T20:00, in the configured time zone: +15h36m35.158s
+  Apparent sidereal time for 2022-07-20T20:00, in the configured time zone: +15h40m31.716s
+  Apparent sidereal time for 2022-07-21T20:00, in the configured time zone: +15h44m28.273s
+  Apparent sidereal time for 2022-07-22T20:00, in the configured time zone: +15h48m24.831s
+  Apparent sidereal time for 2022-07-23T20:00, in the configured time zone: +15h52m21.388s
+  Apparent sidereal time for 2022-07-24T20:00, in the configured time zone: +15h56m17.945s
+  Apparent sidereal time for 2022-07-25T20:00, in the configured time zone: +16h0m14.503s
+  Apparent sidereal time for 2022-07-26T20:00, in the configured time zone: +16h4m11.06s
+  Apparent sidereal time for 2022-07-27T20:00, in the configured time zone: +16h8m7.617s
+  Apparent sidereal time for 2022-07-28T20:00, in the configured time zone: +16h12m4.173s
+  Apparent sidereal time for 2022-07-29T20:00, in the configured time zone: +16h16m0.73s
+  Apparent sidereal time for 2022-07-30T20:00, in the configured time zone: +16h19m57.287s
+  Apparent sidereal time for 2022-07-31T20:00, in the configured time zone: +16h23m53.843s
+  Apparent sidereal time for 2022-08-01T20:00, in the configured time zone: +16h27m50.4s
+  Apparent sidereal time for 2022-08-02T20:00, in the configured time zone: +16h31m46.956s
+  Apparent sidereal time for 2022-08-03T20:00, in the configured time zone: +16h35m43.513s
+  Apparent sidereal time for 2022-08-04T20:00, in the configured time zone: +16h39m40.069s
+  Apparent sidereal time for 2022-08-05T20:00, in the configured time zone: +16h43m36.625s
+  Apparent sidereal time for 2022-08-06T20:00, in the configured time zone: +16h47m33.181s
+  Apparent sidereal time for 2022-08-07T20:00, in the configured time zone: +16h51m29.737s
+  Apparent sidereal time for 2022-08-08T20:00, in the configured time zone: +16h55m26.293s
+  Apparent sidereal time for 2022-08-09T20:00, in the configured time zone: +16h59m22.849s
+  Apparent sidereal time for 2022-08-10T20:00, in the configured time zone: +17h3m19.404s
+  Apparent sidereal time for 2022-08-11T20:00, in the configured time zone: +17h7m15.96s
+  Apparent sidereal time for 2022-08-12T20:00, in the configured time zone: +17h11m12.515s
+  Apparent sidereal time for 2022-08-13T20:00, in the configured time zone: +17h15m9.071s
+  Apparent sidereal time for 2022-08-14T20:00, in the configured time zone: +17h19m5.626s
+  Apparent sidereal time for 2022-08-15T20:00, in the configured time zone: +17h23m2.181s
+  Apparent sidereal time for 2022-08-16T20:00, in the configured time zone: +17h26m58.736s
+  Apparent sidereal time for 2022-08-17T20:00, in the configured time zone: +17h30m55.291s
+  Apparent sidereal time for 2022-08-18T20:00, in the configured time zone: +17h34m51.846s
+  Apparent sidereal time for 2022-08-19T20:00, in the configured time zone: +17h38m48.401s
+  Apparent sidereal time for 2022-08-20T20:00, in the configured time zone: +17h42m44.956s
+  Apparent sidereal time for 2022-08-21T20:00, in the configured time zone: +17h46m41.51s
+  Apparent sidereal time for 2022-08-22T20:00, in the configured time zone: +17h50m38.065s
+  Apparent sidereal time for 2022-08-23T20:00, in the configured time zone: +17h54m34.62s
+  Apparent sidereal time for 2022-08-24T20:00, in the configured time zone: +17h58m31.174s
+  Apparent sidereal time for 2022-08-25T20:00, in the configured time zone: +18h2m27.728s
+  Apparent sidereal time for 2022-08-26T20:00, in the configured time zone: +18h6m24.283s
+  Apparent sidereal time for 2022-08-27T20:00, in the configured time zone: +18h10m20.837s
+  Apparent sidereal time for 2022-08-28T20:00, in the configured time zone: +18h14m17.391s
+  Apparent sidereal time for 2022-08-29T20:00, in the configured time zone: +18h18m13.945s
+  Apparent sidereal time for 2022-08-30T20:00, in the configured time zone: +18h22m10.499s
+  Apparent sidereal time for 2022-08-31T20:00, in the configured time zone: +18h26m7.053s
+  Apparent sidereal time for 2022-09-01T20:00, in the configured time zone: +18h30m3.607s
+  Apparent sidereal time for 2022-09-02T20:00, in the configured time zone: +18h34m0.161s
+  Apparent sidereal time for 2022-09-03T20:00, in the configured time zone: +18h37m56.714s
+  Apparent sidereal time for 2022-09-04T20:00, in the configured time zone: +18h41m53.268s
+  Apparent sidereal time for 2022-09-05T20:00, in the configured time zone: +18h45m49.822s
+  Apparent sidereal time for 2022-09-06T20:00, in the configured time zone: +18h49m46.375s
+  Apparent sidereal time for 2022-09-07T20:00, in the configured time zone: +18h53m42.929s
+  Apparent sidereal time for 2022-09-08T20:00, in the configured time zone: +18h57m39.483s
+  Apparent sidereal time for 2022-09-09T20:00, in the configured time zone: +19h1m36.036s
+  Apparent sidereal time for 2022-09-10T20:00, in the configured time zone: +19h5m32.59s
+  Apparent sidereal time for 2022-09-11T20:00, in the configured time zone: +19h9m29.143s
+  Apparent sidereal time for 2022-09-12T20:00, in the configured time zone: +19h13m25.696s
+  Apparent sidereal time for 2022-09-13T20:00, in the configured time zone: +19h17m22.25s
+  Apparent sidereal time for 2022-09-14T20:00, in the configured time zone: +19h21m18.803s
+  Apparent sidereal time for 2022-09-15T20:00, in the configured time zone: +19h25m15.356s
+  Apparent sidereal time for 2022-09-16T20:00, in the configured time zone: +19h29m11.91s
+  Apparent sidereal time for 2022-09-17T20:00, in the configured time zone: +19h33m8.463s
+  Apparent sidereal time for 2022-09-18T20:00, in the configured time zone: +19h37m5.016s
+  Apparent sidereal time for 2022-09-19T20:00, in the configured time zone: +19h41m1.57s
+  Apparent sidereal time for 2022-09-20T20:00, in the configured time zone: +19h44m58.123s
+  Apparent sidereal time for 2022-09-21T20:00, in the configured time zone: +19h48m54.676s
+  Apparent sidereal time for 2022-09-22T20:00, in the configured time zone: +19h52m51.229s
+  Apparent sidereal time for 2022-09-23T20:00, in the configured time zone: +19h56m47.783s
+  Apparent sidereal time for 2022-09-24T20:00, in the configured time zone: +20h0m44.336s
+  Apparent sidereal time for 2022-09-25T20:00, in the configured time zone: +20h4m40.889s
+  Apparent sidereal time for 2022-09-26T20:00, in the configured time zone: +20h8m37.443s
+  Apparent sidereal time for 2022-09-27T20:00, in the configured time zone: +20h12m33.996s
+  Apparent sidereal time for 2022-09-28T20:00, in the configured time zone: +20h16m30.549s
+  Apparent sidereal time for 2022-09-29T20:00, in the configured time zone: +20h20m27.103s
+  Apparent sidereal time for 2022-09-30T20:00, in the configured time zone: +20h24m23.656s
+  Apparent sidereal time for 2022-10-01T20:00, in the configured time zone: +20h28m20.209s
+  Apparent sidereal time for 2022-10-02T20:00, in the configured time zone: +20h32m16.763s
+  Apparent sidereal time for 2022-10-03T20:00, in the configured time zone: +20h36m13.316s
+  Apparent sidereal time for 2022-10-04T20:00, in the configured time zone: +20h40m9.87s
+  Apparent sidereal time for 2022-10-05T20:00, in the configured time zone: +20h44m6.424s
+  Apparent sidereal time for 2022-10-06T20:00, in the configured time zone: +20h48m2.977s
+  Apparent sidereal time for 2022-10-07T20:00, in the configured time zone: +20h51m59.531s
+  Apparent sidereal time for 2022-10-08T20:00, in the configured time zone: +20h55m56.085s
+  Apparent sidereal time for 2022-10-09T20:00, in the configured time zone: +20h59m52.639s
+  Apparent sidereal time for 2022-10-10T20:00, in the configured time zone: +21h3m49.192s
+  Apparent sidereal time for 2022-10-11T20:00, in the configured time zone: +21h7m45.746s
+  Apparent sidereal time for 2022-10-12T20:00, in the configured time zone: +21h11m42.3s
+  Apparent sidereal time for 2022-10-13T20:00, in the configured time zone: +21h15m38.854s
+  Apparent sidereal time for 2022-10-14T20:00, in the configured time zone: +21h19m35.409s
+  Apparent sidereal time for 2022-10-15T20:00, in the configured time zone: +21h23m31.963s
+  Apparent sidereal time for 2022-10-16T20:00, in the configured time zone: +21h27m28.517s
+  Apparent sidereal time for 2022-10-17T20:00, in the configured time zone: +21h31m25.071s
+  Apparent sidereal time for 2022-10-18T20:00, in the configured time zone: +21h35m21.626s
+  Apparent sidereal time for 2022-10-19T20:00, in the configured time zone: +21h39m18.18s
+  Apparent sidereal time for 2022-10-20T20:00, in the configured time zone: +21h43m14.735s
+  Apparent sidereal time for 2022-10-21T20:00, in the configured time zone: +21h47m11.289s
+  Apparent sidereal time for 2022-10-22T20:00, in the configured time zone: +21h51m7.844s
+  Apparent sidereal time for 2022-10-23T20:00, in the configured time zone: +21h55m4.399s
+  Apparent sidereal time for 2022-10-24T20:00, in the configured time zone: +21h59m0.954s
+  Apparent sidereal time for 2022-10-25T20:00, in the configured time zone: +22h2m57.509s
+  Apparent sidereal time for 2022-10-26T20:00, in the configured time zone: +22h6m54.064s
+  Apparent sidereal time for 2022-10-27T20:00, in the configured time zone: +22h10m50.619s
+  Apparent sidereal time for 2022-10-28T20:00, in the configured time zone: +22h14m47.175s
+  Apparent sidereal time for 2022-10-29T20:00, in the configured time zone: +22h18m43.73s
+  Apparent sidereal time for 2022-10-30T20:00, in the configured time zone: +22h22m40.285s
+  Apparent sidereal time for 2022-10-31T20:00, in the configured time zone: +22h26m36.841s
+  Apparent sidereal time for 2022-11-01T20:00, in the configured time zone: +22h30m33.397s
+  Apparent sidereal time for 2022-11-02T20:00, in the configured time zone: +22h34m29.952s
+  Apparent sidereal time for 2022-11-03T20:00, in the configured time zone: +22h38m26.508s
+  Apparent sidereal time for 2022-11-04T20:00, in the configured time zone: +22h42m23.064s
+  Apparent sidereal time for 2022-11-05T20:00, in the configured time zone: +22h46m19.62s
+  Apparent sidereal time for 2022-11-06T20:00, in the configured time zone: +22h50m16.176s
+  Apparent sidereal time for 2022-11-07T20:00, in the configured time zone: +22h54m12.732s
+  Apparent sidereal time for 2022-11-08T20:00, in the configured time zone: +22h58m9.289s
+  Apparent sidereal time for 2022-11-09T20:00, in the configured time zone: +23h2m5.845s
+  Apparent sidereal time for 2022-11-10T20:00, in the configured time zone: +23h6m2.402s
+  Apparent sidereal time for 2022-11-11T20:00, in the configured time zone: +23h9m58.958s
+  Apparent sidereal time for 2022-11-12T20:00, in the configured time zone: +23h13m55.515s
+  Apparent sidereal time for 2022-11-13T20:00, in the configured time zone: +23h17m52.072s
+  Apparent sidereal time for 2022-11-14T20:00, in the configured time zone: +23h21m48.629s
+  Apparent sidereal time for 2022-11-15T20:00, in the configured time zone: +23h25m45.186s
+  Apparent sidereal time for 2022-11-16T20:00, in the configured time zone: +23h29m41.743s
+  Apparent sidereal time for 2022-11-17T20:00, in the configured time zone: +23h33m38.3s
+  Apparent sidereal time for 2022-11-18T20:00, in the configured time zone: +23h37m34.857s
+  Apparent sidereal time for 2022-11-19T20:00, in the configured time zone: +23h41m31.415s
+  Apparent sidereal time for 2022-11-20T20:00, in the configured time zone: +23h45m27.972s
+  Apparent sidereal time for 2022-11-21T20:00, in the configured time zone: +23h49m24.529s
+  Apparent sidereal time for 2022-11-22T20:00, in the configured time zone: +23h53m21.087s
+  Apparent sidereal time for 2022-11-23T20:00, in the configured time zone: +23h57m17.645s
+  Apparent sidereal time for 2022-11-24T20:00, in the configured time zone: +0h1m14.202s
+  Apparent sidereal time for 2022-11-25T20:00, in the configured time zone: +0h5m10.76s
+  Apparent sidereal time for 2022-11-26T20:00, in the configured time zone: +0h9m7.318s
+  Apparent sidereal time for 2022-11-27T20:00, in the configured time zone: +0h13m3.876s
+  Apparent sidereal time for 2022-11-28T20:00, in the configured time zone: +0h17m0.434s
+  Apparent sidereal time for 2022-11-29T20:00, in the configured time zone: +0h20m56.992s
+  Apparent sidereal time for 2022-11-30T20:00, in the configured time zone: +0h24m53.55s
+  Apparent sidereal time for 2022-12-01T20:00, in the configured time zone: +0h28m50.109s
+  Apparent sidereal time for 2022-12-02T20:00, in the configured time zone: +0h32m46.667s
+  Apparent sidereal time for 2022-12-03T20:00, in the configured time zone: +0h36m43.225s
+  Apparent sidereal time for 2022-12-04T20:00, in the configured time zone: +0h40m39.784s
+  Apparent sidereal time for 2022-12-05T20:00, in the configured time zone: +0h44m36.342s
+  Apparent sidereal time for 2022-12-06T20:00, in the configured time zone: +0h48m32.901s
+  Apparent sidereal time for 2022-12-07T20:00, in the configured time zone: +0h52m29.459s
+  Apparent sidereal time for 2022-12-08T20:00, in the configured time zone: +0h56m26.018s
+  Apparent sidereal time for 2022-12-09T20:00, in the configured time zone: +1h0m22.576s
+  Apparent sidereal time for 2022-12-10T20:00, in the configured time zone: +1h4m19.135s
+  Apparent sidereal time for 2022-12-11T20:00, in the configured time zone: +1h8m15.694s
+  Apparent sidereal time for 2022-12-12T20:00, in the configured time zone: +1h12m12.253s
+  Apparent sidereal time for 2022-12-13T20:00, in the configured time zone: +1h16m8.811s
+  Apparent sidereal time for 2022-12-14T20:00, in the configured time zone: +1h20m5.37s
+  Apparent sidereal time for 2022-12-15T20:00, in the configured time zone: +1h24m1.929s
+  Apparent sidereal time for 2022-12-16T20:00, in the configured time zone: +1h27m58.488s
+  Apparent sidereal time for 2022-12-17T20:00, in the configured time zone: +1h31m55.047s
+  Apparent sidereal time for 2022-12-18T20:00, in the configured time zone: +1h35m51.606s
+  Apparent sidereal time for 2022-12-19T20:00, in the configured time zone: +1h39m48.164s
+  Apparent sidereal time for 2022-12-20T20:00, in the configured time zone: +1h43m44.723s
+  Apparent sidereal time for 2022-12-21T20:00, in the configured time zone: +1h47m41.282s
+  Apparent sidereal time for 2022-12-22T20:00, in the configured time zone: +1h51m37.841s
+  Apparent sidereal time for 2022-12-23T20:00, in the configured time zone: +1h55m34.4s
+  Apparent sidereal time for 2022-12-24T20:00, in the configured time zone: +1h59m30.959s
+  Apparent sidereal time for 2022-12-25T20:00, in the configured time zone: +2h3m27.518s
+  Apparent sidereal time for 2022-12-26T20:00, in the configured time zone: +2h7m24.076s
+  Apparent sidereal time for 2022-12-27T20:00, in the configured time zone: +2h11m20.635s
+  Apparent sidereal time for 2022-12-28T20:00, in the configured time zone: +2h15m17.194s
+  Apparent sidereal time for 2022-12-29T20:00, in the configured time zone: +2h19m13.753s
+  Apparent sidereal time for 2022-12-30T20:00, in the configured time zone: +2h23m10.312s
+  Apparent sidereal time for 2022-12-31T20:00, in the configured time zone: +2h27m6.87s
+Constellation lines.
+WARNING!!: CONSTELLATION LINE CROSSES THE WHOLE CHART. Abandoning. Poly: [112405, 107089, 70638, 112405] index:70638 point.x:-1890.9657496508735 start.x:2189.0323699624687
+Star dots.
+Sun's position at 18h standard time (for the location), for each day:
+Starting date-time: 2022-01-01T18:00 JD:2459581.4166666665
+Loading periodic terms for Earth
+  2022-01-01T18:00: α :282.46267138240023 δ:-22.941855990039222
+  2022-01-02T18:00: α :283.5650987429957 δ:-22.850531660508473
+  2022-01-03T18:00: α :284.66599159850426 δ:-22.75162663789119
+  2022-01-04T18:00: α :285.7652021451291 δ:-22.645191844893052
+  2022-01-05T18:00: α :286.8625892070493 δ:-22.531282186739126
+  2022-01-06T18:00: α :287.95801987219295 δ:-22.409956179323444
+  2022-01-07T18:00: α :289.05137013417635 δ:-22.281275631974488
+  2022-01-08T18:00: α :290.1425247133386 δ:-22.145305411263283
+  2022-01-09T18:00: α :291.23137642454236 δ:-22.002113275997083
+  2022-01-10T18:00: α :292.31782546328526 δ:-21.851769752323246
+  2022-01-11T18:00: α :293.4017788452281 δ:-21.69434801749997
+  2022-01-12T18:00: α :294.483150057886 δ:-21.529923775390703
+  2022-01-13T18:00: α :295.5618588677602 δ:-21.358575122356168
+  2022-01-14T18:00: α :296.63783119686764 δ:-21.18038241037702
+  2022-01-15T18:00: α :297.7109990135931 δ:-20.99542811354689
+  2022-01-16T18:00: α :298.7813002153295 δ:-20.80379670114982
+  2022-01-17T18:00: α :299.8486784820584 δ:-20.605574521438708
+  2022-01-18T18:00: α :300.9130830625047 δ:-20.400849704762464
+  2022-01-19T18:00: α :301.97446844545766 δ:-20.18971209851324
+  2022-01-20T18:00: α :303.03279389550056 δ:-19.972253243206783
+  2022-01-21T18:00: α :304.0880228764517 δ:-19.748566390463253
+  2022-01-22T18:00: α :305.1401224166244 δ:-19.518746555439616
+  2022-01-23T18:00: α :306.18906245604103 δ:-19.282890596503886
+  2022-01-24T18:00: α :307.2348151695197 δ:-19.041097323610263
+  2022-01-25T18:00: α :308.277354224923 δ:-18.793467645390034
+  2022-01-26T18:00: α :309.3166539632145 δ:-18.54010476014736
+  2022-01-27T18:00: α :310.3526885854807 δ:-18.281114371503424
+  2022-01-28T18:00: α :311.38543155541885 δ:-18.016604873086674
+  2022-01-29T18:00: α :312.41485549094307 δ:-17.746687419213913
+  2022-01-30T18:00: α :313.4409327607975 δ:-17.471475801371238
+  2022-01-31T18:00: α :314.46363681579714 δ:-17.191086092572736
+  2022-02-01T18:00: α :315.48294404508516 δ:-16.905636089387503
+  2022-02-02T18:00: α :316.49883576199045 δ:-16.61524464637731
+  2022-02-03T18:00: α :317.5112998837496 δ:-16.320031028918855
+  2022-02-04T18:00: α :318.52033198992234 δ:-16.02011439437931
+  2022-02-05T18:00: α :319.52593566437497 δ:-15.715613457951733
+  2022-02-06T18:00: α :320.5281222429297 δ:-15.406646334853981
+  2022-02-07T18:00: α :321.5269102149922 δ:-15.093330503863548
+  2022-02-08T18:00: α :322.52232453308625 δ:-14.775782823464157
+  2022-02-09T18:00: α :323.5143960032054 δ:-14.454119546927016
+  2022-02-10T18:00: α :324.50316082423103 δ:-14.128456310040933
+  2022-02-11T18:00: α :325.48866026963816 δ:-13.798908087894223
+  2022-02-12T18:00: α :326.47094047471086 δ:-13.465589127971755
+  2022-02-13T18:00: α :327.4500522895794 δ:-13.128612869599213
+  2022-02-14T18:00: α :328.4260511538763 δ:-12.788091863111056
+  2022-02-15T18:00: α :329.3989969337753 δ:-12.444137709258035
+  2022-02-16T18:00: α :330.36895364704134 δ:-12.096861046985936
+  2022-02-17T18:00: α :331.3359890084085 δ:-11.746371617732725
+  2022-02-18T18:00: α :332.3001737654355 δ:-11.392778422348162
+  2022-02-19T18:00: α :333.2615808509004 δ:-11.036189966246225
+  2022-02-20T18:00: α :334.2202844236473 δ:-10.67671456952679
+  2022-02-21T18:00: α :335.1763588838781 δ:-10.314460710502576
+  2022-02-22T18:00: α :336.12987793146493 δ:-9.949537374695483
+  2022-02-23T18:00: α :337.08091371029434 δ:-9.58205438909551
+  2022-02-24T18:00: α :338.0295360762857 δ:-9.212122722416112
+  2022-02-25T18:00: α :338.9758120515329 δ:-8.839854721473005
+  2022-02-26T18:00: α :339.9198055635549 δ:-8.465364238011974
+  2022-02-27T18:00: α :340.8615775809895 δ:-8.088766593520846
+  2022-02-28T18:00: α :341.80118671422923 δ:-7.710178345276488
+  2022-03-01T18:00: α :342.7386902514677 δ:-7.3297168567574715
+  2022-03-02T18:00: α :343.6741454819403 δ:-6.9474997266804515
+  2022-03-03T18:00: α :344.6076110715649 δ:-6.563644171444487
+  2022-03-04T18:00: α :345.5391482427813 δ:-6.178266467110213
+  2022-03-05T18:00: α :346.46882157943776 δ:-5.7914815330702965
+  2022-03-06T18:00: α :347.3966993954424 δ:-5.40340269250708
+  2022-03-07T18:00: α :348.3228537241497 δ:-5.014141594432738
+  2022-03-08T18:00: α :349.2473600599108 δ:-4.623808248009006
+  2022-03-09T18:00: α :350.17029699696127 δ:-4.2325111106640385
+  2022-03-10T18:00: α :351.0917458811901 δ:-3.8403571813103623
+  2022-03-11T18:00: α :352.011790543638 δ:-3.4474520681914496
+  2022-03-12T18:00: α :352.9305171467208 δ:-3.053900016451795
+  2022-03-13T18:00: α :353.8480141487908 δ:-2.65980389148039
+  2022-03-14T18:00: α :354.7643723699216 δ:-2.2652651242790607
+  2022-03-15T18:00: α :355.6796851097992 δ:-1.8703836395086189
+  2022-03-16T18:00: α :356.59404822838815 δ:-1.4752578049188643
+  2022-03-17T18:00: α :357.5075600700141 δ:-1.0799844544171706
+  2022-03-18T18:00: α :358.4203211139977 δ:-0.6846590360983114
+  2022-03-19T18:00: α :359.3324332837255 δ:-0.28937591491730597
+  2022-03-20T18:00: α :0.24399893182891935 δ:0.10577117865562564
+  2022-03-21T18:00: α :1.155119609573561 δ:0.5006886032892176
+  2022-03-22T18:00: α :2.065894789483492 δ:0.8952822415712449
+  2022-03-23T18:00: α :2.976420718495479 δ:1.2894569956424318
+  2022-03-24T18:00: α :3.88678953750159 δ:1.6831164058711667
+  2022-03-25T18:00: α :4.797088736737612 δ:2.076162424743836
+  2022-03-26T18:00: α :5.707400956890644 δ:2.468495350850779
+  2022-03-27T18:00: α :6.617804110856015 δ:2.8600139113135916
+  2022-03-28T18:00: α :7.52837179070423 δ:3.250615475317558
+  2022-03-29T18:00: α :8.439173920637721 δ:3.6401963788195455
+  2022-03-30T18:00: α :9.350277602866672 δ:4.028652333883003
+  2022-03-31T18:00: α :10.261748074901668 δ:4.415878883721679
+  2022-04-01T18:00: α :11.173649668207224 δ:4.801771852859718
+  2022-04-02T18:00: α :12.086046649053573 δ:5.1862277392443215
+  2022-04-03T18:00: α :12.99900384722947 δ:5.569144007514788
+  2022-04-04T18:00: α :13.912587031839626 δ:5.950419267083195
+  2022-04-05T18:00: α :14.826863054107667 δ:6.329953345441476
+  2022-04-06T18:00: α :15.741899821050445 δ:6.707647285827309
+  2022-04-07T18:00: α :16.657766179237903 δ:7.083403304265194
+  2022-04-08T18:00: α :17.574531779408563 δ:7.45712473651122
+  2022-04-09T18:00: α :18.49226697772847 δ:7.828715998123734
+  2022-04-10T18:00: α :19.411042820469884 δ:8.198082576024753
+  2022-04-11T18:00: α :20.33093115122424 δ:8.565131065588965
+  2022-04-12T18:00: α :21.252004856959328 δ:8.929769257016114
+  2022-04-13T18:00: α :22.174338215384346 δ:9.291906252848408
+  2022-04-14T18:00: α :23.09800722782085 δ:9.651452568750939
+  2022-04-15T18:00: α :24.023089750546944 δ:10.008320145313721
+  2022-04-16T18:00: α :24.94966522045324 δ:10.362422197695363
+  2022-04-17T18:00: α :25.87781383923276 δ:10.713672862526465
+  2022-04-18T18:00: α :26.807615224993945 δ:11.061986660898384
+  2022-04-19T18:00: α :27.73914671172342 δ:11.407277860828428
+  2022-04-20T18:00: α :28.67248159933693 δ:11.749459862744809
+  2022-04-21T18:00: α :29.607687676924282 δ:12.088444729365973
+  2022-04-22T18:00: α :30.54482624848308 δ:12.424142936936287
+  2022-04-23T18:00: α :31.483951732507244 δ:12.75646336017955
+  2022-04-24T18:00: α :32.42511175511269 δ:13.08531344654809
+  2022-04-25T18:00: α :33.36834757310985 δ:13.410599508125078
+  2022-04-26T18:00: α :34.313694666105704 δ:13.732227065249571
+  2022-04-27T18:00: α :35.26118339345938 δ:14.05010120016997
+  2022-04-28T18:00: α :36.21083967426978 δ:14.364126903201194
+  2022-04-29T18:00: α :37.16268567532697 δ:14.674209404100743
+  2022-04-30T18:00: α :38.11674048052782 δ:14.980254478394805
+  2022-05-01T18:00: α :39.07302069192748 δ:15.282168712252249
+  2022-05-02T18:00: α :40.031540908079236 δ:15.579859710327412
+  2022-05-03T18:00: α :40.9923140520112 δ:15.873236241608879
+  2022-05-04T18:00: α :41.95535156240112 δ:16.162208332089698
+  2022-05-05T18:00: α :42.92066349243779 δ:16.446687321890483
+  2022-05-06T18:00: α :43.88825856357148 δ:16.72658590361341
+  2022-05-07T18:00: α :44.858144208906474 δ:17.00181815332464
+  2022-05-08T18:00: α :45.83032663521346 δ:17.272299562521873
+  2022-05-09T18:00: α :46.80481094914011 δ:17.537947082649463
+  2022-05-10T18:00: α :47.781601415886136 δ:17.798679197622175
+  2022-05-11T18:00: α :48.760701908292646 δ:18.054416033929023
+  2022-05-12T18:00: α :49.74211652943859 δ:18.305079496123795
+  2022-05-13T18:00: α :50.72585025871797 δ:18.550593383240525
+  2022-05-14T18:00: α :51.711909342519625 δ:18.79088341757216
+  2022-05-15T18:00: α :52.700301109658575 δ:19.025877120965205
+  2022-05-16T18:00: α :53.69103299712054 δ:19.255503513643824
+  2022-05-17T18:00: α :54.68411080774823 δ:19.47969267424839
+  2022-05-18T18:00: α :55.6795364954879 δ:19.698375258958542
+  2022-05-19T18:00: α :56.67730595681386 δ:19.911482102353688
+  2022-05-20T18:00: α :57.67740731078476 δ:20.118944000184825
+  2022-05-21T18:00: α :58.679819968721425 δ:20.32069171414609
+  2022-05-22T18:00: α :59.68451452231372 δ:20.51665617083465
+  2022-05-23T18:00: α :60.691453241921934 δ:20.706768780780237
+  2022-05-24T18:00: α :61.70059087661453 δ:20.890961795169815
+  2022-05-25T18:00: α :62.71187549605657 δ:21.069168641420845
+  2022-05-26T18:00: α :63.725249248779065 δ:21.241324214204656
+  2022-05-27T18:00: α :64.74064903527912 δ:21.407365124852355
+  2022-05-28T18:00: α :65.7580071444437 δ:21.56722992000859
+  2022-05-29T18:00: α :66.77725187808232 δ:21.720859274546026
+  2022-05-30T18:00: α :67.79830813994795 δ:21.868196155738914
+  2022-05-31T18:00: α :68.82109794655867 δ:22.009185954416896
+  2022-06-01T18:00: α :69.8455408432761 δ:22.143776584456365
+  2022-06-02T18:00: α :70.87155425376443 δ:22.271918558345313
+  2022-06-03T18:00: α :71.89905381310083 δ:22.39356504772135
+  2022-06-04T18:00: α :72.92795371796839 δ:22.508671933383102
+  2022-06-05T18:00: α :73.95816709545001 δ:22.61719784429396
+  2022-06-06T18:00: α :74.98960638615479 δ:22.719104184473046
+  2022-06-07T18:00: α :76.02218377644206 δ:22.81435515037154
+  2022-06-08T18:00: α :77.05581176725438 δ:22.90291774385716
+  2022-06-09T18:00: α :78.09040396825127 δ:22.984761781409713
+  2022-06-10T18:00: α :79.12587610723851 δ:23.05985988860163
+  2022-06-11T18:00: α :80.1621470626371 δ:23.128187458016168
+  2022-06-12T18:00: α :81.19913955497657 δ:23.189722549259802
+  2022-06-13T18:00: α :82.23678009224628 δ:23.2444457269423
+  2022-06-14T18:00: α :83.27499792175308 δ:23.292339860740167
+  2022-06-15T18:00: α :84.31372306453072 δ:23.333389936541842
+  2022-06-16T18:00: α :85.35288385270229 δ:23.36758293390738
+  2022-06-17T18:00: α :86.39240459214001 δ:23.39490780746664
+  2022-06-18T18:00: α :87.43220392355371 δ:23.415355576050537
+  2022-06-19T18:00: α :88.47219418468941 δ:23.42891949024026
+  2022-06-20T18:00: α :89.5122817176581 δ:23.43559523174494
+  2022-06-21T18:00: α :90.55236779398149 δ:23.43538110185264
+  2022-06-22T18:00: α :91.59234975028039 δ:23.42827817432595
+  2022-06-23T18:00: α :92.63212203383529 δ:23.41429040790915
+  2022-06-24T18:00: α :93.67157704916424 δ:23.393424725082415
+  2022-06-25T18:00: α :94.71060584845524 δ:23.365691064926274
+  2022-06-26T18:00: α :95.7490987561033 δ:23.33110241395705
+  2022-06-27T18:00: α :96.78694597526012 δ:23.289674815846414
+  2022-06-28T18:00: α :97.82403816244567 δ:23.241427361487037
+  2022-06-29T18:00: α :98.86026693682136 δ:23.186382162702785
+  2022-06-30T18:00: α :99.89552532307506 δ:23.124564312624194
+  2022-07-01T18:00: α :100.92970817227764 δ:23.056001832637392
+  2022-07-02T18:00: α :101.96271261548202 δ:22.980725602678646
+  2022-07-03T18:00: α :102.99443857058648 δ:22.898769271603925
+  2022-07-04T18:00: α :104.02478927910772 δ:22.810169147220652
+  2022-07-05T18:00: α :105.05367184607675 δ:22.714964067147726
+  2022-07-06T18:00: α :106.08099780539904 δ:22.613195248068056
+  2022-07-07T18:00: α :107.1066837937474 δ:22.504906103187984
+  2022-07-08T18:00: α :108.13065241352471 δ:22.39014201373071
+  2022-07-09T18:00: α :109.15283325541175 δ:22.26895004959849
+  2022-07-10T18:00: α :110.17316386263956 δ:22.14137866015523
+  2022-07-11T18:00: α :111.19159026235826 δ:22.007477388558577
+  2022-07-12T18:00: α :112.20806667964455 δ:21.867296683733056
+  2022-07-13T18:00: α :113.22255424430098 δ:21.720887874862008
+  2022-07-14T18:00: α :114.23501883686595 δ:21.568303330751867
+  2022-07-15T18:00: α :115.24542854489526 δ:21.409596766298165
+  2022-07-16T18:00: α :116.25375135358429 δ:21.244823608284356
+  2022-07-17T18:00: α :117.25995359585932 δ:21.07404131796102
+  2022-07-18T18:00: α :118.2639993894497 δ:20.897309594803072
+  2022-07-19T18:00: α :119.26585094156452 δ:20.714690439211342
+  2022-07-20T18:00: α :120.26546936606705 δ:20.526248103728786
+  2022-07-21T18:00: α :121.26281561811928 δ:20.332048988520587
+  2022-07-22T18:00: α :122.25785127881038 δ:20.132161530791677
+  2022-07-23T18:00: α :123.2505391095643 δ:19.926656111745327
+  2022-07-24T18:00: α :124.24084343305978 δ:19.715604978920283
+  2022-07-25T18:00: α :125.22873043421829 δ:19.49908217064935
+  2022-07-26T18:00: α :126.21416843482025 δ:19.277163433882972
+  2022-07-27T18:00: α :127.19712814575782 δ:19.04992613562332
+  2022-07-28T18:00: α :128.17758288864644 δ:18.817449170983632
+  2022-07-29T18:00: α :129.15550880603482 δ:18.579812864520964
+  2022-07-30T18:00: α :130.130885108482 δ:18.337098853286733
+  2022-07-31T18:00: α :131.10369440301898 δ:18.089389938802444
+  2022-08-01T18:00: α :132.07392310852396 δ:17.836769903490797
+  2022-08-02T18:00: α :133.04156192473067 δ:17.579323297449182
+  2022-08-03T18:00: α :134.00660632010582 δ:17.317135203546588
+  2022-08-04T18:00: α :134.96905704448025 δ:17.050290979141394
+  2022-08-05T18:00: α :135.9289207148719 δ:16.778875960418755
+  2022-08-06T18:00: α :136.88621050909722 δ:16.502975117397753
+  2022-08-07T18:00: α :137.8409469076183 δ:16.222672674288027
+  2022-08-08T18:00: α :138.79315828308708 δ:15.938051755199682
+  2022-08-09T18:00: α :139.74288103847294 δ:15.64919415400095
+  2022-08-10T18:00: α :140.69015902343347 δ:15.356180330228222
+  2022-08-11T18:00: α :141.63504213754626 δ:15.059089686315273
+  2022-08-12T18:00: α :142.5775842973873 δ:14.7580010971252
+  2022-08-13T18:00: α :143.51784117746953 δ:14.452993577795654
+  2022-08-14T18:00: α :144.45586821830824 δ:14.144146930863023
+  2022-08-15T18:00: α :145.3917192887566 δ:13.831542229854657
+  2022-08-16T18:00: α :146.32544614517303 δ:13.515262065907889
+  2022-08-17T18:00: α :147.25709856857148 δ:13.19539057048448
+  2022-08-18T18:00: α :148.18672489510956 δ:12.872013291399574
+  2022-08-19T18:00: α :149.11437263513895 δ:12.545217018194165
+  2022-08-20T18:00: α :150.0400889763545 δ:12.215089628412464
+  2022-08-21T18:00: α :150.96392110253777 δ:11.881719984167644
+  2022-08-22T18:00: α :151.88591636169778 δ:11.545197872831006
+  2022-08-23T18:00: α :152.8061223499383 δ:11.20561397207868
+  2022-08-24T18:00: α :153.72458696221804 δ:10.863059822760746
+  2022-08-25T18:00: α :154.6413584384872 δ:10.517627799879744
+  2022-08-26T18:00: α :155.55648543017355 δ:10.16941107238784
+  2022-08-27T18:00: α :156.47001712747 δ:9.818503535827972
+  2022-08-28T18:00: α :157.3820034958669 δ:9.464999697696665
+  2022-08-29T18:00: α :158.2924956539105 δ:9.108994500792265
+  2022-08-30T18:00: α :159.2015463851533 δ:8.750583084816872
+  2022-08-31T18:00: α :160.10921074292338 δ:8.38986050087907
+  2022-09-01T18:00: α :161.0155466974304 δ:8.026921398688838
+  2022-09-02T18:00: α :161.92061579459056 δ:7.661859699722832
+  2022-09-03T18:00: α :162.82448381609373 δ:7.294768262305133
+  2022-09-04T18:00: α :163.72722142106463 δ:6.925738548629732
+  2022-09-05T18:00: α :164.62890469506078 δ:6.5548603267242225
+  2022-09-06T18:00: α :165.5296154624798 δ:6.182221470625827
+  2022-09-07T18:00: α :166.42944118132104 δ:5.807907939758306
+  2022-09-08T18:00: α :167.32847428191764 δ:5.432004002754683
+  2022-09-09T18:00: α :168.2268109408054 δ:5.054592716990151
+  2022-09-10T18:00: α :169.1245494492436 δ:4.675756601881867
+  2022-09-11T18:00: α :170.0217884719728 δ:4.295578381886148
+  2022-09-12T18:00: α :170.918625527148 δ:3.9141416547861057
+  2022-09-13T18:00: α :171.81515593757342 δ:3.531531371191325
+  2022-09-14T18:00: α :172.71147234197232 δ:3.1478340786241463
+  2022-09-15T18:00: α :173.60766468732155 δ:2.7631379566409393
+  2022-09-16T18:00: α :174.50382051532668 δ:2.37753271872776
+  2022-09-17T18:00: α :175.40002533775066 δ:1.9911094677742975
+  2022-09-18T18:00: α :176.2963629495815 δ:1.6039605707775713
+  2022-09-19T18:00: α :177.1929156115356 δ:1.2161795837453262
+  2022-09-20T18:00: α :178.08976409995566 δ:0.8278612289235174
+  2022-09-21T18:00: α :178.9869876578219 δ:0.43910141051137525
+  2022-09-22T18:00: α :179.88466388901887 δ:0.0499972508269971
+  2022-09-23T18:00: α :180.78286864403725 δ:-0.3393528741044826
+  2022-09-24T18:00: α :181.68167595712353 δ:-0.7288493258372776
+  2022-09-25T18:00: α :182.581158107753 δ:-1.118391253387642
+  2022-09-26T18:00: α :183.48138587819466 δ:-1.5078767324407785
+  2022-09-27T18:00: α :184.3824290485869 δ:-1.8972030106123732
+  2022-09-28T18:00: α :185.28435711901088 δ:-2.2862668520325875
+  2022-09-29T18:00: α :186.1872401918125 δ:-2.6749649494323102
+  2022-09-30T18:00: α :187.09114991164375 δ:-3.0631943562098995
+  2022-10-01T18:00: α :187.9961603564941 δ:-3.450852889523701
+  2022-10-02T18:00: α :188.90234879225923 δ:-3.837839464635119
+  2022-10-03T18:00: α :189.8097962275416 δ:-4.224054332281073
+  2022-10-04T18:00: α :190.7185877168671 δ:-4.60939919715099
+  2022-10-05T18:00: α :191.6288123604304 δ:-4.993777197107274
+  2022-10-06T18:00: α :192.54056295033487 δ:-5.3770927254159835
+  2022-10-07T18:00: α :193.4539352413227 δ:-5.7592510920195314
+  2022-10-08T18:00: α :194.36902688257013 δ:-6.140158045995511
+  2022-10-09T18:00: α :195.28593612503568 δ:-6.519719214269139
+  2022-10-10T18:00: α :196.20476048222156 δ:-6.897839536629145
+  2022-10-11T18:00: α :197.12559553980594 δ:-7.274422781313299
+  2022-10-12T18:00: α :198.04853406598914 δ:-7.649371203526197
+  2022-10-13T18:00: α :198.9736654859486 δ:-8.022585369510798
+  2022-10-14T18:00: α :199.90107568383624 δ:-8.393964126162949
+  2022-10-15T18:00: α :200.8308470244343 δ:-8.763404667461417
+  2022-10-16T18:00: α :201.76305846281704 δ:-9.130802641256917
+  2022-10-17T18:00: α :202.69778563154907 δ:-9.496052250991282
+  2022-10-18T18:00: α :203.63510083694086 δ:-9.859046325916042
+  2022-10-19T18:00: α :204.57507293593846 δ:-10.219676350757664
+  2022-10-20T18:00: α :205.51776709346302 δ:-10.57783245761941
+  2022-10-21T18:00: α :206.46324444191498 δ:-10.933403391493991
+  2022-10-22T18:00: α :207.41156169619867 δ:-11.286276472140246
+  2022-10-23T18:00: α :208.36277081850054 δ:-11.63633758854282
+  2022-10-24T18:00: α :209.3169188666931 δ:-11.98347127339135
+  2022-10-25T18:00: α :210.27404816665296 δ:-12.32756090241737
+  2022-10-26T18:00: α :211.234196902335 δ:-12.66848904140641
+  2022-10-27T18:00: α :212.19740011811066 δ:-13.006137924679752
+  2022-10-28T18:00: α :213.1636910076802 δ:-13.340390006557671
+  2022-10-29T18:00: α :214.13310227110796 δ:-13.6711284996194
+  2022-10-30T18:00: α :215.10566729712139 δ:-13.998237813317289
+  2022-10-31T18:00: α :216.08142098112594 δ:-14.321603833725817
+  2022-11-01T18:00: α :217.06040009303067 δ:-14.641114027128435
+  2022-11-02T18:00: α :218.04264321466715 δ:-14.956657388487088
+  2022-11-03T18:00: α :219.0281903318302 δ:-15.26812427670333
+  2022-11-04T18:00: α :220.01708217654433 δ:-15.575406179309212
+  2022-11-05T18:00: α :221.00935939198496 δ:-15.878395438876678
+  2022-11-06T18:00: α :222.0050615669881 δ:-16.17698496319457
+  2022-11-07T18:00: α :223.00422618804467 δ:-16.471067939759347
+  2022-11-08T18:00: α :224.00688758081657 δ:-16.760537580037134
+  2022-11-09T18:00: α :225.0130759375425 δ:-17.045286922518457
+  2022-11-10T18:00: α :226.02281652419606 δ:-17.325208718315878
+  2022-11-11T18:00: α :227.03612912071193 δ:-17.600195407462913
+  2022-11-12T18:00: α :228.05302768675452 δ:-17.87013917511718
+  2022-11-13T18:00: α :229.07352019117403 δ:-18.134932062791943
+  2022-11-14T18:00: α :230.09760852180256 δ:-18.394466106920003
+  2022-11-15T18:00: α :231.12528839941518 δ:-18.648633482603795
+  2022-11-16T18:00: α :232.1565492421058 δ:-18.89732663939426
+  2022-11-17T18:00: α :233.19137393763924 δ:-19.140438421262395
+  2022-11-18T18:00: α :234.2297384887294 δ:-19.377862166827967
+  2022-11-19T18:00: α :235.271611511957 δ:-19.609491791294047
+  2022-11-20T18:00: α :236.31695362816188 δ:-19.835221864854766
+  2022-11-21T18:00: α :237.36571687554797 δ:-20.054947719840687
+  2022-11-22T18:00: α :238.41784437309775 δ:-20.268565631404478
+  2022-11-23T18:00: α :239.47327049619153 δ:-20.47597311120494
+  2022-11-24T18:00: α :240.5319217508806 δ:-20.677069325360105
+  2022-11-25T18:00: α :241.5937183463518 δ:-20.871755603865324
+  2022-11-26T18:00: α :242.65857623551085 δ:-21.05993596823575
+  2022-11-27T18:00: α :243.72640922005075 δ:-21.241517586981757
+  2022-11-28T18:00: α :244.79713068677532 δ:-21.41641108528156
+  2022-11-29T18:00: α :245.87065467186002 δ:-21.584530678711527
+  2022-11-30T18:00: α :246.94689617868605 δ:-21.745794151403825
+  2022-12-01T18:00: α :248.02577089440058 δ:-21.90012273438444
+  2022-12-02T18:00: α :249.10719456659646 δ:-22.04744094796945
+  2022-12-03T18:00: α :250.19108228452944 δ:-22.187676456039146
+  2022-12-04T18:00: α :251.27734780322223 δ:-22.3207599541036
+  2022-12-05T18:00: α :252.36590293420898 δ:-22.446625092574838
+  2022-12-06T18:00: α :253.45665697029526 δ:-22.565208429321128
+  2022-12-07T18:00: α :254.54951612691133 δ:-22.676449408789836
+  2022-12-08T18:00: α :255.64438303066902 δ:-22.780290370274066
+  2022-12-09T18:00: α :256.7411563168542 δ:-22.87667658876235
+  2022-12-10T18:00: α :257.8397303791962 δ:-22.96555634687175
+  2022-12-11T18:00: α :258.93999526918344 δ:-23.04688103061008
+  2022-12-12T18:00: α :260.04183669942796 δ:-23.12060523906531
+  2022-12-13T18:00: α :261.1451360967258 δ:-23.18668690010033
+  2022-12-14T18:00: α :262.2497706679619 δ:-23.24508738800089
+  2022-12-15T18:00: α :263.3556134535401 δ:-23.2957716415564
+  2022-12-16T18:00: α :264.4625333268057 δ:-23.338708281887087
+  2022-12-17T18:00: α :265.5703948654889 δ:-23.37386973074038
+  2022-12-18T18:00: α :266.6790580234475 δ:-23.40123233418793
+  2022-12-19T18:00: α :267.7883776099015 δ:-23.42077650180381
+  2022-12-20T18:00: α :268.89820273889467 δ:-23.43248687206562
+  2022-12-21T18:00: α :270.00837657162157 δ:-23.436352505459087
+  2022-12-22T18:00: α :271.1187367333096 δ:-23.43236708801709
+  2022-12-23T18:00: α :272.22911666768806 δ:-23.42052910802981
+  2022-12-24T18:00: α :273.3393479094362 δ:-23.400841959748288
+  2022-12-25T18:00: α :274.4492629201671 δ:-23.373313938537883
+  2022-12-26T18:00: α :275.5586979062741 δ:-23.33795812014709
+  2022-12-27T18:00: α :276.6674950324447 δ:-23.29479214998195
+  2022-12-28T18:00: α :277.775503668473 δ:-23.243837990413187
+  2022-12-29T18:00: α :278.8825806503261 δ:-23.18512167517254
+  2022-12-30T18:00: α :279.98858983199085 δ:-23.118673102045932
+  2022-12-31T18:00: α :281.093401331028 δ:-23.044525870375125
+Path of the Moon's orbit for 2022-7-1.0
+Moon's ASCENDING_NODE: λ :49.950068352364454 β:0.0 α :47.50510318284926 δ:17.725439921598632
+Moon's DESCENDING_NODE: λ :229.95006835236444 β:0.0 α :227.50510318284924 δ:-17.72543992159863
+Moon's HIGHEST_POINT: λ :139.95006835236444 β:5.1454 α :144.0784274152349 δ:19.704850757704712
+Flushing graphics.
+Closing the doc.
+Generating transparency PDF.
+Open the doc. Initial setup of pdf Document. Setting page size, margins. Reading in fonts.
+Registering all fonts in C:\WINDOWS\FONTS
+Fresh graphics context, and a new page.
+Graphics font: Times New Roman
+Transparency, for altitude and azimuth.
+Time scale.
+Flushing graphics.
+Closing the doc.
+File saved to C:\Temp\starchart.pdf
+File saved to C:\Temp\transparency.pdf
+Done.

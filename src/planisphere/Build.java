@@ -14,6 +14,7 @@ import com.itextpdf.text.DocumentException;
 
 import planisphere.config.Config;
 import planisphere.config.ConfigFromFile;
+import planisphere.draw.ChartUtil;
 import planisphere.draw.starchart.GenerateStarChart;
 import planisphere.draw.transparency.GenerateTransparency;
 
@@ -42,6 +43,7 @@ public final class Build {
     log("Config:");
     Config config = new ConfigFromFile().init();
     log(config.toString());
+    log("Limiting magnitude: " + ChartUtil.LIMITING_MAG);
     
     log("Generating star chart PDF.");
     GenerateStarChart starChart = new GenerateStarChart(config);

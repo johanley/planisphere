@@ -23,8 +23,12 @@ public class ChartUtil {
   /** Percent of total width. */
   public static final Double BORDER_WIDTH_SCALES = 2.0;
   
-  /** The limiting magnitude used for all charts. Value: {@value}. */
-  public static final Double LIMITING_MAG = 5.01;
+  /** 
+   The limiting magnitude used for all charts. Value: {@value}.
+   Cross-talk: the constellation lines are very sensitive to this value.
+   If the value is too bright, then some constellation lines will not be drawn. 
+  */
+  public static final Double LIMITING_MAG = 5.02;
   
   /**
    The font used for the PDF.   
