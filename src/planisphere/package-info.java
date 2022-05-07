@@ -26,7 +26,7 @@
  
  <P>The planisphere's star chart includes:
  <ul>
-  <li>stars brighter than magnitude 5.01 (derived from the Yale Bright Star Catalog)
+  <li>stars brighter than magnitude 5.02 (derived from <a href='https://github.com/johanley/star-catalog'>this catalog</a>)
   <li>the position of the Sun, every day at 18h (in the configured time zone)
   <li>the path of the Moon's orbit on July 1 of the configured year
   <li>the celestial equator
@@ -121,7 +121,7 @@
  
  <P>Some data I used in building this tool:
  <ul>
-  <li>stars: the star catalog is a slightly modified version of the Yale Bright Star catalog (YBS)
+  <li>stars: the star catalog is from <a href='https://github.com/johanley/star-catalog'>this project</a>
   <li>planets: the VSOP87D data for the planets, by <a href='https://ui.adsabs.harvard.edu/abs/1988A%26A...202..309B/abstract'>Bretagnon and Francou</a>.
   <li>Moon: the abridged form of ELP 2000-82 as published in Astronomical Algorithms, by Meeus 1991.
   <li>precession: algorithm and tables for P/Q, X/Y, and p/epsilon from 
