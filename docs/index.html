@@ -233,78 +233,74 @@ The main <b>design goals</b> of this planisphere are:
  
  
  <h3>Year of Closest Approach to the Equatorial Pole</h3>
- These are the raw results, using data from Hipparcos-2 astrometry, with full 3D kinematics for proper motion. 
+ These are the raw results rounded to the nearest arcsecond, using data from Hipparcos-2 astrometry, with full 3D kinematics for proper motion. 
  The error bars in the underlying data are not used in these calculations.
  
  <P>See the <a href='https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf'>underlying paper</a> (Figure 11)  
  for estimates of the accuracy of the precession algorithm over long time scales.
  
- <P>See the <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/astro/precession/ClosestApproachToPole.java'>ClosestApproachToPole</a> class.
+ <P>This data was generated using the <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/astro/precession/ClosestApproachToPole.java'>ClosestApproachToPole</a> class.
  
  
 <P>For the years -100,000..+100,000 in the northern sky:
 <pre>
  Star  Year   Separation
 -----------------------------------
-α Lyr +89851 +0°18'03.089'' Vega
-α Cyg -40834 +2°52'26.731'' Deneb
-α UMi -74968 +0°00'10.681'' Polaris 
-β UMi -27240 +2°08'43.000'' Kochab
-α Cep +58105 +0°05'13.585'' Alderamin
-λ Cep -44141 +0°15'18.849'' 
-α Dra - 2796 +0°05'50.601'' Thuban
-τ Her - 7607 +0°31'31.678'' 
+α Lyr +89851 +0°18'03'' Vega
+α Cyg -40834 +2°52'27'' Deneb
+α UMi -74968 +0°00'11'' Polaris 
+β UMi -27240 +2°08'43'' Kochab
+α Cep +58105 +0°05'14'' Alderamin
+λ Cep -44141 +0°15'19'' 
+α Dra - 2796 +0°05'51'' Thuban
+τ Her - 7607 +0°31'32'' 
 </pre>
-Note how close Polaris comes to the pole! 
-However, according to the <a href='https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf'>underlying paper</a> (see its Figure 11), 
-the precession algorithm has an error of about 30 arcseconds on a timescale of 75,000 years.
-In addition, a more robust calculation would take into account the errors in the underlying Hipparcos-2 astrometric data.
-
-<P>A previous, less accurate calculation using data from the Yale Bright Star Catalog gave a result of about 4 arcmin for the minimum separation of Polaris over the 
-same time frame. 
+On the time-scale of +/-100,000 years, the error of the precession algorithm is about 300 arcseconds (5 arcminutes).
+Note how close Polaris comes to the pole. 
 
 <P>For the years -100,000..+100,000 in the southern sky:
 <pre>
   Star  Year   Separation
 -------------------------------------
-α  Dor -32064 +4°04'47.559'' 
-γ  Dor -31862 +0°39'29.884'' 
-α  Eri +73449 +3°49'57.548'' Achernar
-γ  Cha -22453 +0°12'25.254'' 
-α  Car +91325 +5°24'48.682'' Canopus
-ω  Car -71400 +0°06'14.607'' 
-δ  Vel + 9245 +0°10'08.031'' Alsephina
-γ2 Vel +36629 +0°07'35.141'' Regor
-σ  Pup -14093 +0°22'46.678'' 
+α  Dor -32064 +4°04'48'' 
+γ  Dor -31862 +0°39'30'' 
+α  Eri +73449 +3°49'58'' Achernar
+γ  Cha -22453 +0°12'25'' 
+α  Car +91325 +5°24'49'' Canopus
+ω  Car -71400 +0°06'14'' 
+δ  Vel + 9245 +0°10'08'' Alsephina
+γ2 Vel +36629 +0°07'35'' Regor
+σ  Pup -14093 +0°22'47'' 
 </pre>
 
 <P>For the years -15,000..+15,000 in the northern sky:
 <pre>
  Star  Year   Separation
 -----------------------------------
-α Lyr -12049 +3°25'48.420'' Vega      <a href='basic/basic_chart-12049-N.pdf'>chart</a>
-α Cyg +10202 +7°27'23.976'' Deneb     <a href='basic/basic_chart+10202-N.pdf'>chart</a>
-α UMi + 2102 +0°27'37.558'' Polaris
-β UMi - 1059 +6°31'40.126'' Kochab    <a href='basic/basic_chart-1059-N.pdf'>chart</a>
-α Cep + 7539 +1°55'12.019'' Alderamin <a href='basic/basic_chart+7539-N.pdf'>chart</a>
-λ Cep + 7319 +4°54'51.287'' 
-α Dra - 2796 +0°05'50.601'' Thuban    <a href='basic/basic_chart-2796-N.pdf'>chart</a>
-τ Her - 7607 +0°31'31.678''           <a href='basic/basic_chart-7607-N.pdf'>chart</a>
+α Lyr -12049 +3°25'48'' Vega      <a href='basic/basic_chart-12049-N.pdf'>chart</a>
+α Cyg +10202 +7°27'24'' Deneb     <a href='basic/basic_chart+10202-N.pdf'>chart</a>
+α UMi + 2102 +0°27'38'' Polaris
+β UMi - 1059 +6°31'40'' Kochab    <a href='basic/basic_chart-1059-N.pdf'>chart</a>
+α Cep + 7539 +1°55'12'' Alderamin <a href='basic/basic_chart+7539-N.pdf'>chart</a>
+λ Cep + 7319 +4°54'51'' 
+α Dra - 2796 +0°05'51'' Thuban    <a href='basic/basic_chart-2796-N.pdf'>chart</a>
+τ Her - 7607 +0°31'32''           <a href='basic/basic_chart-7607-N.pdf'>chart</a>
 </pre>
-
+On the time-scale of +/-15,000 years, the error of the precession algorithm is about 50 arcseconds.
+ 
 <P>For the years -15,000..+15,000 in the southern sky:
 <pre>
  Star  Year   Separation
 -----------------------------------
-α Dor  - 6963 +9°07'59.136'' 
-γ Dor  - 6869 +4°58'28.700'' 
-α Eri  - 3360 +6°59'19.067'' Achernar
-γ Cha  + 4125 +1°31'51.294''           <a href='basic/basic_chart+4125-S.pdf'>chart</a>  
-α Car  +13844 +7°26'46.462'' Canopus   <a href='basic/basic_chart+13844-S.pdf'>chart</a>  
-ω Car  + 5788 +0°45'51.105''           <a href='basic/basic_chart+5788-S.pdf'>chart</a>
-δ Vel  + 9245 +0°10'08.031'' Alsephina <a href='basic/basic_chart+9245-S.pdf'>chart</a>
-γ2 Vel -15000 +2°32'30.217'' Regor
-σ Pup  -14093 +0°22'46.678''           <a href='basic/basic_chart-14093-S.pdf'>chart</a>
+α Dor  - 6963 +9°07'59'' 
+γ Dor  - 6869 +4°58'29'' 
+α Eri  - 3360 +6°59'19'' Achernar
+γ Cha  + 4125 +1°31'51''           <a href='basic/basic_chart+4125-S.pdf'>chart</a>  
+α Car  +13844 +7°26'46'' Canopus   <a href='basic/basic_chart+13844-S.pdf'>chart</a>  
+ω Car  + 5788 +0°45'51''           <a href='basic/basic_chart+5788-S.pdf'>chart</a>
+δ Vel  + 9245 +0°10'08'' Alsephina <a href='basic/basic_chart+9245-S.pdf'>chart</a>
+γ2 Vel -15000 +2°32'30'' Regor
+σ Pup  -14093 +0°22'47''           <a href='basic/basic_chart-14093-S.pdf'>chart</a>
 </pre>
  
 
