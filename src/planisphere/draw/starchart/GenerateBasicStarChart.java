@@ -39,7 +39,7 @@ public final class GenerateBasicStarChart extends GeneratePdfABC {
     log("Using " + stars.size() + " stars out of " + starCatalog.all().size());
     
     ConstellationLines constellationLines = new ConstellationLines();
-    constellationLines.readData();
+    constellationLines.readData(config.discardPolaris());
     log("Size of constellation lines map: " + constellationLines.all().size());
     
     Projection projection = new StereographicProjection(config);

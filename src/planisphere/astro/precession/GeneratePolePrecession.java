@@ -28,7 +28,7 @@ public final class GeneratePolePrecession extends GeneratePdfABC {
   
   /**
    Stars and constellation lines. Circles for the ecliptic and the equator.
-   Uses a stereographic projection.
+   Uses a stereographic projection. Never discards Polaris.
    See {@link DrawPoles}.
   */
   protected void addContentToTheDocument(Graphics2D g) throws DocumentException, MalformedURLException, IOException {
@@ -40,7 +40,7 @@ public final class GeneratePolePrecession extends GeneratePdfABC {
     log("Using " + stars.size() + " stars out of " + starCatalog.all().size());
     
     ConstellationLines constellationLines = new ConstellationLines();
-    constellationLines.readData();
+    constellationLines.readData(Boolean.FALSE);
     log("Size of constellation lines map: " + constellationLines.all().size());
     
     Projection projection = new StereographicProjection(config);

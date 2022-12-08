@@ -38,7 +38,10 @@ public final class Constants {
   public static final float MARGIN_RIGHT = pointsFromIn(0.75f);
   public static final float MARGIN_TOP = pointsFromIn(0.75f);
   public static final float MARGIN_BOTTOM = pointsFromIn(0.5f);
-  public static final float FONT_SIZE_NORMAL = 12F; 
+  public static final float FONT_SIZE_NORMAL = 12F;
+  
+  /** The identifier for Polaris in the underlying star catalog - {@value}.*/
+  public static final Integer POLARIS = 11767;
   
   //PRIVATE 
   

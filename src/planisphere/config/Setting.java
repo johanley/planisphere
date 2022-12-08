@@ -21,6 +21,7 @@ enum Setting {
   month_names,
   lunar_transits_title,
   planetary_transits_title,
-  planet_names;
+  planet_names,
+  discard_polaris;
   
 }

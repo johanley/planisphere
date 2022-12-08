@@ -70,6 +70,7 @@ public final class ConfigFromFile {
   private String lunarTransitsTitle = "";
   private String planetaryTransitsTitle = "";
   private String planetNames = "";
+  private Boolean discardPolaris = Boolean.TRUE;
 
   private void processEach(String line) {
     if (line.startsWith(DataFileReader.COMMENT) || line.length() == 0) {
@@ -138,6 +139,9 @@ public final class ConfigFromFile {
       else if (matches(Setting.planet_names, parts)) {
         planetNames = asString(parts);
       }
+      else if (matches(Setting.discard_polaris, parts)) {
+        discardPolaris = asBoolean(parts);
+      }
     }
   }
   
@@ -161,6 +165,10 @@ public final class ConfigFromFile {
     return Integer.valueOf(asString(parts));
   }
   
+  private Boolean asBoolean(String[] parts) {
+    return Boolean.valueOf(asString(parts));
+  }
+  
   private static final int POINTS_PER_INCH = 72; //the itext default is 72
 
   private Float asPoints(String[] parts) {
@@ -172,7 +180,7 @@ public final class ConfigFromFile {
       year, location, latitude, longitude, hoursOffsetFromUT, minutesOffsetFromUT, declinationGap, 
       width, height, outputDir, fontDir, greyConstellationLines, greyAltAzLines, 
       smallestTimeDivision, radiants, monthNames, lunarTransitsTitle, 
-      planetaryTransitsTitle, planetNames
+      planetaryTransitsTitle, planetNames, discardPolaris
     );
   }
 }

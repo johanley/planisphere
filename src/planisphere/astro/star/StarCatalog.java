@@ -16,6 +16,7 @@ import java.util.Optional;
 import planisphere.astro.precession.LongTermPrecession;
 import planisphere.astro.time.AstroUtil;
 import planisphere.config.Config;
+import planisphere.config.Constants;
 import planisphere.math.Maths;
 import planisphere.util.DataFileReader;
 
@@ -121,7 +122,12 @@ public final class StarCatalog {
     for(String line : lines) {
       ++lineCount;
       star = processLine(line);
-      stars.add(star);
+      if (star.INDEX.equals(Constants.POLARIS) && config.discardPolaris()) {
+        log("Discarding Polaris from star catalog: " + Constants.POLARIS);
+      }
+      else {
+        stars.add(star);
+      }
     }
     log("Read this many lines: " + lineCount);
     log("Using this number of stars from catalog: " + stars.size());

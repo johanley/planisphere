@@ -29,7 +29,7 @@ public final class Config {
     Integer year, String location, Double latitude, Double longitude, Integer hoursOffsetFromUT, 
     Integer minutesOffsetFromUT, Double declinationGap, Float width, Float height, 
     String outputDir, String fontDir, Integer greyConstellationLines, Integer greyAltAzLines, Integer smallestTimeDivision, 
-    String radiants, String monthNames, String lunarTransitsTitle, String planetaryTransitsTitle, String planetNames
+    String radiants, String monthNames, String lunarTransitsTitle, String planetaryTransitsTitle, String planetNames, Boolean discardPolaris
   ){
     this.year = year;
     this.location = location;
@@ -50,6 +50,7 @@ public final class Config {
     this.lunarTransitsTitle = lunarTransitsTitle;
     this.planetaryTransitsTitle = planetaryTransitsTitle;
     this.planetNames = planetNames;
+    this.discardPolaris = discardPolaris;
   }
 
   /** 
@@ -146,6 +147,9 @@ public final class Config {
   
   /** The names of planets on the back of the star chart. */
   public String planetNames() { return planetNames; }
+
+  /** Discarding Polaris from the chart makes it easier to center and align the chart with the transparency. */
+  public Boolean discardPolaris() { return discardPolaris; }
   
   /** The extreme declination to be shown on the planisphere, in degrees. Calculated field. */
   public Double declinationLimit() {
@@ -212,6 +216,7 @@ public final class Config {
     toStringLine(Setting.lunar_transits_title, lunarTransitsTitle(), result);
     toStringLine(Setting.planetary_transits_title, planetaryTransitsTitle(), result);
     toStringLine(Setting.planet_names, planetNames(), result);
+    toStringLine(Setting.discard_polaris, discardPolaris(), result);
     return result.toString().trim();
   }
   
@@ -237,6 +242,7 @@ public final class Config {
   private String lunarTransitsTitle = "";
   private String planetaryTransitsTitle = "";
   private String planetNames = "";
+  private Boolean discardPolaris = Boolean.TRUE;
 
   private void toStringLine(Setting setting, Object value, StringBuilder result) {
     result.append("  " + setting.toString() + " = " + value.toString() + Constants.NL); 

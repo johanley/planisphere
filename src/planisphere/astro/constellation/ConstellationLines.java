@@ -1,5 +1,7 @@
 package planisphere.astro.constellation;
 
+import static planisphere.util.LogUtil.log;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -10,14 +12,15 @@ import java.util.regex.Pattern;
 
 import planisphere.astro.star.Star;
 import planisphere.astro.star.StarCatalog;
+import planisphere.config.Constants;
 import planisphere.util.DataFileReader;
 
 /** Stick figures for outlining the constellations.  */
 public class ConstellationLines {
 
   /** Read in the data file. The data file exists in the same directory as this class. */
-  public void readData() {
-    parseInputFile();
+  public void readData(Boolean discardPolaris) {
+    parseInputFile(discardPolaris);
   }
 
   /**
@@ -66,11 +69,11 @@ public class ConstellationLines {
   
   private Map<String/*Ari*/ , List<List<Integer>> /*1..N polylines*/> lines = new LinkedHashMap<>();
   
-  private void parseInputFile() {
+  private void parseInputFile(Boolean discardPolaris) {
     DataFileReader reader = new DataFileReader();
     List<String> lines = reader.readFile(this.getClass(), "constellation-lines-hip.utf8");
     for (String line : lines) {
-      processLine(line.trim());
+      processLine(line.trim(), discardPolaris);
     }
   }
   
@@ -80,7 +83,7 @@ public class ConstellationLines {
    Each line is a single constellation, and almost every constellation is present. 
    Some constellations are faint, and have no stars to join (in this implementation).
   */
-  private void processLine(String line) {
+  private void processLine(String line, Boolean discardPolaris) {
     int equals = line.indexOf("=");
     String constellationAbbr = line.substring(0, equals).trim();
     List<List<Integer>> polylinesIds = new ArrayList<>();
@@ -99,7 +102,13 @@ public class ConstellationLines {
       String[] parts = oneLine.split(COMMA);
       List<Integer> polylineIds = new ArrayList<>();
       for(String part : parts) {
-        polylineIds.add(Integer.valueOf(part.trim()));
+        Integer id = Integer.valueOf(part.trim());
+        if (id.equals(Constants.POLARIS) && discardPolaris) {
+          log("Discarding Polaris from constellation lines: " + Constants.POLARIS);
+        }
+        else {
+          polylineIds.add(id);
+        }
       }
       polylinesIds.add(polylineIds);
     }
