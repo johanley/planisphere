@@ -7,6 +7,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
+import planisphere.astro.star.Star;
 import planisphere.config.Config;
 import planisphere.config.Constants;
 import planisphere.draw.ChartUtil;
@@ -90,6 +91,7 @@ public final class DrawTransparency {
   private void centeringAffordance() {
     circleForCelestialPole(6.0);
     circleForCelestialPole(2.0);
+    centralDotForPinhole();
   }
   
   private void circleForCelestialPole(double r) {
@@ -101,6 +103,14 @@ public final class DrawTransparency {
     g.setColor(origColor);
     g.draw(circle);
   }  
+  
+  private void centralDotForPinhole() {
+    Point2D.Double pole = new Point2D.Double(chartUtil.getWidth()/2.0, chartUtil.getHeight()/2.0);
+    double r = 0.50; //same as the dimmer stars 
+    Shape circle = new Ellipse2D.Double(pole.x - r, pole.y - r, r * 2, r * 2);
+    g.draw(circle);
+    g.fill(circle);
+  }
   
   private void meridian() {
     GeneralPath path = new GeneralPath();
