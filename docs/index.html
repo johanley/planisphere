@@ -28,20 +28,36 @@
  A number of minor settings, which most people would not want to change, are hard-coded.
  
 <h2>How To Make The Planisphere</h2>
- Generate the PDF files using a form on the web (which uses this project's code):
- <ul>
-  <li>I've created a basic form <a href='http://astronomytonight.net/planisphere/form.jsp'>here</a>
-  <li>the amount of config that can be done using this web form is limited to the basics, but is likely adequate for most people
-  <li>generate two PDF files, one after the other, and save them somewhere on your computer
- </ul>
 
- Or, if you download this project's source code, you can generate the PDF files using a stand-alone program, from the command line:
+<P>If you are unfamiliar with compiling and running Java programs, I suggest you:
+<ul> 
+ <li>download and unzip the <a href='https://www.eclipse.org/downloads/packages/'>Eclipse IDE For Java Developers</a>
+ <li>create a <em>workspace</em> directory (a place to hold multiple Java projects)
+ <li>put the source code for this project in a directory underneath the workspace directory
+ <li>open Eclipse, and point it to your workspace directory
+ <li>navigate to planisphere.Build, right click on it, and Run As -&gt; Java Application
+</ul>  
+
+Example directory structure: 
+<pre>
+C:\bob\workspace    (when you open Eclipse, point it to this directory)
+  planisphere       (the name of the project with the planisphere code)
+    bin             (this directory gets generated when you run the code)
+    docs
+    lib             (contains a 'jar' file, a Java library for creating PDFs)
+    src                    
+    .classpath      (this points Eclipse to the lib\itext jar file)
+    .project
+</pre>
+ 
+<P>Next:
  <ul>
-  <li>review the <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/config/config.ini'>config.ini</a> file, and change it to suit your needs.
+  <li>review the <a href='https://github.com/johanley/planisphere/blob/master/src/planisphere/config/config.ini'>planisphere/config/config.ini</a> file, and change it to suit your needs.
   The width and height need to match the paper size to be used on the printer. Save the changes.
   <li>run the <code>planisphere.Build</code> class to generate two PDF files.
  </ul>
  
+
  <P>Print: 
  <ul>
   <li>print the PDF files on a <b>high-resolution printer</b>. You may need to use a commercial print shop for best results. 
